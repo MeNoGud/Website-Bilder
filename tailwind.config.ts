@@ -33,10 +33,25 @@ const config: Config = {
           border: "rgba(232,228,220,0.06)",
           hover: "rgba(232,228,220,0.10)",
         },
+        emerald: {
+          DEFAULT: "#2D6A4F",
+          light: "#52B788",
+          subtle: "rgba(82,183,136,0.10)",
+          border: "rgba(82,183,136,0.25)",
+        },
       },
       backgroundImage: {
         "dot-grid":
           "radial-gradient(circle at 1px 1px, rgba(232,228,220,0.05) 1px, transparent 0)",
+      },
+      animation: {
+        marquee: "marquee 40s linear infinite",
+      },
+      keyframes: {
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
       },
     },
   },
