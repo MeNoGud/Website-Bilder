@@ -73,13 +73,13 @@ export function Hero() {
           <div className="hero-rule gold-rule-hero mt-8 mb-6 w-full max-w-xs" />
 
           <div className="hero-tag text-center mt-16">
-            <p className="font-display italic text-xl leading-relaxed text-cream sm:text-2xl max-w-2xl mx-auto">
+            <p className="font-tolken text-xl leading-relaxed text-cream sm:text-2xl max-w-2xl mx-auto uppercase tracking-[0.06em]">
               {site.positioning.replace(/\.$/, "")} — {site.hook}
             </p>
           </div>
 
           {/* CTA */}
-          <div className="hero-cta mt-10 flex flex-wrap items-center gap-4">
+          <div className="hero-cta mt-10 flex flex-wrap items-center justify-center gap-4">
             <a
               href="#work"
               className="inline-flex items-center gap-2 rounded-full border border-void-hover bg-transparent px-8 py-3.5 font-sans text-[13px] text-cream-muted transition-all duration-300 hover:bg-void-surface hover:text-cream"
