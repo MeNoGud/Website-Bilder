@@ -10,7 +10,7 @@ export function HeroName() {
   const opacity = useTransform(scrollY, [0, 400], [1, 0.6]);
 
   return (
-    <motion.div style={{ y, opacity }} className="relative">
+    <motion.div style={{ y, opacity }} className="relative w-full">
       {/* Full watermark logo — centered so nothing is clipped */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
@@ -19,20 +19,20 @@ export function HeroName() {
         aria-hidden
         className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none"
         style={{
-          width: "clamp(18rem, 42vw, 40rem)",
+          width: "clamp(14rem, 30vw, 28rem)",
           height: "auto",
           opacity: 0.1,
           mixBlendMode: "multiply",
         }}
       />
 
-      <p className="hero-role mb-4 text-center font-mono text-[10px] uppercase tracking-[0.32em] text-gold">
+      <p className="hero-role mb-4 w-full text-center font-mono text-[10px] uppercase tracking-[0.32em] text-gold">
         Web Design · Development · Brand Strategy
       </p>
 
       <h1
-        className="font-tolken text-cream text-center uppercase leading-none tracking-[0.04em]"
-        style={{ fontSize: "clamp(4rem, 14vw, 13rem)" }}
+        className="font-tolken w-full text-center text-cream uppercase leading-none tracking-[0.06em]"
+        style={{ fontSize: "clamp(2.8rem, 8vw, 8rem)" }}
       >
         <span className="hero-line-1 block">Marchio</span>
       </h1>
