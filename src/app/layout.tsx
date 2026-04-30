@@ -35,7 +35,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://jashita.vercel.app"),
+  metadataBase: new URL("https://marchio.design"),
   title: {
     default: `${site.name} — ${site.role}`,
     template: `%s — ${site.name}`,
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     siteName: site.name,
     locale: "en_GB",
     type: "website",
-    url: "https://jashita.vercel.app",
+    url: "https://marchio.design",
   },
   twitter: {
     card: "summary_large_image",
@@ -82,7 +82,7 @@ const jsonLd = {
   },
   email: "marchiorelloalberto20@gmail.com",
   sameAs: ["https://www.linkedin.com/in/alberto-marchiorello-0a944829b/"],
-  url: "https://jashita.vercel.app",
+  url: "https://marchio.design",
   description: site.tagline,
 };
 
