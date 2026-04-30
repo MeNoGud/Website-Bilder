@@ -84,14 +84,31 @@ export function Hero() {
           </div>
 
           {/* CTA */}
-          <div className="hero-cta mt-10 flex flex-wrap items-center gap-4">
+          <div className="hero-cta mt-10 flex justify-center">
             <MagneticButton>
               <a
                 href="#work"
-                className="inline-flex items-center gap-2 rounded-full border border-void-hover bg-transparent px-8 py-3.5 font-sans text-[13px] text-cream-muted transition-all duration-300 hover:bg-void-surface hover:text-cream"
+                className="group relative flex flex-col items-center justify-center gap-1 font-sans text-[13px] text-cream-muted transition-colors duration-300 hover:text-cream"
+                style={{ width: "176px", height: "128px" }}
               >
-                View work
-                <span aria-hidden className="text-gold">↓</span>
+                {/* Gem outline */}
+                <svg
+                  className="pointer-events-none absolute inset-0 w-full h-full transition-all duration-300"
+                  viewBox="0 0 176 128"
+                  fill="none"
+                  aria-hidden
+                >
+                  <polygon
+                    points="32,2 144,2 174,50 88,126 2,50"
+                    className="transition-all duration-300 group-hover:fill-[rgba(26,17,14,0.08)]"
+                    fill="rgba(26,17,14,0.04)"
+                    stroke="rgba(26,17,14,0.18)"
+                    strokeWidth="1.5"
+                  />
+                </svg>
+                {/* Text */}
+                <span className="relative">View work</span>
+                <span aria-hidden className="relative text-gold text-base leading-none">↓</span>
               </a>
             </MagneticButton>
           </div>
