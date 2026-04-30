@@ -87,7 +87,7 @@ export function Hero() {
           <div className="hero-cta mt-10 flex justify-center">
             <a
               href="#work"
-                className="relative flex items-center justify-center font-sans text-[10px] tracking-[0.12em] uppercase text-gold"
+                className="group relative flex items-center justify-center font-sans text-[10px] tracking-[0.12em] uppercase text-gold"
                 style={{ paddingBottom: "18px" }}
               style={{ width: "130px", height: "95px" }}
             >
@@ -103,13 +103,19 @@ export function Hero() {
                       <stop offset="0%"  stopColor="#E82400" stopOpacity="0.18" />
                       <stop offset="65%" stopColor="#E82400" stopOpacity="0" />
                     </radialGradient>
+                    <filter id="neonGlow" x="-15%" y="-15%" width="130%" height="130%">
+                      <feGaussianBlur stdDeviation="2.5" result="blur" />
+                      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                    </filter>
                   </defs>
                   {/* Base dark fill */}
                   <polygon points="24,2 106,2 128,37 65,93 2,37" fill="#1A110E" />
-                  {/* Orange glow overlay — matches Work tiles */}
+                  {/* Orange glow overlay */}
                   <polygon points="24,2 106,2 128,37 65,93 2,37" fill="url(#gemGlow)" />
-                  {/* Stroke */}
-                  <polygon points="24,2 106,2 128,37 65,93 2,37" fill="none" stroke="rgba(244,238,228,0.15)" strokeWidth="1" />
+                  {/* Default stroke */}
+                  <polygon points="24,2 106,2 128,37 65,93 2,37" fill="none" stroke="rgba(244,238,228,0.15)" strokeWidth="1" className="transition-opacity duration-300 group-hover:opacity-0" />
+                  {/* Neon hover stroke */}
+                  <polygon points="24,2 106,2 128,37 65,93 2,37" fill="none" stroke="#E82400" strokeWidth="1.5" filter="url(#neonGlow)" className="opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                 </svg>
                 <span className="relative">View work</span>
             </a>
