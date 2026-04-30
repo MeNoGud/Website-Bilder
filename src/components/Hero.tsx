@@ -5,7 +5,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="noise relative flex min-h-screen flex-col overflow-hidden"
+      className="noise relative flex flex-col overflow-hidden"
       style={{
         background:
           "radial-gradient(ellipse at 20% 50%, rgba(232,36,0,0.05) 0%, transparent 50%), radial-gradient(ellipse at 85% 15%, rgba(245,162,0,0.04) 0%, transparent 50%), #F4EEE4",
@@ -46,7 +46,7 @@ export function Hero() {
       </span>
 
       {/* Main content */}
-      <div className="relative flex flex-1 flex-col justify-between pt-28 pb-0">
+      <div className="relative flex flex-col pt-28 pb-24 sm:pb-32">
         <div className="mx-auto w-full max-w-6xl px-6 sm:px-10">
 
           {/* Status bar */}
