@@ -6,10 +6,10 @@ import { site } from "@/lib/site";
 import { Cursor } from "@/components/Cursor";
 import { ScrollProgress } from "@/components/ScrollProgress";
 
-const tolkenWeapon = localFont({
+const caMagicHour = localFont({
   src: [
-    { path: "../../public/fonts/tolken-weapon.woff2", weight: "400", style: "normal" },
-    { path: "../../public/fonts/tolken-weapon.woff",  weight: "400", style: "normal" },
+    { path: "../../public/fonts/ca-magic-hour.woff2", weight: "400", style: "normal" },
+    { path: "../../public/fonts/ca-magic-hour.woff",  weight: "400", style: "normal" },
   ],
   variable: "--font-tolken",
   display: "swap",
@@ -92,7 +92,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${tolkenWeapon.variable} ${syne.variable} ${inter.variable} ${geistMono.variable}`}
+      className={`${caMagicHour.variable} ${syne.variable} ${inter.variable} ${geistMono.variable}`}
     >
       <head>
         <script
