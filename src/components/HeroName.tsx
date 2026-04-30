@@ -38,10 +38,6 @@ export function HeroName() {
         }}
       />
 
-      <p className="hero-role mb-4 w-full text-center font-mono text-[10px] uppercase tracking-[0.32em] text-gold">
-        Web Design · Development · Brand Strategy
-      </p>
-
       <h1
         className="font-tolken w-full text-center text-cream uppercase leading-none tracking-[0.06em]"
         style={{ fontSize: "clamp(2.8rem, 8vw, 8rem)" }}

@@ -50,7 +50,7 @@ export function Hero() {
 
           {/* Status bar */}
           <div className="hero-meta flex items-center justify-between mb-10 lg:mb-14">
-            <span className="font-mono text-[10px] uppercase tracking-[0.32em] text-neutral-500">
+            <span className="font-mono text-[10px] uppercase tracking-[0.32em] text-gold">
               Web Design Studio · {new Date().getFullYear()}
             </span>
             <div className="flex items-center gap-3">
