@@ -30,12 +30,13 @@ export async function POST(req: NextRequest) {
       messages: [
         {
           role: "system",
-          content: `You are a senior web design pricing consultant operating in the UK/London market (2026).
+          content: `You are a senior web design pricing consultant operating in the European market (UK, Western & Southern Europe) in 2026.
 Your job is to analyse a client's project brief and return a fair, itemised price estimate in JSON.
+Positioning note: this freelancer competes against European agencies and guarantees to beat any comparable agency quote — prices should be competitive but reflect premium independent quality.
 
-Pricing guidelines (London freelance market, hourly rate £85–100):
-- Simple brochure site (≤5 pages, no backend, basic design): £1,500–3,000
-- Standard business site (5–10 pages, CMS, contact forms, clean design): £3,000–6,000
+Pricing guidelines (European freelance market, hourly rate £80–95):
+- Simple brochure site (≤5 pages, no backend, basic design): £1,200–2,800
+- Standard business site (5–10 pages, CMS, contact forms, clean design): £2,800–5,500
 - Premium custom site (animations, complex UI, multiple integrations, editorial design): £5,000–10,000
 - E-commerce: add £2,000–5,000 for Shopify/WooCommerce; add £4,000–9,000 for bespoke Next.js store
 - CMS integration (Sanity, Contentful, etc.): add £800–1,800

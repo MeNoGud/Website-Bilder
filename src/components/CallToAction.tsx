@@ -60,7 +60,15 @@ export function CallToAction() {
           A 30-minute call is all it takes. No hard sell — just an honest conversation about your project, your goals, and what&apos;s possible.
         </p>
 
-          <div className="reveal mt-12 flex justify-center">
+        {/* Beat any quote guarantee */}
+        <div className="reveal mx-auto mt-8 inline-flex items-center gap-3 rounded-full border border-gold/30 bg-gold/[0.06] px-6 py-3">
+          <span className="text-gold text-lg" aria-hidden>✦</span>
+          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-gold">
+            I&apos;ll beat any comparable European agency quote — same quality, faster delivery.
+          </p>
+        </div>
+
+        <div className="reveal mt-10 flex justify-center">
           <a
             href="/consultation"
             className="inline-flex items-center gap-3 rounded-full bg-gold px-10 py-4 font-sans text-[14px] font-semibold text-void shadow-xl shadow-gold/25 transition-all duration-300 hover:bg-gold-light hover:shadow-gold/40 hover:gap-4"
@@ -71,7 +79,7 @@ export function CallToAction() {
         </div>
 
         <p className="reveal mt-10 font-mono text-[10px] uppercase tracking-[0.22em] text-cream-dim opacity-60">
-          Typically responds within 24 hours · Based in London, working globally
+          Typically responds within 24 hours · Based in London, working across Europe
         </p>
       </div>
     </section>
