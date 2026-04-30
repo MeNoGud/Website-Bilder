@@ -254,7 +254,7 @@ export async function POST(req: NextRequest) {
 
     // 5. Email Alberto
     if (process.env.RESEND_API_KEY) {
-      await resend.emails.send({
+      await resend!.emails.send({
         from:    "Marchio Blueprint <studio@marchio.design>",
         to:      ALBERTO,
         subject: `Blueprint ready — ${blueprint.businessName}`,
@@ -269,7 +269,7 @@ export async function POST(req: NextRequest) {
 
       // 6. Email client
       if (intake.email) {
-        await resend.emails.send({
+        await resend!.emails.send({
           from:    "Marchio Studio <studio@marchio.design>",
           to:      intake.email,
           subject: `Your website blueprint is ready — ${blueprint.businessName}`,
