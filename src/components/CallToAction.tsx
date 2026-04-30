@@ -14,13 +14,13 @@ export function CallToAction() {
         aria-hidden
       />
 
-      {/* Slowly rotating large ✦ — wrapper centers, inner span rotates */}
+      {/* Wandering large ✦ — wrapper centers, inner span follows wobbly oval */}
       <div
         className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
         aria-hidden
       >
         <span
-          className="animate-spin-slow block select-none font-display leading-none"
+          className="star-wander block select-none font-display leading-none"
           style={{ fontSize: "clamp(18rem, 50vw, 42rem)", color: "rgba(244,238,228,0.03)" }}
         >
           ✦

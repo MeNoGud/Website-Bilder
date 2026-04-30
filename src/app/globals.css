@@ -133,6 +133,18 @@ body {
   animation-direction: alternate !important;
 }
 
+/* ── Star wander – follows a wobbly closed oval path ── */
+@keyframes wander {
+  to { offset-distance: 100%; }
+}
+
+.star-wander {
+  offset-path: path('M 0 -62 C 42 -64 70 -28 66 12 C 62 50 24 76 -10 68 C -44 60 -68 24 -60 -18 C -52 -58 -28 -60 0 -62 Z');
+  offset-distance: 0%;
+  offset-rotate: 0deg;
+  animation: wander 28s linear infinite;
+}
+
 /* ── Scroll-driven reveals ──────────────────────── */
 .reveal {
   opacity: 0;
