@@ -87,7 +87,8 @@ export function Hero() {
           <div className="hero-cta mt-10 flex justify-center">
             <a
               href="#work"
-                className="relative flex items-center justify-center font-sans text-[12px] tracking-[0.12em] uppercase text-[#F4EEE4]/60"
+                className="relative flex items-center justify-center font-sans text-[10px] tracking-[0.12em] uppercase text-gold"
+                style={{ paddingBottom: "18px" }}
               style={{ width: "130px", height: "95px" }}
             >
                 {/* Gem outline */}
