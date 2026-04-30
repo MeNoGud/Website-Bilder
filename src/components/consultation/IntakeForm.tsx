@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { useRouter } from "next/navigation";
 import type { EstimateResult } from "@/app/api/estimate/route";
 
 /* ─────────────────────────────────────────────────
@@ -443,9 +442,9 @@ export function IntakeForm() {
   const [estimateErr, setEstimateErr] = useState("");
 
   /* UI */
-  const [status, setStatus] = useState<"idle" | "sending" | "blueprinting" | "done" | "error">("idle");
-  const isBusy = status === "sending" || status === "blueprinting";
-  const submitLabel = status === "blueprinting" ? "Building blueprint…" : status === "sending" ? "Sending…" : null;
+  const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
+  const isBusy = status === "sending";
+  const submitLabel = status === "sending" ? "Sending…" : null;
 
   const TOTAL = isShop ? STEPS.length : STEPS.length - 1;
 
@@ -498,8 +497,6 @@ export function IntakeForm() {
     }
   };
 
-  const router = useRouter();
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("sending");
@@ -547,75 +544,40 @@ export function IntakeForm() {
       const res = await fetch("/api/intake", { method: "POST", body: fd });
       if (!res.ok) throw new Error();
 
-      // Phase 2 — generate blueprint (non-blocking on failure)
-      setStatus("blueprinting");
-      try {
-        const blueprintPayload = {
-          name, email, phone, business,
-          industry, oneLiner, description, audience,
-          goals:          goals.join(", "),
-          pages:          pages.join(", "),
-          features:       features.join(", "),
-          domain,         hasCms,
-          styles:         styles.join(", "),
-          tone:           tone.join(", "),
-          primaryColor,   secondaryColor, accentColor,
-          references:     refs.filter(Boolean).join(", "),
-          shopPlatform,   shopCurrency,
-          shopPayments:   shopPayments.join(", "),
-          shopShipping:   shopShipping.join(", "),
-          shopProductQty,
-          aboutCopy,      servicesCopy,
-          instagram:      socials.instagram,
-          facebook:       socials.facebook,
-          linkedin:       socials.linkedin,
-          tiktok:         socials.tiktok,
-          urgency,        budget, notes,
-        };
-
-        const bpRes = await fetch("/api/blueprint", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(blueprintPayload),
-        });
-
-        if (bpRes.ok) {
-          const bpData = await bpRes.json();
-          if (bpData.blueprintId) {
-            router.push(`/blueprint/${bpData.blueprintId}`);
-            return;
-          }
-        }
-      } catch {
-        // Blueprint generation failed — fall through to success screen
-      }
+      // Fire blueprint generation in the background — don't wait for it
+      const blueprintPayload = {
+        name, email, phone, business,
+        industry, oneLiner, description, audience,
+        goals:          goals.join(", "),
+        pages:          pages.join(", "),
+        features:       features.join(", "),
+        domain,         hasCms,
+        styles:         styles.join(", "),
+        tone:           tone.join(", "),
+        primaryColor,   secondaryColor, accentColor,
+        references:     refs.filter(Boolean).join(", "),
+        shopPlatform,   shopCurrency,
+        shopPayments:   shopPayments.join(", "),
+        shopShipping:   shopShipping.join(", "),
+        shopProductQty,
+        aboutCopy,      servicesCopy,
+        instagram:      socials.instagram,
+        facebook:       socials.facebook,
+        linkedin:       socials.linkedin,
+        tiktok:         socials.tiktok,
+        urgency,        budget, notes,
+      };
+      fetch("/api/blueprint", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(blueprintPayload),
+      }).catch(() => {/* silent — blueprint failure doesn't affect the client */});
 
       setStatus("done");
     } catch {
       setStatus("error");
     }
   };
-
-  /* ── Blueprint generating screen ────────────── */
-  if (status === "blueprinting") {
-    return (
-      <div className="rounded-2xl border border-void-border bg-void py-24 text-center px-8">
-        <div className="inline-flex h-20 w-20 items-center justify-center rounded-full bg-gold/10 mb-8">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden className="animate-spin">
-            <circle cx="12" cy="12" r="10" stroke="#E82400" strokeWidth="1.5" strokeDasharray="40 20" />
-          </svg>
-        </div>
-        <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-gold mb-4">Generating blueprint</p>
-        <h3 className="font-display text-3xl font-light text-cream mb-4">
-          Building your site blueprint&hellip;
-        </h3>
-        <p className="font-sans text-base text-cream-muted max-w-md mx-auto leading-relaxed">
-          Our AI is analysing your brief and scaffolding your website structure.
-          This takes around 30 seconds.
-        </p>
-      </div>
-    );
-  }
 
   /* ── Success screen ──────────────────────────── */
   if (status === "done") {
@@ -627,11 +589,11 @@ export function IntakeForm() {
           </svg>
         </div>
         <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-gold mb-4">Brief received</p>
-        <h3 className="font-display text-4xl font-light text-cream mb-4">
-          You&apos;re all set.
+        <h3 className="font-display text-4xl font-light text-cream mb-6">
+          Thank you for your project brief.
         </h3>
         <p className="font-sans text-base text-cream-muted max-w-md mx-auto leading-relaxed">
-          I&apos;ll review your brief before the call and come fully prepared.
+          I&apos;ll put together a personalised website preview and walk you through it during our call.
           Expect a confirmation email shortly.
         </p>
       </div>
