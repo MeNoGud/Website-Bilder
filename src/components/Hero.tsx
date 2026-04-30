@@ -50,7 +50,7 @@ export function Hero() {
 
           {/* Status bar */}
           <div className="hero-meta flex items-center justify-between mb-10 lg:mb-14">
-            <span className="font-mono text-[10px] uppercase tracking-[0.32em] text-gold">
+            <span className="font-mono text-[10px] uppercase tracking-[0.32em] text-cream-dim">
               Web Design Studio · {new Date().getFullYear()}
             </span>
             <div className="flex items-center gap-3">
@@ -60,7 +60,7 @@ export function Hero() {
                   Taking projects
                 </span>
               )}
-              <span className="hidden sm:block font-mono text-[10px] text-gold">
+              <span className="hidden sm:block font-mono text-[10px] text-cream-dim">
                 {site.location}
               </span>
             </div>
@@ -73,10 +73,10 @@ export function Hero() {
           <div className="hero-rule gold-rule-hero mt-8 mb-6 w-full max-w-xs" />
 
           <div className="hero-tag flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-            <p className="max-w-md font-sans text-base leading-relaxed text-gold sm:text-[17px]">
+            <p className="max-w-md font-sans text-base leading-relaxed text-cream-muted sm:text-[17px]">
               {site.positioning}
             </p>
-            <p className="font-display text-lg italic text-gold sm:text-xl sm:text-right max-w-xs">
+            <p className="font-display text-lg italic text-cream-dim sm:text-xl sm:text-right max-w-xs">
               &ldquo;{site.hook}&rdquo;
             </p>
           </div>
