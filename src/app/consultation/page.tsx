@@ -21,13 +21,13 @@ export default function ConsultationPage() {
         <section className="relative overflow-hidden border-b border-void-border">
           {/* Background blobs */}
           <div
-            className="pointer-events-none absolute left-[-10%] top-[20%] h-[600px] w-[600px] rounded-full blur-[140px] opacity-40"
-            style={{ background: "radial-gradient(circle, rgba(245,162,0,0.12) 0%, transparent 70%)" }}
+            className="pointer-events-none absolute left-[-10%] top-[20%] h-[600px] w-[600px] opacity-40"
+            style={{ background: "radial-gradient(circle, rgba(245,162,0,0.18) 0%, transparent 65%)" }}
             aria-hidden
           />
           <div
-            className="pointer-events-none absolute right-[-5%] bottom-[-10%] h-[500px] w-[500px] rounded-full blur-[120px] opacity-30"
-            style={{ background: "radial-gradient(circle, rgba(232,36,0,0.10) 0%, transparent 70%)" }}
+            className="pointer-events-none absolute right-[-5%] bottom-[-10%] h-[500px] w-[500px] opacity-30"
+            style={{ background: "radial-gradient(circle, rgba(232,36,0,0.16) 0%, transparent 65%)" }}
             aria-hidden
           />
 
