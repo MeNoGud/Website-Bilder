@@ -407,7 +407,6 @@ export function IntakeForm() {
   /* Step 4 — Design */
   const [styles,         setStyles]         = useState<string[]>([]);
   const [tone,           setTone]           = useState<string[]>([]);
-  const [typography,     setTypography]     = useState("");
   const [primaryColor,   setPrimaryColor]   = useState("");
   const [secondaryColor, setSecondaryColor] = useState("");
   const [accentColor,    setAccentColor]    = useState("");
@@ -474,7 +473,6 @@ export function IntakeForm() {
           hasCms,
           styles:   styles.join(", "),
           tone:     tone.join(", "),
-          typography,
           isShop,
           shopPlatform, shopCurrency,
           shopPayments:  shopPayments.join(", "),
@@ -521,7 +519,6 @@ export function IntakeForm() {
         domain, hasCms,
         styles:        styles.join(", "),
         tone:          tone.join(", "),
-        typography,
         primaryColor, secondaryColor, accentColor,
         references:  refs.filter(Boolean).join(", "),
         shopPlatform, shopCurrency,
@@ -562,7 +559,6 @@ export function IntakeForm() {
           domain,         hasCms,
           styles:         styles.join(", "),
           tone:           tone.join(", "),
-          typography,
           primaryColor,   secondaryColor, accentColor,
           references:     refs.filter(Boolean).join(", "),
           shopPlatform,   shopCurrency,
@@ -805,16 +801,6 @@ export function IntakeForm() {
             onChange={(v) => setTone(v.slice(0, 3))}
             max={3}
           />
-          <Field label="Typography preference">
-            <select value={typography} onChange={(e) => setTypography(e.target.value)} className="form-input">
-              <option value="">Select preference</option>
-              <option>Serif — elegant, editorial (e.g. Cormorant, Playfair)</option>
-              <option>Sans-serif — clean, modern (e.g. Inter, Neue Haas)</option>
-              <option>Mixed — serif headings + sans body</option>
-              <option>Display / expressive — bold statement fonts</option>
-              <option>Let you decide</option>
-            </select>
-          </Field>
           <div className="grid gap-6 sm:grid-cols-3">
             <ColorField label="Primary colour" value={primaryColor} onChange={setPrimaryColor} placeholder="#1A2E3B or 'deep navy'" />
             <ColorField label="Secondary colour" value={secondaryColor} onChange={setSecondaryColor} placeholder="#C9A96E or 'warm gold'" />
