@@ -31,10 +31,10 @@ export function HeroName() {
       </p>
 
       <h1
-        className="font-display font-black leading-[0.9] tracking-[-0.02em] text-cream text-center"
+        className="font-tolken text-cream text-center uppercase leading-none tracking-[0.04em]"
         style={{ fontSize: "clamp(4rem, 14vw, 13rem)" }}
       >
-        <span className="hero-line-1 block uppercase">Marchio</span>
+        <span className="hero-line-1 block">Marchio</span>
       </h1>
     </motion.div>
   );

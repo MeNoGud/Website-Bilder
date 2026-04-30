@@ -10,8 +10,9 @@ const config: Config = {
     extend: {
       fontFamily: {
         display: ["var(--font-display)", "system-ui", "sans-serif"],
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        mono: ["var(--font-geist-mono)", "ui-monospace", "monospace"],
+        tolken:  ["var(--font-tolken)", "system-ui", "sans-serif"],
+        sans:    ["var(--font-inter)", "system-ui", "sans-serif"],
+        mono:    ["var(--font-geist-mono)", "ui-monospace", "monospace"],
       },
       colors: {
         void: {

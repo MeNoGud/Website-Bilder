@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Inter, Geist_Mono } from "next/font/google";
+import { Syne, Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/site";
 import { Cursor } from "@/components/Cursor";
@@ -11,7 +11,14 @@ const tolkenWeapon = localFont({
     { path: "../../public/fonts/tolken-weapon.woff2", weight: "400", style: "normal" },
     { path: "../../public/fonts/tolken-weapon.woff",  weight: "400", style: "normal" },
   ],
+  variable: "--font-tolken",
+  display: "swap",
+});
+
+const syne = Syne({
   variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
@@ -85,7 +92,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${tolkenWeapon.variable} ${inter.variable} ${geistMono.variable}`}
+      className={`${tolkenWeapon.variable} ${syne.variable} ${inter.variable} ${geistMono.variable}`}
     >
       <head>
         <script
