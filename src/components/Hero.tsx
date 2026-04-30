@@ -45,11 +45,11 @@ export function Hero() {
       </span>
 
       {/* Main content */}
-      <div className="relative flex flex-col pt-28 pb-24 sm:pb-32">
+      <div className="relative flex flex-col" style={{ paddingTop: "clamp(4rem,8vw,7rem)", paddingBottom: "clamp(3rem,6vw,8rem)" }}>
         <div className="mx-auto w-full max-w-6xl px-6 sm:px-10">
 
           {/* Status bar */}
-          <div className="hero-meta flex items-center justify-between mb-20 lg:mb-14">
+          <div className="hero-meta flex items-center justify-between" style={{ marginBottom: "clamp(2rem,4vw,3.5rem)" }}>
             <span className="font-mono text-[10px] uppercase tracking-[0.32em] text-gold">
               Web Design Studio · {new Date().getFullYear()}
             </span>
@@ -70,10 +70,10 @@ export function Hero() {
           <HeroName />
 
           {/* Rule + tagline */}
-          <div className="hero-rule gold-rule-hero mt-4 mb-6 w-full max-w-xs sm:mt-8" />
+          <div className="hero-rule gold-rule-hero" style={{ width: "22vw", marginTop: "2vw", marginBottom: "1.5vw" }} />
 
-          <div className="hero-tag text-center mt-16 sm:mt-28">
-            <p className="font-tolken text-sm leading-relaxed text-cream sm:text-base max-w-2xl mx-auto uppercase tracking-[0.06em]">
+          <div className="hero-tag text-center" style={{ marginTop: "8vw" }}>
+            <p className="font-tolken leading-relaxed text-cream uppercase tracking-[0.06em] max-w-2xl mx-auto" style={{ fontSize: "clamp(0.6rem,1.2vw,1rem)" }}>
               {site.positioning.replace(/\.$/, "")} — {site.hook}
             </p>
           </div>
