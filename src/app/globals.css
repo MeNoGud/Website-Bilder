@@ -144,7 +144,7 @@ body {
 .star-wander {
   /* Same smooth 5-turn pentagon, scaled to ±200 px so the star stays    */
   /* fully inside the section on all common screen sizes.                */
-  offset-path: path('M 0 -200 C 124 -206 220 -156 260 -60 C 294 36 262 126 156 188 C 52 250 -60 244 -168 180 C -268 118 -300 28 -252 -68 C -214 -166 -124 -194 0 -200 Z');
+  offset-path: path('M 80 -200 C 204 -206 300 -156 340 -60 C 374 36 342 126 236 188 C 132 250 20 244 -88 180 C -188 118 -220 28 -172 -68 C -134 -166 -44 -194 80 -200 Z');
   offset-distance: 0%;
   offset-rotate: 0deg;
   offset-anchor: 50% 50%;
