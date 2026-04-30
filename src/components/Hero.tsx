@@ -88,7 +88,7 @@ export function Hero() {
             <MagneticButton>
               <a
                 href="#work"
-                className="group relative flex items-center justify-center font-sans text-[12px] tracking-[0.12em] uppercase text-cream-muted transition-colors duration-300 hover:text-cream"
+                className="group relative flex items-center justify-center font-sans text-[12px] tracking-[0.12em] uppercase text-void transition-colors duration-300 hover:text-void"
                 style={{ width: "130px", height: "95px" }}
               >
                 {/* Gem outline */}
@@ -101,8 +101,8 @@ export function Hero() {
                   <polygon
                     points="24,2 106,2 128,37 65,93 2,37"
                     className="transition-all duration-300
-                      fill-transparent stroke-[#1A110E] [stroke-width:1.5]
-                      group-hover:fill-[rgba(232,36,0,0.08)] group-hover:stroke-[#E82400]"
+                      fill-[#1A110E] stroke-[#1A110E] [stroke-width:1.5]
+                      group-hover:fill-[#E82400] group-hover:stroke-[#E82400]"
                   />
                 </svg>
                 <span className="relative">View work</span>
