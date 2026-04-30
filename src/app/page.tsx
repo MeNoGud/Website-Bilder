@@ -1,12 +1,12 @@
-import { About } from "@/components/About";
+import { CallToAction } from "@/components/CallToAction";
 import { Contact } from "@/components/Contact";
-import { Currently } from "@/components/Currently";
 import { Expertise } from "@/components/Expertise";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
+import { LogoStrip } from "@/components/LogoStrip";
 import { Marquee } from "@/components/Marquee";
-import { SocialProof } from "@/components/SocialProof";
+import { Process } from "@/components/Process";
 import { Stats } from "@/components/Stats";
 import { Work } from "@/components/Work";
 
@@ -18,11 +18,11 @@ export default function Home() {
         <Hero />
         <Marquee />
         <Stats />
-        <About />
-        <SocialProof />
         <Expertise />
+        <Process />
         <Work />
-        <Currently />
+        <LogoStrip />
+        <CallToAction />
         <Contact />
       </main>
       <Footer />

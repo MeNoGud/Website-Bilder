@@ -13,7 +13,7 @@ export function Footer() {
         </div>
         <div className="flex items-center gap-6">
           <span className="font-mono text-[11px] text-cream-dim">
-            Built with Next.js · {site.location}
+            Web Designer & Developer · {site.location}
           </span>
           <a
             href="#top"

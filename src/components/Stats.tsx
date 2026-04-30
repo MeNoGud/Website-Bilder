@@ -1,85 +1,51 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
-import { site } from "@/lib/site";
-
-function AnimatedNumber({
-  value,
-  shouldStart,
-}: {
-  value: string;
-  shouldStart: boolean;
-}) {
-  const [display, setDisplay] = useState("0");
-
-  useEffect(() => {
-    if (!shouldStart) return;
-
-    // Try to extract a leading integer from the value
-    const match = value.match(/^(\d+)/);
-    if (!match) {
-      setDisplay(value);
-      return;
-    }
-
-    const target = parseInt(match[1], 10);
-    const suffix = value.slice(match[1].length);
-    const prefix = value.slice(0, 0);
-    const duration = 1200;
-    const startTime = performance.now();
-
-    const tick = (now: number) => {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      // Ease out cubic
-      const eased = 1 - Math.pow(1 - progress, 3);
-      const current = Math.round(eased * target);
-      setDisplay(`${prefix}${current}${suffix}`);
-      if (progress < 1) requestAnimationFrame(tick);
-    };
-
-    requestAnimationFrame(tick);
-  }, [shouldStart, value]);
-
-  return <>{shouldStart ? display : "—"}</>;
-}
-
 export function Stats() {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.3 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <div ref={ref} className="border-b border-void-border bg-void-surface">
+    <div className="border-b border-t border-void-border bg-void-surface">
       <div className="mx-auto max-w-6xl px-6 sm:px-10">
-        <div className="grid grid-cols-2 divide-x divide-void-border lg:grid-cols-4">
-          {site.stats.map((stat, i) => (
-            <div
-              key={i}
-              className="flex flex-col items-center justify-center px-6 py-10 text-center lg:py-12"
+        <div className="flex flex-col items-center justify-center gap-8 py-20 text-center sm:py-28 lg:flex-row lg:items-center lg:justify-between lg:text-left lg:gap-16">
+
+          {/* Main promise */}
+          <div className="flex-1">
+            <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-gold mb-5">
+              — The price promise
+            </p>
+            <h2
+              className="font-display font-light text-cream leading-[1.0]"
+              style={{ fontSize: "clamp(2.4rem, 5.5vw, 4.5rem)" }}
             >
-              <span className="font-display text-4xl font-light text-cream sm:text-5xl lg:text-6xl">
-                <AnimatedNumber value={stat.value} shouldStart={visible} />
-              </span>
-              <div className="gold-rule mx-auto my-4 w-8" />
-              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-cream-dim">
-                {stat.label}
-              </span>
+              I will beat any competitor&apos;s quote —{" "}
+              <em className="not-italic text-gold">guaranteed.</em>
+            </h2>
+          </div>
+
+          {/* Divider */}
+          <div className="hidden lg:block w-px self-stretch bg-void-border" aria-hidden />
+
+          {/* Supporting copy + micro-details */}
+          <div className="flex-1 max-w-md">
+            <p className="font-sans text-base leading-relaxed text-cream-muted mb-8">
+              Show me any written quote from another agency or freelancer and I will
+              deliver the same scope — better design, faster delivery — for less.
+              No hidden fees, no bait-and-switch.
+            </p>
+
+            <div className="flex flex-col gap-3 sm:flex-row sm:gap-6 lg:flex-col lg:gap-3">
+              {[
+                "Better design than the competition",
+                "Faster delivery, every time",
+                "Full transparency on pricing",
+              ].map((point) => (
+                <span
+                  key={point}
+                  className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.22em] text-cream-dim"
+                >
+                  <span className="text-gold text-base leading-none" aria-hidden>✦</span>
+                  {point}
+                </span>
+              ))}
             </div>
-          ))}
+          </div>
+
         </div>
       </div>
     </div>

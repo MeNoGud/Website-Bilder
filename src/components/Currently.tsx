@@ -11,9 +11,12 @@ export function Currently() {
               — Currently
             </p>
             <h2 className="mt-4 font-display text-3xl font-light text-cream sm:text-4xl leading-[1.1]">
-              Where I am<br />
-              <span className="italic text-cream-muted">right now.</span>
+              Available for<br />
+              <span className="italic text-cream-muted">new projects.</span>
             </h2>
+            <p className="mt-6 font-sans text-sm leading-relaxed text-cream-muted max-w-xs">
+              Ready to take on the right project. Let&apos;s make it yours.
+            </p>
           </div>
 
           {/* Right: status card */}
@@ -25,7 +28,7 @@ export function Currently() {
                 aria-label="Active"
               />
               <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-emerald-light">
-                Active
+                Taking on new work
               </span>
             </div>
 
@@ -54,11 +57,11 @@ export function Currently() {
             {/* CTA */}
             <div className="mt-8">
               <a
-                href="#contact"
-                className="inline-flex items-center gap-2 font-sans text-sm text-cream-muted transition-colors hover:text-gold"
+                href="#consultation"
+                className="inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3 font-sans text-[13px] font-medium text-void transition-all duration-300 hover:bg-gold-light"
               >
-                Start a conversation
-                <span aria-hidden className="text-gold">→</span>
+                Book a free consultation
+                <span aria-hidden>→</span>
               </a>
             </div>
           </div>

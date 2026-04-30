@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "hooks": {
+    "beforeSubmitPrompt": [
+      {
+        "matcher": "UserPromptSubmit",
+        "command": "node .cursor/hooks/log-prompt.js"
+      }
+    ]
+  }
+}

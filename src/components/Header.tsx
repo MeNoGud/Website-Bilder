@@ -5,10 +5,9 @@ import { useEffect, useState } from "react";
 import { site } from "@/lib/site";
 
 const nav = [
-  { href: "#about", label: "About" },
-  { href: "#expertise", label: "Expertise" },
+  { href: "#services", label: "Services" },
+  { href: "#process", label: "Process" },
   { href: "#work", label: "Work" },
-  { href: "#contact", label: "Contact" },
 ];
 
 export function Header() {
@@ -21,7 +20,6 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
@@ -40,13 +38,11 @@ export function Header() {
           {/* Monogram */}
           <Link
             href="#top"
-            className="group flex items-center gap-1 font-display text-xl font-medium text-cream transition-opacity hover:opacity-75"
+            className="transition-opacity hover:opacity-80"
             aria-label="Home"
             onClick={() => setMenuOpen(false)}
           >
-            <span>A</span>
-            <span className="text-gold transition-transform duration-300 group-hover:rotate-12 inline-block">·</span>
-            <span>M</span>
+            <img src="/logo.svg" alt="AM" className="h-10 w-auto" />
           </Link>
 
           {/* Desktop nav */}
@@ -64,10 +60,10 @@ export function Header() {
 
           {/* Desktop CTA */}
           <a
-            href={site.social.find((s) => s.label === "Email")?.href ?? "#contact"}
-            className="hidden sm:inline-flex items-center gap-2 rounded-full border border-gold-border px-5 py-2 font-sans text-[13px] text-cream-muted transition-all duration-300 hover:border-gold hover:bg-gold-faint hover:text-cream"
+            href="/consultation"
+            className="hidden sm:inline-flex items-center gap-2 rounded-full bg-gold px-5 py-2 font-sans text-[13px] font-medium text-void transition-all duration-300 hover:bg-gold-light"
           >
-            Connect
+            Book consultation
           </a>
 
           {/* Mobile hamburger */}
@@ -128,10 +124,26 @@ export function Header() {
           ))}
 
           <div
-            className="mt-10 flex items-center gap-6"
+            className="mt-8"
             style={{
               opacity: menuOpen ? 1 : 0,
               transition: `opacity 0.4s ease 360ms`,
+            }}
+          >
+            <a
+              href="/consultation"
+              onClick={() => setMenuOpen(false)}
+              className="inline-flex items-center gap-2 rounded-full bg-gold px-8 py-3.5 font-sans text-[14px] font-medium text-void"
+            >
+              Book consultation →
+            </a>
+          </div>
+
+          <div
+            className="mt-8 flex items-center gap-6"
+            style={{
+              opacity: menuOpen ? 1 : 0,
+              transition: `opacity 0.4s ease 420ms`,
             }}
           >
             {site.social.map((s) => (
