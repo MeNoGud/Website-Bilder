@@ -61,10 +61,18 @@ export function CallToAction() {
         </p>
 
         {/* Beat any quote guarantee */}
-        <div className="reveal mx-auto mt-8 inline-flex items-center gap-3 rounded-full border border-gold/30 bg-gold/[0.06] px-6 py-3">
-          <span className="text-gold text-lg" aria-hidden>✦</span>
-          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-gold">
-            I&apos;ll beat any comparable European agency quote — same quality, faster delivery.
+        <div className="reveal mx-auto mt-10 max-w-2xl rounded-2xl border border-gold/40 bg-gold/[0.07] px-8 py-6">
+          <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold/70 mb-3">
+            ✦ Price guarantee
+          </p>
+          <p
+            className="font-display font-semibold text-cream leading-tight"
+            style={{ fontSize: "clamp(1.2rem, 2.5vw, 1.75rem)" }}
+          >
+            I&apos;ll beat any comparable European agency quote.
+          </p>
+          <p className="mt-3 font-sans text-sm text-cream-muted">
+            Same quality. Faster delivery. Direct communication — no account managers, no markup.
           </p>
         </div>
 
