@@ -38,9 +38,9 @@ export default function ConsultationPage() {
               <div>
                 <Link
                   href="/"
-                  className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.25em] text-cream-dim hover:text-gold transition-colors mb-10"
+                  className="inline-flex items-center gap-2 rounded-full border border-void-border bg-void-surface px-5 py-2.5 font-sans text-[13px] text-cream-muted transition-all duration-300 hover:border-gold hover:text-gold mb-10"
                 >
-                  ← Back to portfolio
+                  <span aria-hidden>←</span> Back to portfolio
                 </Link>
 
                 <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-gold mb-5">

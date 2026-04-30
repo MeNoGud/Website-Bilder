@@ -37,7 +37,7 @@ export function Header() {
         <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-6 sm:h-16 sm:px-10">
           {/* Monogram */}
           <Link
-            href="#top"
+            href="/"
             className="transition-opacity hover:opacity-80"
             aria-label="Home"
             onClick={() => setMenuOpen(false)}

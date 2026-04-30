@@ -640,24 +640,24 @@ export function IntakeForm() {
             </select>
           </Field>
 
-          <Field label="One-line pitch *" hint="The essence of your business in one sentence — 60 characters max.">
+          <Field label="One-line pitch *" hint="The essence of your business in one sentence — 120 characters max.">
             <input
               type="text"
               value={oneLiner}
-              onChange={(e) => setOneLiner(e.target.value.slice(0, 60))}
-              required maxLength={60}
-              placeholder="Boutique eco-hotel for conscious travellers in Tulum"
+              onChange={(e) => setOneLiner(e.target.value.slice(0, 120))}
+              required maxLength={120}
+              placeholder="We help independent fitness coaches launch professional websites that convert followers into paying clients"
               className="form-input"
             />
-            <p className="mt-1 font-mono text-[10px] text-cream-dim text-right">{oneLiner.length}/60</p>
+            <p className="mt-1 font-mono text-[10px] text-cream-dim text-right">{oneLiner.length}/120</p>
           </Field>
 
           <Field label="Full description *" hint="What you do, how you do it, and what makes you different.">
-            <textarea value={description} onChange={(e) => setDescription(e.target.value)} required rows={4} placeholder="We are a boutique hotel…" className="form-input resize-none" />
+            <textarea value={description} onChange={(e) => setDescription(e.target.value)} required rows={4} placeholder="We are a digital marketing agency specialising in e-commerce brands. We help online stores grow through paid ads, email campaigns, and conversion-focused landing pages…" className="form-input resize-none" />
           </Field>
 
           <Field label="Target audience *" hint="Who is your ideal customer? Be specific — age, lifestyle, pain points, values.">
-            <textarea value={audience} onChange={(e) => setAudience(e.target.value)} required rows={3} placeholder="Affluent travellers aged 30–55 who prioritise sustainability and design…" className="form-input resize-none" />
+            <textarea value={audience} onChange={(e) => setAudience(e.target.value)} required rows={3} placeholder="Small business owners aged 28–45 who sell products online and want to scale beyond social media into a proper branded website…" className="form-input resize-none" />
           </Field>
 
           <PillGroup
