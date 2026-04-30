@@ -1,4 +1,5 @@
 import { MagneticButton } from "./MagneticButton";
+import { RemarkableShine } from "./RemarkableShine";
 
 export function CallToAction() {
   return (
@@ -58,7 +59,7 @@ export function CallToAction() {
           <br />
           something
           <br />
-          <span className="text-gold not-italic">remarkable?</span>
+          <RemarkableShine />
         </h2>
 
         <div className="reveal gold-rule mx-auto mt-10 w-16" />

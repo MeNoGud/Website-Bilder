@@ -99,7 +99,7 @@ export function Process() {
             </h2>
           </div>
           <p className="reveal max-w-sm font-sans text-sm leading-relaxed text-cream-dim lg:text-right">
-            Scroll sideways to explore each step →
+            Scroll sideways to explore each step
           </p>
         </div>
       </div>
@@ -163,12 +163,6 @@ export function Process() {
                 {item.description}
               </p>
 
-              <span
-                className="absolute bottom-6 right-6 font-mono text-[11px] text-gold opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-1"
-                aria-hidden
-              >
-                →
-              </span>
             </div>
           ))}
         </div>
