@@ -49,7 +49,7 @@ export function Hero() {
         <div className="mx-auto w-full max-w-6xl px-6 sm:px-10">
 
           {/* Status bar */}
-          <div className="hero-meta flex items-center justify-between mb-10 lg:mb-14">
+          <div className="hero-meta flex items-center justify-between mb-20 lg:mb-14">
             <span className="font-mono text-[10px] uppercase tracking-[0.32em] text-gold">
               Web Design Studio · {new Date().getFullYear()}
             </span>
@@ -70,9 +70,9 @@ export function Hero() {
           <HeroName />
 
           {/* Rule + tagline */}
-          <div className="hero-rule gold-rule-hero mt-8 mb-6 w-full max-w-xs" />
+          <div className="hero-rule gold-rule-hero mt-4 mb-6 w-full max-w-xs sm:mt-8" />
 
-          <div className="hero-tag text-center mt-28">
+          <div className="hero-tag text-center mt-40 sm:mt-28">
             <p className="font-tolken text-sm leading-relaxed text-cream sm:text-base max-w-2xl mx-auto uppercase tracking-[0.06em]">
               {site.positioning.replace(/\.$/, "")} — {site.hook}
             </p>
