@@ -101,7 +101,7 @@ export function Hero() {
                   <polygon
                     points="24,2 106,2 128,37 65,93 2,37"
                     className="transition-all duration-300
-                      fill-[#1A110E] stroke-[#1A110E] [stroke-width:1.5]
+                      fill-[#4E3C36] stroke-[#4E3C36] [stroke-width:1.5]
                       group-hover:fill-[#E82400] group-hover:stroke-[#E82400]"
                   />
                 </svg>
