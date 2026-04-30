@@ -4,6 +4,14 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { BlueprintJSON } from "@/lib/blueprint-generator";
 
+/* ── Secret guard ─────────────────────────────────────────── */
+
+function isAuthorised(secret: string | undefined): boolean {
+  const expected = process.env.BLUEPRINT_SECRET;
+  if (!expected) return false; // if env var not set, deny everyone
+  return secret === expected;
+}
+
 /* ── Data fetching ────────────────────────────────────────── */
 
 async function getBlueprint(id: string): Promise<(BlueprintJSON & { repoUrl?: string; blueprintId?: string }) | null> {
@@ -23,9 +31,11 @@ async function getBlueprint(id: string): Promise<(BlueprintJSON & { repoUrl?: st
 /* ── Metadata ─────────────────────────────────────────────── */
 
 export async function generateMetadata(
-  { params }: { params: Promise<{ id: string }> }
+  { params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<{ s?: string }> }
 ): Promise<Metadata> {
   const { id } = await params;
+  const { s } = await searchParams;
+  if (!isAuthorised(s)) return { title: "Not Found" };
   const bp = await getBlueprint(id);
   if (!bp) return { title: "Blueprint Not Found" };
   return {
@@ -65,9 +75,13 @@ const SITE_TYPE_LABELS: Record<string, string> = {
 /* ── Page ─────────────────────────────────────────────────── */
 
 export default async function BlueprintPage(
-  { params }: { params: Promise<{ id: string }> }
+  { params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<{ s?: string }> }
 ) {
   const { id } = await params;
+  const { s } = await searchParams;
+
+  if (!isAuthorised(s)) notFound();
+
   const bp = await getBlueprint(id);
   if (!bp) notFound();
 

@@ -129,7 +129,7 @@ function buildAlbertoEmail(
 </html>`;
 }
 
-function buildClientEmail(bp: BlueprintJSON, previewUrl: string): string {
+function buildClientEmail(bp: BlueprintJSON): string {
   const pageCards = bp.pages
     .map(
       (p) =>
@@ -175,14 +175,8 @@ function buildClientEmail(bp: BlueprintJSON, previewUrl: string): string {
               <tr style="display:flex;flex-wrap:wrap;">${pageCards}</tr>
             </table>
 
-            <div style="margin-top:24px;text-align:center;">
-              <a href="${previewUrl}" style="display:inline-block;background:#E82400;color:#fff;font-family:Georgia,serif;font-size:14px;text-decoration:none;padding:14px 32px;border-radius:100px;">
-                View your full blueprint →
-              </a>
-            </div>
-
             <p style="margin-top:24px;font-size:13px;color:#8C7970;font-family:Georgia,serif;line-height:1.6;text-align:center;">
-              We'll see you at the discovery call. Come ready to discuss your goals — we'll come fully prepared.
+              I'll walk you through the full blueprint on our discovery call — come ready to discuss your goals and we'll get straight to work.
             </p>
           </td>
         </tr>
@@ -254,7 +248,8 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    const previewUrl = `${process.env.NEXT_PUBLIC_BASE_URL ?? "https://marchio.design"}/blueprint/${blueprintId}`;
+    const secret = process.env.BLUEPRINT_SECRET ?? "";
+    const previewUrl = `${process.env.NEXT_PUBLIC_BASE_URL ?? "https://marchio.design"}/blueprint/${blueprintId}?s=${encodeURIComponent(secret)}`;
 
     // 5. Email Alberto
     if (process.env.RESEND_API_KEY) {
@@ -277,7 +272,7 @@ export async function POST(req: NextRequest) {
           from:    "Marchio Studio <studio@marchio.design>",
           to:      intake.email,
           subject: `Your website blueprint is ready — ${blueprint.businessName}`,
-          html:    buildClientEmail(blueprint, previewUrl),
+          html:    buildClientEmail(blueprint),
           replyTo: "studio@marchio.design",
         });
       }
