@@ -133,16 +133,20 @@ body {
   animation-direction: alternate !important;
 }
 
-/* ── Star wander – follows a wobbly closed oval path ── */
+/* ── Star wander – 5-turn smooth rounded pentagon path ── */
+/* Path is C1-continuous (Catmull-Rom control points through 5 pentagon   */
+/* vertices). offset-anchor: 50% 50% makes the star's CENTER trace the   */
+/* path, spanning from roughly -375px to +370px around the section center */
 @keyframes wander {
   to { offset-distance: 100%; }
 }
 
 .star-wander {
-  offset-path: path('M 0 -62 C 42 -64 70 -28 66 12 C 62 50 24 76 -10 68 C -44 60 -68 24 -60 -18 C -52 -58 -28 -60 0 -62 Z');
+  offset-path: path('M 0 -250 C 155 -258 275 -195 325 -75 C 368 45 328 158 195 235 C 65 312 -75 305 -210 225 C -335 148 -375 35 -315 -85 C -268 -208 -158 -252 0 -250 Z');
   offset-distance: 0%;
   offset-rotate: 0deg;
-  animation: wander 28s linear infinite;
+  offset-anchor: 50% 50%;
+  animation: wander 32s linear infinite;
 }
 
 /* ── Scroll-driven reveals ──────────────────────── */
