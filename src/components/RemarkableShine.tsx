@@ -17,17 +17,22 @@ function buildGradient(x: number) {
     #E82400 100%)`;
 }
 
-function runSweep(span: HTMLSpanElement, onDone?: () => void) {
+// Drives both shine and scale from a single rAF clock — guaranteed sync
+function runAnimation(span: HTMLSpanElement, onDone?: () => void) {
   const start = performance.now();
   const tick = (now: number) => {
     const elapsed = now - start;
     if (elapsed < SWEEP_MS) {
-      const t    = elapsed / SWEEP_MS;
+      const t = elapsed / SWEEP_MS;
+      // Shine: ease-in-out sweep left → right
       const ease = t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
       span.style.backgroundImage = buildGradient(-20 + ease * 140);
+      // Scale: sine arc — rises to peak at t=0.5 then falls back to 1
+      span.style.transform = `scale(${1 + Math.sin(t * Math.PI) * 0.07})`;
       requestAnimationFrame(tick);
     } else {
       span.style.backgroundImage = BASE;
+      span.style.transform = "scale(1)";
       onDone?.();
     }
   };
@@ -46,23 +51,9 @@ export function RemarkableShine() {
 
     // ── Triggered wave (CTA button click) ──────────────────
     const onTriggered = () => {
-      // cancel any running auto-wave
       cancelRef.current?.();
-
-      // scale up immediately
-      span.style.transition = "transform 0.2s ease-out";
-      span.style.transform  = "scale(1.07)";
-
-      // scale back down timed so it lands at 1× exactly as shine ends
-      const scaleDownDelay = SWEEP_MS - 200;
-      const scaleTimer = setTimeout(() => {
-        span.style.transition = "transform 0.2s ease-in";
-        span.style.transform  = "scale(1)";
-      }, scaleDownDelay);
-
-      runSweep(span, () => {
-        clearTimeout(scaleTimer);
-        span.style.transform = "scale(1)";
+      // Single rAF loop drives both shine and scale — perfectly in sync
+      runAnimation(span, () => {
         window.dispatchEvent(new CustomEvent("remarkable-done"));
       });
     };
