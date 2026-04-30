@@ -28,8 +28,8 @@ body {
 
 .cursor-dot {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: -100px;
+  left: -100px;
   width: 6px;
   height: 6px;
   background: #E82400;
@@ -48,8 +48,8 @@ body {
 
 .cursor-ring {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: -100px;
+  left: -100px;
   width: 30px;
   height: 30px;
   border: 1px solid rgba(232, 36, 0, 0.4);
