@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { Syne, Inter, Geist_Mono } from "next/font/google";
+import { Unbounded, Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/site";
 import { Cursor } from "@/components/Cursor";
 import { ScrollProgress } from "@/components/ScrollProgress";
 
-const syne = Syne({
-  variable: "--font-syne",
+const unbounded = Unbounded({
+  variable: "--font-unbounded",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700", "800", "900"],
   display: "swap",
 });
 
@@ -82,7 +82,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${syne.variable} ${inter.variable} ${geistMono.variable}`}
+      className={`${unbounded.variable} ${inter.variable} ${geistMono.variable}`}
     >
       <head>
         <script

@@ -26,13 +26,13 @@ export function HeroName() {
         }}
       />
 
-      <p className="hero-role mb-4 font-mono text-[10px] uppercase tracking-[0.32em] text-gold">
+      <p className="hero-role mb-4 text-center font-mono text-[10px] uppercase tracking-[0.32em] text-gold">
         Web Design · Development · Brand Strategy
       </p>
 
       <h1
-        className="font-display font-extrabold leading-[0.88] tracking-[-0.03em] text-cream"
-        style={{ fontSize: "clamp(5.5rem, 16vw, 14rem)" }}
+        className="font-display font-black leading-[0.9] tracking-[-0.02em] text-cream text-center"
+        style={{ fontSize: "clamp(4rem, 14vw, 13rem)" }}
       >
         <span className="hero-line-1 block">Marchio</span>
       </h1>
