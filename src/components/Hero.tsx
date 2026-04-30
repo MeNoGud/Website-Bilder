@@ -70,14 +70,11 @@ export function Hero() {
           <HeroName />
 
           {/* Rule + tagline */}
-          <div className="hero-rule gold-rule-hero mt-8 mb-6 w-full max-w-xs" />
+          <div className="hero-rule gold-rule-hero mt-8 mb-6 w-full max-w-xs mx-auto" />
 
-          <div className="hero-tag flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-            <p className="max-w-md font-sans text-base leading-relaxed text-cream-muted sm:text-[17px]">
-              {site.positioning}
-            </p>
-            <p className="font-display text-lg italic text-neutral-500 sm:text-xl sm:text-right max-w-xs">
-              &ldquo;{site.hook}&rdquo;
+          <div className="hero-tag text-center">
+            <p className="font-sans text-base leading-relaxed text-neutral-500 sm:text-[17px] max-w-2xl mx-auto">
+              {site.positioning.replace(/\.$/, "")} — {site.hook}
             </p>
           </div>
 
