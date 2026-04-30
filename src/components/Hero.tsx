@@ -88,7 +88,7 @@ export function Hero() {
             <MagneticButton>
               <a
                 href="#work"
-                className="group relative flex items-center justify-center font-sans text-[12px] tracking-[0.12em] uppercase text-void transition-colors duration-300 hover:text-void"
+                className="group relative flex items-center justify-center font-sans text-[12px] tracking-[0.12em] uppercase text-[#F4EEE4]/70 transition-colors duration-300 hover:text-[#F4EEE4]"
                 style={{ width: "130px", height: "95px" }}
               >
                 {/* Gem outline */}
@@ -98,11 +98,28 @@ export function Hero() {
                   fill="none"
                   aria-hidden
                 >
+                  <defs>
+                    <radialGradient id="gemFill" cx="35%" cy="65%" r="70%">
+                      <stop offset="0%"   stopColor="#E82400" stopOpacity="0.18" />
+                      <stop offset="100%" stopColor="#1A110E" stopOpacity="1" />
+                    </radialGradient>
+                    <radialGradient id="gemHover" cx="35%" cy="65%" r="70%">
+                      <stop offset="0%"   stopColor="#E82400" stopOpacity="0.55" />
+                      <stop offset="100%" stopColor="#1A110E" stopOpacity="1" />
+                    </radialGradient>
+                  </defs>
                   <polygon
                     points="24,2 106,2 128,37 65,93 2,37"
-                    className="transition-all duration-300
-                      fill-[#4E3C36] stroke-[#4E3C36] [stroke-width:1.5]
-                      group-hover:fill-[#E82400] group-hover:stroke-[#E82400]"
+                    className="transition-all duration-300 [stroke-width:1.5]
+                      stroke-[rgba(232,36,0,0.3)]
+                      group-hover:stroke-[rgba(232,36,0,0.7)]"
+                    fill="url(#gemFill)"
+                  />
+                  {/* Hover overlay */}
+                  <polygon
+                    points="24,2 106,2 128,37 65,93 2,37"
+                    fill="url(#gemHover)"
+                    className="opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                   />
                 </svg>
                 <span className="relative">View work</span>
