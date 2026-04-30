@@ -49,11 +49,20 @@ export function RemarkableShine() {
       // cancel any running auto-wave
       cancelRef.current?.();
 
-      // scale up smoothly
+      // scale up immediately
       span.style.transition = "transform 0.2s ease-out";
       span.style.transform  = "scale(1.07)";
 
+      // scale back down timed so it lands at 1× exactly as shine ends
+      const scaleDownDelay = SWEEP_MS - 200;
+      const scaleTimer = setTimeout(() => {
+        span.style.transition = "transform 0.2s ease-in";
+        span.style.transform  = "scale(1)";
+      }, scaleDownDelay);
+
       runSweep(span, () => {
+        clearTimeout(scaleTimer);
+        span.style.transform = "scale(1)";
         window.dispatchEvent(new CustomEvent("remarkable-done"));
       });
     };
