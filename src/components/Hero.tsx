@@ -88,27 +88,24 @@ export function Hero() {
             <MagneticButton>
               <a
                 href="#work"
-                className="group relative flex flex-col items-center justify-center gap-1 font-sans text-[13px] text-cream-muted transition-colors duration-300 hover:text-cream"
-                style={{ width: "176px", height: "128px" }}
+                className="group relative flex items-center justify-center font-sans text-[12px] tracking-[0.12em] uppercase text-cream-muted transition-colors duration-300 hover:text-cream"
+                style={{ width: "130px", height: "95px" }}
               >
                 {/* Gem outline */}
                 <svg
-                  className="pointer-events-none absolute inset-0 w-full h-full transition-all duration-300"
-                  viewBox="0 0 176 128"
+                  className="pointer-events-none absolute inset-0 w-full h-full"
+                  viewBox="0 0 130 95"
                   fill="none"
                   aria-hidden
                 >
                   <polygon
-                    points="32,2 144,2 174,50 88,126 2,50"
-                    className="transition-all duration-300 group-hover:fill-[rgba(26,17,14,0.08)]"
-                    fill="rgba(26,17,14,0.04)"
-                    stroke="rgba(26,17,14,0.18)"
-                    strokeWidth="1.5"
+                    points="24,2 106,2 128,37 65,93 2,37"
+                    className="transition-all duration-300
+                      fill-[rgba(26,17,14,0.05)] stroke-[rgba(26,17,14,0.22)] [stroke-width:1.5]
+                      group-hover:fill-[rgba(245,162,0,0.12)] group-hover:stroke-[rgba(245,162,0,0.65)]"
                   />
                 </svg>
-                {/* Text */}
                 <span className="relative">View work</span>
-                <span aria-hidden className="relative text-gold text-base leading-none">↓</span>
               </a>
             </MagneticButton>
           </div>
