@@ -14,6 +14,7 @@ export function Process() {
   const rafRef       = useRef(0);
   const timerRef     = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const halfWidthRef = useRef(0);
+  const dragRef      = useRef({ active: false, startX: 0, startPos: 0 });
 
   // ── rAF animation loop ────────────────────────────
   useEffect(() => {
@@ -112,6 +113,26 @@ export function Process() {
             "linear-gradient(to right, transparent 0%, black 7%, black 93%, transparent 100%)",
           WebkitMaskImage:
             "linear-gradient(to right, transparent 0%, black 7%, black 93%, transparent 100%)",
+        }}
+        onPointerDown={(e) => {
+          dragRef.current = { active: true, startX: e.clientX, startPos: posRef.current };
+          pausedRef.current = true;
+          containerRef.current?.setPointerCapture(e.pointerId);
+        }}
+        onPointerMove={(e) => {
+          if (!dragRef.current.active) return;
+          posRef.current = dragRef.current.startPos + (e.clientX - dragRef.current.startX);
+        }}
+        onPointerUp={() => {
+          if (!dragRef.current.active) return;
+          dragRef.current.active = false;
+          clearTimeout(timerRef.current);
+          timerRef.current = setTimeout(() => { pausedRef.current = false; }, RESUME_DELAY);
+        }}
+        onPointerCancel={() => {
+          dragRef.current.active = false;
+          clearTimeout(timerRef.current);
+          timerRef.current = setTimeout(() => { pausedRef.current = false; }, RESUME_DELAY);
         }}
       >
         <div

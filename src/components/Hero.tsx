@@ -70,8 +70,25 @@ export function Hero() {
           {/* Parallax name */}
           <HeroName />
 
+          {/* Services ticker */}
+          <div className="hero-tag relative overflow-hidden mt-8 mb-2 select-none" aria-hidden>
+            <div className="flex w-max animate-marquee-slow">
+              {[
+                "E-Commerce", "Brand Identity", "SaaS", "Portfolio Sites",
+                "Hospitality", "Landing Pages", "Web Applications", "Redesigns",
+                "E-Commerce", "Brand Identity", "SaaS", "Portfolio Sites",
+                "Hospitality", "Landing Pages", "Web Applications", "Redesigns",
+              ].map((s, i) => (
+                <span key={i} className="flex items-center font-display text-base italic text-cream-dim/50 whitespace-nowrap sm:text-lg">
+                  {s}
+                  <span className="mx-5 text-gold/30 not-italic text-sm">✦</span>
+                </span>
+              ))}
+            </div>
+          </div>
+
           {/* Rule + tagline */}
-          <div className="hero-rule gold-rule mt-8 mb-6 w-full max-w-[200px]" />
+          <div className="hero-rule gold-rule mt-6 mb-6 w-full max-w-[200px]" />
 
           <div className="hero-tag flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             <p className="max-w-md font-sans text-base leading-relaxed text-cream-muted sm:text-[17px]">
