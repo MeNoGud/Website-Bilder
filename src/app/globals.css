@@ -142,11 +142,13 @@ body {
 }
 
 .star-wander {
-  offset-path: path('M 0 -250 C 155 -258 275 -195 325 -75 C 368 45 328 158 195 235 C 65 312 -75 305 -210 225 C -335 148 -375 35 -315 -85 C -268 -208 -158 -252 0 -250 Z');
+  /* Same smooth 5-turn pentagon, scaled to ±200 px so the star stays    */
+  /* fully inside the section on all common screen sizes.                */
+  offset-path: path('M 0 -200 C 124 -206 220 -156 260 -60 C 294 36 262 126 156 188 C 52 250 -60 244 -168 180 C -268 118 -300 28 -252 -68 C -214 -166 -124 -194 0 -200 Z');
   offset-distance: 0%;
   offset-rotate: 0deg;
   offset-anchor: 50% 50%;
-  animation: wander 32s linear infinite;
+  animation: wander 50s linear infinite;
 }
 
 /* ── Scroll-driven reveals ──────────────────────── */
