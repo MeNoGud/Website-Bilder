@@ -10,18 +10,18 @@ export function HeroName() {
   const opacity = useTransform(scrollY, [0, 400], [1, 0.6]);
 
   return (
-    <motion.div style={{ y, opacity }} className="relative overflow-hidden">
-      {/* Large watermark */}
+    <motion.div style={{ y, opacity }} className="relative">
+      {/* Full watermark logo — centered so nothing is clipped */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/logo.svg"
         alt=""
         aria-hidden
-        className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 select-none"
+        className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none"
         style={{
-          height: "clamp(22rem, 48vw, 46rem)",
-          width: "auto",
-          opacity: 0.12,
+          width: "clamp(18rem, 42vw, 40rem)",
+          height: "auto",
+          opacity: 0.1,
           mixBlendMode: "multiply",
         }}
       />
@@ -31,11 +31,10 @@ export function HeroName() {
       </p>
 
       <h1
-        className="font-display font-light leading-[0.87] tracking-[-0.02em] text-cream"
-        style={{ fontSize: "clamp(4.8rem, 13.5vw, 11.5rem)" }}
+        className="font-display font-extrabold leading-[0.88] tracking-[-0.03em] text-cream"
+        style={{ fontSize: "clamp(5.5rem, 16vw, 14rem)" }}
       >
-        <span className="hero-line-1 block">Alberto</span>
-        <span className="hero-line-2 block">Marchiorello</span>
+        <span className="hero-line-1 block">Marchio</span>
       </h1>
     </motion.div>
   );
