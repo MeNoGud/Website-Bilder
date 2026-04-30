@@ -16,11 +16,11 @@ const config: Config = {
       },
       colors: {
         void: {
-          DEFAULT: "#F4EEE4",
-          surface: "#EDE7DC",
-          elevated: "#E4DDD0",
-          border: "rgba(26,17,14,0.09)",
-          hover: "rgba(26,17,14,0.15)",
+          DEFAULT: "#2F6AA8",
+          surface: "#2a5f97",
+          elevated: "#255387",
+          border: "rgba(255,255,255,0.12)",
+          hover: "rgba(255,255,255,0.18)",
         },
         cream: {
           DEFAULT: "#1A110E",
