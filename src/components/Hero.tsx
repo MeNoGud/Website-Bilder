@@ -84,41 +84,16 @@ export function Hero() {
           </div>
 
           {/* CTA */}
-          <div className="hero-cta mt-10 flex justify-center">
-            <a
-              href="#work"
-                className="group relative flex items-center justify-center font-sans text-[10px] tracking-[0.12em] uppercase text-gold"
-                style={{ paddingBottom: "18px" }}
-              style={{ width: "130px", height: "95px" }}
-            >
-                {/* Gem outline */}
-                <svg
-                  className="pointer-events-none absolute inset-0 w-full h-full"
-                  viewBox="0 0 130 95"
-                  fill="none"
-                  aria-hidden
-                >
-                  <defs>
-                    <radialGradient id="gemGlow" cx="30%" cy="60%" r="65%">
-                      <stop offset="0%"  stopColor="#E82400" stopOpacity="0.18" />
-                      <stop offset="65%" stopColor="#E82400" stopOpacity="0" />
-                    </radialGradient>
-                    <filter id="neonGlow" x="-15%" y="-15%" width="130%" height="130%">
-                      <feGaussianBlur stdDeviation="2.5" result="blur" />
-                      <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                    </filter>
-                  </defs>
-                  {/* Base dark fill */}
-                  <polygon points="24,2 106,2 128,37 65,93 2,37" fill="#1A110E" />
-                  {/* Orange glow overlay */}
-                  <polygon points="24,2 106,2 128,37 65,93 2,37" fill="url(#gemGlow)" />
-                  {/* Default stroke */}
-                  <polygon points="24,2 106,2 128,37 65,93 2,37" fill="none" stroke="rgba(244,238,228,0.15)" strokeWidth="1" className="transition-opacity duration-300 group-hover:opacity-0" />
-                  {/* Neon hover stroke */}
-                  <polygon points="24,2 106,2 128,37 65,93 2,37" fill="none" stroke="#E82400" strokeWidth="1.5" filter="url(#neonGlow)" className="opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                </svg>
-                <span className="relative">View work</span>
-            </a>
+          <div className="hero-cta mt-10 flex flex-wrap items-center gap-4">
+            <MagneticButton>
+              <a
+                href="#work"
+                className="inline-flex items-center gap-2 rounded-full border border-void-hover bg-transparent px-8 py-3.5 font-sans text-[13px] text-cream-muted transition-all duration-300 hover:bg-void-surface hover:text-cream"
+              >
+                View work
+                <span aria-hidden className="text-gold">↓</span>
+              </a>
+            </MagneticButton>
           </div>
         </div>
 
