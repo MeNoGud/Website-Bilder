@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
+import { site } from "@/lib/site";
 
-export const alt = "Alberto Marchiorello — Head of AI & Blockchain Integration";
+export const alt = `${site.name} — ${site.role}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -9,7 +10,7 @@ export default async function Image() {
     (
       <div
         style={{
-          background: "#080810",
+          background: "#1A110E",
           width: "100%",
           height: "100%",
           display: "flex",
@@ -17,108 +18,114 @@ export default async function Image() {
           alignItems: "flex-start",
           justifyContent: "flex-end",
           padding: "80px",
-          fontFamily: "serif",
           position: "relative",
+          overflow: "hidden",
         }}
       >
-        {/* Background glow */}
+        {/* Ambient red glow bottom-left */}
         <div
           style={{
             position: "absolute",
-            top: 0,
-            left: 0,
-            width: "500px",
-            height: "500px",
-            background: "radial-gradient(circle, rgba(196,151,90,0.06) 0%, transparent 70%)",
+            bottom: -100,
+            left: -100,
+            width: 600,
+            height: 600,
+            background:
+              "radial-gradient(circle, rgba(232,36,0,0.18) 0%, transparent 70%)",
           }}
         />
 
-        {/* Dot pattern row (decorative) */}
+        {/* Ambient glow top-right */}
+        <div
+          style={{
+            position: "absolute",
+            top: -80,
+            right: -80,
+            width: 400,
+            height: 400,
+            background:
+              "radial-gradient(circle, rgba(232,36,0,0.07) 0%, transparent 70%)",
+          }}
+        />
+
+        {/* Top label */}
         <div
           style={{
             position: "absolute",
             top: 80,
-            right: 80,
-            display: "flex",
-            flexDirection: "column",
-            gap: 12,
+            left: 80,
+            color: "rgba(244,238,228,0.4)",
+            fontSize: 12,
+            letterSpacing: "0.3em",
+            textTransform: "uppercase",
+            fontFamily: "monospace",
           }}
         >
-          {[0, 1, 2].map((row) => (
-            <div key={row} style={{ display: "flex", gap: 12 }}>
-              {[0, 1, 2, 3, 4].map((col) => (
-                <div
-                  key={col}
-                  style={{
-                    width: 4,
-                    height: 4,
-                    borderRadius: "50%",
-                    background: "rgba(232,228,220,0.08)",
-                  }}
-                />
-              ))}
-            </div>
-          ))}
+          marchio.design
         </div>
 
-        {/* Gold rule */}
+        {/* ✦ top-right */}
         <div
           style={{
-            width: 60,
-            height: 1,
-            background: "linear-gradient(to right, #C4975A, transparent)",
-            marginBottom: 32,
+            position: "absolute",
+            top: 70,
+            right: 80,
+            color: "rgba(232,36,0,0.25)",
+            fontSize: 48,
+          }}
+        >
+          ✦
+        </div>
+
+        {/* Red rule */}
+        <div
+          style={{
+            width: 48,
+            height: 2,
+            background: "#E82400",
+            marginBottom: 28,
           }}
         />
 
-        {/* Label */}
+        {/* Mono label */}
         <div
           style={{
-            color: "#C4975A",
-            fontSize: 13,
-            letterSpacing: "0.28em",
+            color: "#E82400",
+            fontSize: 12,
+            letterSpacing: "0.3em",
             textTransform: "uppercase",
             fontFamily: "monospace",
             marginBottom: 20,
           }}
         >
-          Personal Brand · London
+          {site.role} · {site.location}
         </div>
 
         {/* Name */}
         <div
           style={{
-            color: "#E8E4DC",
-            fontSize: 76,
+            color: "#F4EEE4",
+            fontSize: 72,
             fontWeight: 300,
-            lineHeight: 0.88,
-            marginBottom: 36,
+            lineHeight: 0.9,
+            marginBottom: 32,
+            fontFamily: "serif",
           }}
         >
-          Alberto Marchiorello
+          {site.name}
         </div>
 
-        {/* Role */}
+        {/* Hook */}
         <div
           style={{
-            color: "#8A8680",
-            fontSize: 22,
-            marginBottom: 16,
+            color: "rgba(244,238,228,0.55)",
+            fontSize: 20,
+            lineHeight: 1.5,
+            maxWidth: 680,
+            fontFamily: "sans-serif",
           }}
         >
-          Head of AI & Blockchain Integration · Marketing
-        </div>
-
-        {/* Company */}
-        <div
-          style={{
-            color: "#55534F",
-            fontSize: 15,
-            letterSpacing: "0.1em",
-            fontFamily: "monospace",
-          }}
-        >
-          Jashita Hotel & Luxury Villas · Tulum
+          {site.hook}
         </div>
       </div>
     ),
