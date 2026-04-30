@@ -216,7 +216,7 @@ export async function POST(req: NextRequest) {
 
     /* Send email via Resend */
     await resend.emails.send({
-      from:    "Portfolio <onboarding@resend.dev>",
+      from:    "Marchio Studio <studio@marchio.design>",
       to:      RECIPIENT,
       subject: `New project brief — ${fields.business || fields.name}`,
       html:    buildEmail(fields, fileLinks),
