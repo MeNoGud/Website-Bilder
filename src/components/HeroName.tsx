@@ -31,7 +31,7 @@ export function HeroName() {
         aria-hidden
         className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none"
         style={{
-          width: "clamp(14rem, 30vw, 28rem)",
+          width: "clamp(7rem, 30vw, 28rem)",
           height: "auto",
           opacity: 0.5,
           mixBlendMode: "multiply",
@@ -40,7 +40,7 @@ export function HeroName() {
 
       <h1
         className="font-tolken w-full text-center text-cream uppercase leading-none tracking-[0.06em]"
-        style={{ fontSize: "clamp(2.8rem, 8vw, 8rem)" }}
+        style={{ fontSize: "clamp(1.8rem, 8vw, 8rem)" }}
       >
         <span className="hero-line-1 block">Marchio</span>
       </h1>
