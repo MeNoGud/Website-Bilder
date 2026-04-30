@@ -85,12 +85,11 @@ export function Hero() {
 
           {/* CTA */}
           <div className="hero-cta mt-10 flex justify-center">
-            <MagneticButton>
-              <a
-                href="#work"
-                className="group relative flex items-center justify-center font-sans text-[12px] tracking-[0.12em] uppercase text-[#F4EEE4]/70 transition-colors duration-300 hover:text-[#F4EEE4]"
-                style={{ width: "130px", height: "95px" }}
-              >
+            <a
+              href="#work"
+              className="group relative flex items-center justify-center font-sans text-[12px] tracking-[0.12em] uppercase text-[#F4EEE4]/70 transition-colors duration-300 hover:text-[#F4EEE4]"
+              style={{ width: "130px", height: "95px" }}
+            >
                 {/* Gem outline */}
                 <svg
                   className="pointer-events-none absolute inset-0 w-full h-full"
@@ -99,23 +98,22 @@ export function Hero() {
                   aria-hidden
                 >
                   <defs>
-                    <radialGradient id="gemFill" cx="35%" cy="65%" r="70%">
-                      <stop offset="0%"   stopColor="#E82400" stopOpacity="0.18" />
+                    <radialGradient id="gemFill" cx="40%" cy="38%" r="65%">
+                      <stop offset="0%"   stopColor="#F4EEE4" stopOpacity="0.14" />
                       <stop offset="100%" stopColor="#1A110E" stopOpacity="1" />
                     </radialGradient>
-                    <radialGradient id="gemHover" cx="35%" cy="65%" r="70%">
-                      <stop offset="0%"   stopColor="#E82400" stopOpacity="0.55" />
+                    <radialGradient id="gemHover" cx="40%" cy="38%" r="65%">
+                      <stop offset="0%"   stopColor="#E82400" stopOpacity="0.5" />
                       <stop offset="100%" stopColor="#1A110E" stopOpacity="1" />
                     </radialGradient>
                   </defs>
                   <polygon
                     points="24,2 106,2 128,37 65,93 2,37"
-                    className="transition-all duration-300 [stroke-width:1.5]
-                      stroke-[rgba(232,36,0,0.3)]
-                      group-hover:stroke-[rgba(232,36,0,0.7)]"
+                    className="transition-all duration-300 [stroke-width:1]
+                      stroke-[rgba(244,238,228,0.2)]
+                      group-hover:stroke-[rgba(232,36,0,0.6)]"
                     fill="url(#gemFill)"
                   />
-                  {/* Hover overlay */}
                   <polygon
                     points="24,2 106,2 128,37 65,93 2,37"
                     fill="url(#gemHover)"
@@ -123,8 +121,7 @@ export function Hero() {
                   />
                 </svg>
                 <span className="relative">View work</span>
-              </a>
-            </MagneticButton>
+            </a>
           </div>
         </div>
 
