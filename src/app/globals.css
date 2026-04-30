@@ -121,8 +121,16 @@ body {
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-12px); }
+  from { transform: translateY(0px); }
+  to   { transform: translateY(-12px); }
+}
+
+/* Force alternate direction so there is no abrupt loop reset */
+.animate-float {
+  animation-duration: 3s !important;
+  animation-timing-function: ease-in-out !important;
+  animation-iteration-count: infinite !important;
+  animation-direction: alternate !important;
 }
 
 /* ── Scroll-driven reveals ──────────────────────── */

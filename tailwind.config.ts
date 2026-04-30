@@ -51,7 +51,7 @@ const config: Config = {
         "marquee-slow":  "marquee 55s linear infinite",
         "spin-slow":     "spin 18s linear infinite",
         "spin-reverse":  "spin-reverse 22s linear infinite",
-        "float":         "float 6s ease-in-out infinite",
+        "float":         "float 3s ease-in-out infinite alternate",
       },
       keyframes: {
         marquee: {
@@ -67,8 +67,8 @@ const config: Config = {
           to:   { transform: "rotate(0deg)" },
         },
         float: {
-          "0%, 100%": { transform: "translateY(0px)" },
-          "50%":      { transform: "translateY(-12px)" },
+          from: { transform: "translateY(0px)" },
+          to:   { transform: "translateY(-12px)" },
         },
       },
     },
