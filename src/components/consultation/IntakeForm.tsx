@@ -446,6 +446,7 @@ export function IntakeForm() {
   /* UI */
   const [status, setStatus] = useState<"idle" | "sending" | "blueprinting" | "done" | "error">("idle");
   const isBusy = status === "sending" || status === "blueprinting";
+  const submitLabel = status === "blueprinting" ? "Building blueprint…" : status === "sending" ? "Sending…" : null;
 
   const TOTAL = isShop ? STEPS.length : STEPS.length - 1;
 
@@ -660,7 +661,7 @@ export function IntakeForm() {
           disabled={isBusy}
           className="inline-flex items-center gap-3 rounded-full bg-gold px-10 py-3.5 font-sans text-[14px] font-semibold text-void shadow-lg shadow-gold/25 transition-all duration-300 hover:bg-gold-light hover:gap-4 disabled:opacity-60 disabled:cursor-not-allowed"
         >
-          {isBusy ? (status === "blueprinting" ? "Building blueprint…" : "Sending…") : <>Send brief <span aria-hidden>→</span></>}
+          {submitLabel ?? <>Send brief <span aria-hidden>→</span></>}
         </button>
       ) : (
         <button
