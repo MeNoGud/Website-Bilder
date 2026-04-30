@@ -1,7 +1,5 @@
 import { site } from "@/lib/site";
 import { HeroName } from "./HeroName";
-import { MagneticButton } from "./MagneticButton";
-
 export function Hero() {
   return (
     <section
