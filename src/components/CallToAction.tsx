@@ -1,5 +1,6 @@
 import { MagneticButton } from "./MagneticButton";
 import { RemarkableShine } from "./RemarkableShine";
+import { CTAButton } from "./CTAButton";
 
 export function CallToAction() {
   return (
@@ -96,13 +97,7 @@ export function CallToAction() {
 
         <div className="reveal mt-10 flex justify-center">
           <MagneticButton>
-            <a
-              href="/consultation"
-              className="inline-flex items-center gap-3 rounded-full bg-gold px-10 py-4 font-sans text-[14px] font-semibold text-void shadow-xl shadow-gold/30 transition-all duration-300 hover:bg-gold-light hover:shadow-gold/50 hover:gap-4"
-            >
-              Book your free consultation
-              <span aria-hidden>→</span>
-            </a>
+            <CTAButton />
           </MagneticButton>
         </div>
 
