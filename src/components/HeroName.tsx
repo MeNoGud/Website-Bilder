@@ -34,7 +34,7 @@ export function HeroName() {
         className="font-display font-black leading-[0.9] tracking-[-0.02em] text-cream text-center"
         style={{ fontSize: "clamp(4rem, 14vw, 13rem)" }}
       >
-        <span className="hero-line-1 block">Marchio</span>
+        <span className="hero-line-1 block uppercase">Marchio</span>
       </h1>
     </motion.div>
   );
