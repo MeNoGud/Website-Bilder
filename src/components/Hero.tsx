@@ -73,7 +73,7 @@ export function Hero() {
           <div className="hero-rule gold-rule-hero mt-8 mb-6 w-full max-w-xs" />
 
           <div className="hero-tag text-center mt-16">
-            <p className="font-tolken text-xl leading-relaxed text-cream sm:text-2xl max-w-2xl mx-auto uppercase tracking-[0.06em]">
+            <p className="font-tolken text-sm leading-relaxed text-cream sm:text-base max-w-2xl mx-auto uppercase tracking-[0.06em]">
               {site.positioning.replace(/\.$/, "")} — {site.hook}
             </p>
           </div>
