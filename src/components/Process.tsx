@@ -28,7 +28,7 @@ export function Process() {
 
     const tick = () => {
       if (!pausedRef.current) {
-        posRef.current += AUTO_SPEED; // rightward auto-scroll
+        posRef.current -= AUTO_SPEED; // leftward auto-scroll
       }
 
       // Infinite wrap
