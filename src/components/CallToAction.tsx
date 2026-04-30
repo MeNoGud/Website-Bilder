@@ -7,10 +7,10 @@ export function CallToAction() {
       className="relative overflow-hidden border-t border-white/[0.06] px-6 py-28 sm:px-10 sm:py-40"
       style={{ background: "#1A110E" }}
     >
-      {/* Subtle red glow from below */}
+      {/* Subtle red glow from below — radial-gradient avoids GPU blur */}
       <div
-        className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 h-[500px] w-[800px] rounded-full blur-[120px]"
-        style={{ background: "rgba(232,36,0,0.10)" }}
+        className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 h-[500px] w-[800px]"
+        style={{ background: "radial-gradient(ellipse at 50% 100%, rgba(232,36,0,0.18) 0%, transparent 65%)" }}
         aria-hidden
       />
 

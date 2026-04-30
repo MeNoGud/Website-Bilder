@@ -1,16 +1,28 @@
 "use client";
 
-import { useScroll, useTransform, motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 export function HeroName() {
-  const { scrollY } = useScroll();
-  // Name moves up slower than page scroll — creates depth/parallax
-  const y = useTransform(scrollY, [0, 700], [0, -55]);
-  // Subtle fade as user scrolls past hero
-  const opacity = useTransform(scrollY, [0, 400], [1, 0.6]);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const onScroll = () => {
+      const y = window.scrollY;
+      const translateY = Math.min(y * 0.08, 55);
+      const opacity = Math.max(1 - (y / 400) * 0.4, 0.6);
+      el.style.transform = `translateY(-${translateY}px)`;
+      el.style.opacity = String(opacity);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <motion.div style={{ y, opacity }} className="relative w-full">
+    <div ref={ref} className="relative w-full">
       {/* Full watermark logo — centered so nothing is clipped */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
@@ -36,6 +48,6 @@ export function HeroName() {
       >
         <span className="hero-line-1 block">Marchio</span>
       </h1>
-    </motion.div>
+    </div>
   );
 }

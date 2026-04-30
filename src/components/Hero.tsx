@@ -12,15 +12,15 @@ export function Hero() {
           "radial-gradient(ellipse at 20% 50%, rgba(232,36,0,0.05) 0%, transparent 50%), radial-gradient(ellipse at 85% 15%, rgba(245,162,0,0.04) 0%, transparent 50%), #F4EEE4",
       }}
     >
-      {/* Ambient blobs */}
+      {/* Ambient blobs — radial-gradient avoids expensive GPU blur filter */}
       <div
-        className="ambient-blob pointer-events-none absolute left-[2%] top-[30%] h-[700px] w-[700px] rounded-full blur-[160px]"
-        style={{ background: "rgba(232,36,0,0.04)" }}
+        className="ambient-blob pointer-events-none absolute left-[2%] top-[30%] h-[700px] w-[700px]"
+        style={{ background: "radial-gradient(circle, rgba(232,36,0,0.10) 0%, transparent 65%)" }}
         aria-hidden
       />
       <div
-        className="ambient-blob-2 pointer-events-none absolute bottom-[0%] right-[5%] h-[500px] w-[500px] rounded-full blur-[130px]"
-        style={{ background: "rgba(100,60,40,0.04)" }}
+        className="ambient-blob-2 pointer-events-none absolute bottom-[0%] right-[5%] h-[500px] w-[500px]"
+        style={{ background: "radial-gradient(circle, rgba(100,60,40,0.10) 0%, transparent 65%)" }}
         aria-hidden
       />
 
