@@ -148,7 +148,7 @@ body {
   offset-distance: 0%;
   offset-rotate: 0deg;
   offset-anchor: 50% 50%;
-  animation: wander 50s linear infinite;
+  animation: wander 75s linear infinite;
 }
 
 /* ── Scroll-driven reveals ──────────────────────── */
