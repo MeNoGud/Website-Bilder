@@ -7,7 +7,7 @@ export function Hero() {
       className="noise relative flex flex-col overflow-hidden"
       style={{
         background:
-          "radial-gradient(ellipse at 20% 50%, rgba(232,36,0,0.05) 0%, transparent 50%), radial-gradient(ellipse at 85% 15%, rgba(245,162,0,0.04) 0%, transparent 50%), #F4EEE4",
+          "radial-gradient(ellipse at 20% 50%, rgba(232,36,0,0.08) 0%, transparent 50%), radial-gradient(ellipse at 85% 15%, rgba(245,162,0,0.06) 0%, transparent 50%), #3A84D1",
       }}
     >
       {/* Ambient blobs — radial-gradient avoids expensive GPU blur filter */}
