@@ -155,6 +155,32 @@ body {
   }
 }
 
+/* ── Text wipe reveal ───────────────────────────── */
+@keyframes wipeIn {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0%   0 0); }
+}
+
+.reveal-clip {
+  clip-path: inset(0 100% 0 0);
+}
+
+@supports (animation-timeline: view()) {
+  .reveal-clip {
+    animation: wipeIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 30%;
+  }
+}
+
+@supports not (animation-timeline: view()) {
+  .reveal-clip { clip-path: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-clip { animation: none !important; clip-path: none !important; }
+}
+
 /* ── Thin divider ───────────────────────────────── */
 .gold-rule {
   height: 5px;

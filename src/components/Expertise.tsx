@@ -167,7 +167,7 @@ export function Expertise() {
       <section id="services" className="scroll-mt-20 border-t border-void-border px-6 py-24">
         <div className="mx-auto max-w-6xl">
           <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-gold">— Services</p>
-          <h2 className="mt-4 mb-12 font-display text-3xl font-light text-cream">
+          <h2 className="reveal-clip mt-4 mb-12 font-display text-3xl font-light text-cream">
             Everything you need to launch
           </h2>
           <div className="flex justify-center mb-12">
@@ -206,7 +206,7 @@ export function Expertise() {
             <div className="flex items-end justify-between mb-12">
               <div>
                 <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-gold">— Services</p>
-                <h2 className="mt-3 font-display text-3xl font-light text-cream sm:text-4xl">
+                <h2 className="reveal-clip mt-3 font-display text-3xl font-light text-cream sm:text-4xl">
                   Everything you need to launch
                 </h2>
               </div>

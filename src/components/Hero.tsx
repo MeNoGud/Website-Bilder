@@ -1,5 +1,6 @@
 import { site } from "@/lib/site";
 import { HeroName } from "./HeroName";
+import { MagneticButton } from "./MagneticButton";
 
 export function Hero() {
   return (
@@ -84,13 +85,15 @@ export function Hero() {
 
           {/* CTA */}
           <div className="hero-cta mt-10 flex flex-wrap items-center gap-4">
-            <a
-              href="#work"
-              className="inline-flex items-center gap-2 rounded-full border border-void-hover bg-transparent px-8 py-3.5 font-sans text-[13px] text-cream-muted transition-all duration-300 hover:bg-void-surface hover:text-cream"
-            >
-              View work
-              <span aria-hidden className="text-gold">↓</span>
-            </a>
+            <MagneticButton>
+              <a
+                href="#work"
+                className="inline-flex items-center gap-2 rounded-full border border-void-hover bg-transparent px-8 py-3.5 font-sans text-[13px] text-cream-muted transition-all duration-300 hover:bg-void-surface hover:text-cream"
+              >
+                View work
+                <span aria-hidden className="text-gold">↓</span>
+              </a>
+            </MagneticButton>
           </div>
         </div>
 

@@ -94,7 +94,7 @@ export function Process() {
             <p className="reveal font-mono text-[10px] uppercase tracking-[0.3em] text-gold">
               — How it works
             </p>
-            <h2 className="reveal mt-4 font-display text-3xl font-light text-cream sm:text-4xl">
+            <h2 className="reveal-clip mt-4 font-display text-3xl font-light text-cream sm:text-4xl">
               From idea to live in four steps
             </h2>
           </div>
