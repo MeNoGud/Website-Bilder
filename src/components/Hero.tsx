@@ -49,7 +49,7 @@ export function Hero() {
         <div className="mx-auto w-full max-w-6xl px-6 sm:px-10">
 
           {/* Status bar */}
-          <div className="hero-meta flex items-center justify-between" style={{ marginBottom: "clamp(2rem,4vw,3.5rem)" }}>
+          <div className="hero-meta flex items-center justify-between" style={{ marginBottom: "clamp(4rem,8vw,7rem)" }}>
             <span className="font-mono text-[10px] uppercase tracking-[0.32em] text-gold">
               Web Design Studio · {new Date().getFullYear()}
             </span>
