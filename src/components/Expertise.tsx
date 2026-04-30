@@ -17,7 +17,7 @@ const CLOCK_STAGES = [
 // 12 ticks like a clock face — chunky & graphic
 const TICK_COUNT = 12;
 
-function LaunchClock({ stepIndex }: { stepIndex: number }) {
+function LaunchClock({ stepIndex, small = false }: { stepIndex: number; small?: boolean }) {
   const stage      = CLOCK_STAGES[Math.min(stepIndex, CLOCK_STAGES.length - 1)];
   const { fill }   = stage;
   const dashOffset = C * (1 - fill);
@@ -25,6 +25,7 @@ function LaunchClock({ stepIndex }: { stepIndex: number }) {
   const dotX       = CX + R * Math.cos(endAngle);
   const dotY       = CY + R * Math.sin(endAngle);
   const isLaunch   = stage.week === 0;
+  const displaySize = small ? 220 : SIZE;
 
   const ticks = Array.from({ length: TICK_COUNT }, (_, i) => {
     const angle   = (i / TICK_COUNT) * 2 * Math.PI - Math.PI / 2;
@@ -46,7 +47,7 @@ function LaunchClock({ stepIndex }: { stepIndex: number }) {
 
   return (
     <div className="flex flex-col items-center gap-4">
-      <svg width={SIZE} height={SIZE} viewBox={`0 0 ${SIZE} ${SIZE}`} className="overflow-visible">
+      <svg width={displaySize} height={displaySize} viewBox={`0 0 ${SIZE} ${SIZE}`} className="overflow-visible">
         <defs>
           <filter id="clock-shadow" x="-20%" y="-20%" width="140%" height="140%">
             <feDropShadow dx="0" dy="4" stdDeviation="8" floodColor="#E82400" floodOpacity="0.18" />
@@ -144,7 +145,6 @@ export function Expertise() {
   }, []);
 
   useEffect(() => {
-    if (isMobile) return;
     const handleScroll = () => {
       const el = wrapperRef.current;
       if (!el) return;
@@ -159,36 +159,8 @@ export function Expertise() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isMobile]);
+  }, []);
 
-  // ── Mobile fallback ────────────────────────────
-  if (isMobile) {
-    return (
-      <section id="services" className="scroll-mt-20 border-t border-void-border px-6 py-24">
-        <div className="mx-auto max-w-6xl">
-          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-gold">— Services</p>
-          <h2 className="reveal-clip mt-4 mb-12 font-display text-3xl font-light text-cream">
-            Everything you need to launch
-          </h2>
-          <div className="flex justify-center mb-12">
-            <LaunchClock stepIndex={STEPS - 1} />
-          </div>
-          <div className="border-t border-void-border">
-            {site.expertise.map((item) => (
-              <div key={item.number} className="border-b border-void-border py-8">
-                <span className="font-mono text-[10px] text-cream-dim">{item.number}</span>
-                <h3 className="mt-3 font-display text-2xl font-light text-cream">{item.title}</h3>
-                <div className="gold-rule my-3 w-8" />
-                <p className="font-sans text-sm leading-relaxed text-cream-muted">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  // ── Desktop: scroll-jacked steps ──────────────
   return (
     <div
       id="services"
@@ -203,33 +175,35 @@ export function Expertise() {
           <div className="mx-auto w-full max-w-6xl">
 
             {/* Header */}
-            <div className="flex items-end justify-between mb-12">
+            <div className="flex items-end justify-between mb-6 sm:mb-10">
               <div>
                 <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-gold">— Services</p>
-                <h2 className="reveal-clip mt-3 font-display text-3xl font-light text-cream sm:text-4xl">
+                <h2 className="reveal-clip mt-3 font-display text-2xl font-light text-cream sm:text-4xl">
                   Everything you need to launch
                 </h2>
               </div>
               <p className="hidden lg:block font-sans text-sm text-cream-dim text-right max-w-xs">
-                Scroll to explore each step →
+                Scroll to explore each step
               </p>
             </div>
 
-            {/* Clock + animated step */}
-            <div style={{ display: "grid", gridTemplateColumns: "300px 1fr", gap: "4rem", alignItems: "center" }}>
-              <LaunchClock stepIndex={activeStep} />
+            {/* Clock + animated step — stacks on mobile, side-by-side on desktop */}
+            <div className="flex flex-col items-center gap-6 lg:grid lg:items-center lg:gap-16"
+              style={{ gridTemplateColumns: "300px 1fr" }}>
 
-              <div className="relative" style={{ minHeight: "280px" }}>
+              <LaunchClock stepIndex={activeStep} small={isMobile} />
+
+              <div className="relative w-full" style={{ minHeight: isMobile ? "200px" : "280px" }}>
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeStep}
-                    initial={{ opacity: 0, y: 36 }}
+                    initial={{ opacity: 0, y: 24 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -36 }}
+                    exit={{ opacity: 0, y: -24 }}
                     transition={{ duration: 0.42, ease: [0.4, 0, 0.2, 1] }}
                     className="absolute inset-0 flex flex-col justify-center"
                   >
-                    <div className="flex items-center gap-2 mb-7">
+                    <div className="flex items-center gap-2 mb-4 sm:mb-7">
                       <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-gold">
                         {site.expertise[activeStep].number}
                       </span>
@@ -238,17 +212,17 @@ export function Expertise() {
                     </div>
 
                     <h3 className="font-display font-light text-cream leading-[1.0]"
-                      style={{ fontSize: "clamp(2.5rem, 5vw, 5rem)" }}>
+                      style={{ fontSize: isMobile ? "clamp(1.8rem, 8vw, 2.5rem)" : "clamp(2.5rem, 5vw, 5rem)" }}>
                       {site.expertise[activeStep].title}
                     </h3>
 
-                    <div className="gold-rule my-6 w-12" />
+                    <div className="gold-rule my-4 sm:my-6 w-12" />
 
-                    <p className="font-sans text-base leading-relaxed text-cream-muted max-w-md">
+                    <p className="font-sans text-sm leading-relaxed text-cream-muted max-w-md sm:text-base">
                       {site.expertise[activeStep].description}
                     </p>
 
-                    <div className="flex items-center gap-2 mt-10">
+                    <div className="flex items-center gap-2 mt-6 sm:mt-10">
                       {site.expertise.map((_, i) => (
                         <div key={i} className="rounded-full transition-all duration-500"
                           style={{
