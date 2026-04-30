@@ -183,10 +183,14 @@ body {
 
 /* ── Thin divider ───────────────────────────────── */
 .gold-rule {
+  height: 1px;
+  background: linear-gradient(to right, #E82400 0%, rgba(232,36,0,0.2) 55%, transparent 100%);
+}
+
+.gold-rule-hero {
   height: 10px;
   background: linear-gradient(to right, #E82400 0%, rgba(232,36,0,0.45) 60%, rgba(232,36,0,0.1) 88%, transparent 100%);
   clip-path: polygon(0 0, 100% 43%, 100% 57%, 0 100%);
-  min-width: 12rem;
 }
 
 /* ── Expertise card left-bar ────────────────────── */

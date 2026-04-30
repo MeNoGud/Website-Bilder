@@ -178,7 +178,7 @@ export function Expertise() {
               <div key={item.number} className="border-b border-void-border py-8">
                 <span className="font-mono text-[10px] text-cream-dim">{item.number}</span>
                 <h3 className="mt-3 font-display text-2xl font-light text-cream">{item.title}</h3>
-                <div className="gold-rule my-3 w-24" />
+                <div className="gold-rule my-3 w-8" />
                 <p className="font-sans text-sm leading-relaxed text-cream-muted">{item.description}</p>
               </div>
             ))}
