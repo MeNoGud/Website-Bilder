@@ -79,12 +79,13 @@ function buildAlbertoEmail(
           <table width="100%" cellpadding="0" cellspacing="0">
             <tr>
               <td style="padding:8px 0;">
+                ${repoUrl ? `
                 <a href="${repoUrl}" style="display:inline-block;background:#1A110E;color:#fff;font-family:monospace;font-size:12px;text-decoration:none;padding:10px 20px;border-radius:6px;margin-right:10px;">
                   Open GitHub Repo →
                 </a>
                 <a href="cursor://open?url=${encodeURIComponent(repoUrl)}" style="display:inline-block;background:#E82400;color:#fff;font-family:monospace;font-size:12px;text-decoration:none;padding:10px 20px;border-radius:6px;margin-right:10px;">
                   Open in Cursor
-                </a>
+                </a>` : ""}
                 <a href="${blueprintUrl}" style="display:inline-block;background:transparent;color:#1A110E;font-family:monospace;font-size:12px;text-decoration:none;padding:10px 20px;border-radius:6px;border:1px solid #EDE7DC;">
                   View Blueprint
                 </a>
