@@ -7,7 +7,7 @@ export function Hero() {
       className="noise relative flex flex-col overflow-hidden"
       style={{
         background:
-          "radial-gradient(ellipse at 20% 50%, rgba(232,36,0,0.08) 0%, transparent 50%), radial-gradient(ellipse at 85% 15%, rgba(245,162,0,0.06) 0%, transparent 50%), #3A84D1",
+          "radial-gradient(ellipse at 20% 50%, rgba(232,36,0,0.08) 0%, transparent 50%), radial-gradient(ellipse at 85% 15%, rgba(245,162,0,0.06) 0%, transparent 50%), #F4EEE4",
       }}
     >
       {/* Ambient blobs — radial-gradient avoids expensive GPU blur filter */}
@@ -50,17 +50,17 @@ export function Hero() {
 
           {/* Status bar */}
           <div className="hero-meta flex items-center justify-between mb-10 lg:mb-14">
-            <span className="font-mono text-[10px] uppercase tracking-[0.32em] text-cream-dim">
+            <span className="font-mono text-[10px] uppercase tracking-[0.32em] text-neutral-500">
               Web Design Studio · {new Date().getFullYear()}
             </span>
             <div className="flex items-center gap-3">
               {site.currently.active && (
-                <span className="inline-flex items-center gap-2 rounded-full border border-emerald-border bg-emerald-subtle px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.15em] text-emerald-light">
-                  <span className="status-dot h-1.5 w-1.5 rounded-full bg-emerald-light" />
+                <span className="inline-flex items-center gap-2 rounded-full border border-green-500/30 bg-green-500/10 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.15em] text-green-400">
+                  <span className="status-dot h-1.5 w-1.5 rounded-full bg-green-400" />
                   Taking projects
                 </span>
               )}
-              <span className="hidden sm:block font-mono text-[10px] text-cream-dim">
+              <span className="hidden sm:block font-mono text-[10px] text-neutral-500">
                 {site.location}
               </span>
             </div>
@@ -76,7 +76,7 @@ export function Hero() {
             <p className="max-w-md font-sans text-base leading-relaxed text-cream-muted sm:text-[17px]">
               {site.positioning}
             </p>
-            <p className="font-display text-lg italic text-cream-dim sm:text-xl sm:text-right max-w-xs">
+            <p className="font-display text-lg italic text-neutral-500 sm:text-xl sm:text-right max-w-xs">
               &ldquo;{site.hook}&rdquo;
             </p>
           </div>
