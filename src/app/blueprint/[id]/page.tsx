@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { list } from "@vercel/blob";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import Link from "next/link";
 import type { BlueprintJSON } from "@/lib/blueprint-generator";
 
@@ -8,7 +8,7 @@ import type { BlueprintJSON } from "@/lib/blueprint-generator";
 
 function isAuthorised(secret: string | undefined): boolean {
   const expected = process.env.BLUEPRINT_SECRET;
-  if (!expected) return false; // if env var not set, deny everyone
+  if (!expected) return false;
   return secret === expected;
 }
 
@@ -35,7 +35,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const { id } = await params;
   const { s } = await searchParams;
-  if (!isAuthorised(s)) return { title: "Not Found" };
+  if (!isAuthorised(s)) return { title: "Marchio Studio" };
   const bp = await getBlueprint(id);
   if (!bp) return { title: "Blueprint Not Found" };
   return {
@@ -80,7 +80,7 @@ export default async function BlueprintPage(
   const { id } = await params;
   const { s } = await searchParams;
 
-  if (!isAuthorised(s)) notFound();
+  if (!isAuthorised(s)) redirect("/");
 
   const bp = await getBlueprint(id);
   if (!bp) notFound();
