@@ -845,7 +845,7 @@ export function IntakeForm() {
           <div>
             <p className="mb-1 font-mono text-[10px] uppercase tracking-[0.2em] text-cream-dim">Product catalog</p>
             <p className="mb-3 font-sans text-[11px] text-cream-dim/70">
-              Upload your inventory as a CSV or Excel file. We'll structure all product pages, categories, and filters from it.
+              Upload your inventory as a CSV or Excel file. We&apos;ll structure all product pages, categories, and filters from it.
             </p>
             <div className="mb-4 flex items-center gap-3 rounded-xl border border-void-border bg-void-surface px-5 py-3">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A200" strokeWidth="1.5" strokeLinecap="round" aria-hidden>

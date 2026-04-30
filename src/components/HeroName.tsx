@@ -12,6 +12,7 @@ export function HeroName() {
   return (
     <motion.div style={{ y, opacity }} className="relative overflow-hidden">
       {/* Large watermark */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/logo.svg"
         alt=""

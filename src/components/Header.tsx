@@ -42,6 +42,7 @@ export function Header() {
             aria-label="Home"
             onClick={() => setMenuOpen(false)}
           >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/logo.svg" alt="AM" className="h-10 w-auto" />
           </Link>
 
