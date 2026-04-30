@@ -69,11 +69,8 @@ export function Hero() {
           {/* Parallax name */}
           <HeroName />
 
-          {/* Rule + tagline */}
-          <div className="hero-rule gold-rule-hero" style={{ width: "22vw", marginTop: "2vw", marginBottom: "1.5vw" }} />
-
           <div className="hero-tag text-center" style={{ marginTop: "8vw" }}>
-            <p className="font-tolken leading-relaxed text-cream uppercase tracking-[0.06em] max-w-2xl mx-auto" style={{ fontSize: "clamp(0.6rem,1.2vw,1rem)" }}>
+            <p className="font-tolken leading-relaxed text-cream uppercase tracking-[0.06em] max-w-2xl mx-auto" style={{ fontSize: "clamp(0.45rem,0.8vw,0.7rem)" }}>
               {site.positioning.replace(/\.$/, "")} — {site.hook}
             </p>
           </div>

@@ -1,10 +1,5 @@
-import { site } from "@/lib/site";
-
 const SYMBOL_A = "✦";
 const SYMBOL_B = "◆";
-
-// Row 1 — individual tech/skill terms (left, fast)
-const rowOneItems = site.marquee;
 
 // Row 2 — full-phrase style, display font (right, medium)
 const rowTwoItems = [
@@ -18,8 +13,6 @@ const rowTwoItems = [
   "Conversion",
 ];
 
-// Row 3 — same as row 1 but shifted offset (left, slow)
-const rowThreeItems = [...site.marquee].reverse();
 
 function MarqueeRow({
   items,
@@ -55,7 +48,7 @@ function MarqueeRow({
             className={`flex items-center gap-0 ${
               size === "large"
                 ? "font-display text-2xl font-light italic text-cream-muted sm:text-3xl"
-                : "font-mono text-[11px] uppercase tracking-[0.22em] text-cream-dim"
+                : "font-mono text-[14px] uppercase tracking-[0.22em] text-cream-dim"
             }`}
           >
             <span className="whitespace-nowrap">{item}</span>
@@ -76,18 +69,7 @@ function MarqueeRow({
 export function Marquee() {
   return (
     <div className="border-y border-void-border bg-void-surface">
-      {/* Row 1 — left, fast, small mono */}
-      <div className="border-b border-void-border">
-        <MarqueeRow items={rowOneItems} direction="left" speed="fast" size="small" symbol={SYMBOL_A} />
-      </div>
-
-      {/* Row 2 — right, medium, large display */}
-      <div className="border-b border-void-border">
-        <MarqueeRow items={rowTwoItems} direction="right" speed="normal" size="large" symbol={SYMBOL_B} />
-      </div>
-
-      {/* Row 3 — left, slow, small mono */}
-      <MarqueeRow items={rowThreeItems} direction="left" speed="slow" size="small" symbol={SYMBOL_A} />
+      <MarqueeRow items={rowTwoItems} direction="right" speed="normal" size="small" symbol={SYMBOL_B} />
     </div>
   );
 }
