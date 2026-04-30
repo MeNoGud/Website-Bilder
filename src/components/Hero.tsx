@@ -84,14 +84,21 @@ export function Hero() {
           </div>
 
           {/* CTA */}
-          <div className="hero-cta mt-10 flex flex-wrap items-center gap-4">
+          <div className="hero-cta mt-10 flex justify-center">
             <MagneticButton>
               <a
                 href="#work"
-                className="inline-flex items-center gap-2 rounded-full border border-void-hover bg-transparent px-8 py-3.5 font-sans text-[13px] text-cream-muted transition-all duration-300 hover:bg-void-surface hover:text-cream"
+                className="flex flex-col items-center justify-center gap-1 font-sans text-[15px] font-medium text-cream-muted transition-colors duration-300 hover:text-cream"
+                style={{
+                  width: "160px",
+                  height: "160px",
+                  clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)",
+                  background: "rgba(26,17,14,0.07)",
+                }}
               >
-                View work
-                <span aria-hidden className="text-gold">↓</span>
+                <span>View</span>
+                <span>work</span>
+                <span aria-hidden className="text-gold text-base leading-none">↓</span>
               </a>
             </MagneticButton>
           </div>
