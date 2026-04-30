@@ -1,14 +1,17 @@
 import type { Metadata } from "next";
-import { Unbounded, Inter, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
+import { Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/site";
 import { Cursor } from "@/components/Cursor";
 import { ScrollProgress } from "@/components/ScrollProgress";
 
-const unbounded = Unbounded({
-  variable: "--font-unbounded",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
+const tolkenWeapon = localFont({
+  src: [
+    { path: "../../public/fonts/tolken-weapon.woff2", weight: "400", style: "normal" },
+    { path: "../../public/fonts/tolken-weapon.woff",  weight: "400", style: "normal" },
+  ],
+  variable: "--font-display",
   display: "swap",
 });
 
@@ -82,7 +85,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${unbounded.variable} ${inter.variable} ${geistMono.variable}`}
+      className={`${tolkenWeapon.variable} ${inter.variable} ${geistMono.variable}`}
     >
       <head>
         <script
