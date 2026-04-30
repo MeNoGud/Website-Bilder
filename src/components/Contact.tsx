@@ -13,13 +13,13 @@ export function Contact() {
         <div className="reveal grid gap-px bg-void-border sm:grid-cols-2 lg:grid-cols-4">
 
           {/* Email */}
-          <div className="bg-void px-8 py-10">
+          <div className="bg-void px-8 py-10 min-w-0">
             <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-cream-dim">
               Email
             </span>
             <a
               href={`mailto:${email}`}
-              className="group mt-4 block font-display text-lg font-light text-cream transition-colors hover:text-gold"
+              className="group mt-4 block font-sans text-sm text-cream transition-colors hover:text-gold break-all"
             >
               <span className="relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-gold after:transition-all after:duration-500 group-hover:after:w-full">
                 {email}
