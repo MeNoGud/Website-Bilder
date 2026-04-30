@@ -33,7 +33,7 @@ export function HeroName() {
         style={{
           width: "clamp(14rem, 30vw, 28rem)",
           height: "auto",
-          opacity: 0.1,
+          opacity: 0.25,
           mixBlendMode: "multiply",
         }}
       />
