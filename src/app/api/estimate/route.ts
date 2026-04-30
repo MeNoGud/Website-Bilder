@@ -11,12 +11,12 @@ export interface EstimateResult {
   summary: string;
 }
 
-const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-
 export async function POST(req: NextRequest) {
   if (!process.env.OPENAI_API_KEY || process.env.OPENAI_API_KEY === "sk-REPLACE_ME") {
     return NextResponse.json({ error: "OpenAI API key not configured." }, { status: 503 });
   }
+
+  const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
   try {
     const body = await req.json();
