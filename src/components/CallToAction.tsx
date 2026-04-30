@@ -61,7 +61,7 @@ export function CallToAction() {
           <span className="text-gold not-italic">remarkable?</span>
         </h2>
 
-        <div className="reveal gold-rule mx-auto mt-10 w-16" />
+        <div className="reveal gold-rule mx-auto mt-10 w-36" />
 
         <p
           className="reveal mx-auto mt-8 max-w-md font-sans text-base leading-relaxed"

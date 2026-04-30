@@ -157,7 +157,7 @@ export function Process() {
                 {item.title}
               </h3>
 
-              <div className="gold-rule my-4 w-14" />
+              <div className="gold-rule my-4 w-24" />
 
               <p className="font-sans text-[13px] leading-[1.75] text-cream-muted">
                 {item.description}

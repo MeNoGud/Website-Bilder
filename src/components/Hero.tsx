@@ -72,7 +72,7 @@ export function Hero() {
           <HeroName />
 
           {/* Rule + tagline */}
-          <div className="hero-rule gold-rule mt-8 mb-6 w-full max-w-[200px]" />
+          <div className="hero-rule gold-rule mt-8 mb-6 w-full max-w-xs" />
 
           <div className="hero-tag flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             <p className="max-w-md font-sans text-base leading-relaxed text-cream-muted sm:text-[17px]">
