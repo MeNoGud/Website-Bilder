@@ -69,7 +69,7 @@ export function Hero() {
           {/* Parallax name */}
           <HeroName />
 
-          <div className="hero-tag text-center" style={{ marginTop: "11vw" }}>
+          <div className="hero-tag text-center" style={{ marginTop: "14vw" }}>
             <p className="font-tolken leading-relaxed text-cream uppercase tracking-[0.06em] max-w-2xl mx-auto" style={{ fontSize: "clamp(0.55rem,1vw,0.85rem)" }}>
               {site.positioning.replace(/\.$/, "")} — {site.hook}
             </p>
