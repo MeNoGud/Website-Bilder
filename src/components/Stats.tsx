@@ -47,7 +47,7 @@ function StatCounter({ value, label }: { value: string; label: string }) {
     <div ref={ref} className="flex flex-col gap-1 text-center lg:text-left">
       <span
         className="font-display font-light text-cream tabular-nums leading-none"
-        style={{ fontSize: "clamp(2.2rem, 5vw, 4.5rem)" }}
+        style={{ fontSize: "clamp(1.6rem, 5vw, 4.5rem)" }}
       >
         {active ? count : 0}{suffix}
       </span>
@@ -62,7 +62,7 @@ export function Stats() {
   return (
     <div className="border-b border-t border-void-border bg-void-surface">
       <div className="mx-auto max-w-6xl px-6 sm:px-10">
-        <div className="flex flex-col items-center justify-center gap-8 py-20 text-center sm:py-28 lg:flex-row lg:items-center lg:justify-between lg:text-left lg:gap-16">
+        <div className="flex flex-col items-center justify-center gap-6 py-14 text-center sm:gap-8 sm:py-28 lg:flex-row lg:items-center lg:justify-between lg:text-left lg:gap-16">
 
           {/* Main promise */}
           <div className="flex-1">
@@ -71,7 +71,7 @@ export function Stats() {
             </p>
             <h2
               className="reveal-clip font-display font-light text-cream leading-[1.0]"
-              style={{ fontSize: "clamp(2.4rem, 7vw, 6rem)" }}
+              style={{ fontSize: "clamp(1.75rem, 7vw, 6rem)" }}
             >
               I will beat any competitor&apos;s quote —{" "}
               <em className="not-italic text-gold">guaranteed.</em>
