@@ -62,7 +62,7 @@ export function Stats() {
   return (
     <div className="border-b border-t border-void-border bg-void-surface flex flex-col lg:block min-h-screen lg:min-h-0">
       <div className="mx-auto w-full max-w-6xl px-6 sm:px-10 flex-1 flex flex-col lg:block">
-        <div className="flex-1 flex flex-col justify-between py-14 text-center lg:flex-row lg:items-center lg:justify-between lg:py-28 lg:text-left lg:gap-16">
+        <div className="flex-1 flex flex-col justify-center gap-10 py-14 text-center lg:flex-row lg:items-center lg:justify-between lg:py-28 lg:text-left lg:gap-16">
 
           {/* Main promise */}
           <div className="flex-shrink-0 lg:flex-1">
@@ -76,9 +76,12 @@ export function Stats() {
               I will beat any competitor&apos;s quote —{" "}
               <em className="not-italic text-gold">guaranteed.</em>
             </h2>
+
+            {/* Mobile-only gold rule */}
+            <div className="gold-rule mx-auto mt-8 w-12 lg:hidden" />
           </div>
 
-          {/* Divider */}
+          {/* Desktop-only vertical divider */}
           <div className="hidden lg:block w-px self-stretch bg-void-border" aria-hidden />
 
           {/* Right column */}
