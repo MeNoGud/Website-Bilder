@@ -138,7 +138,7 @@ export function Stats() {
             </p>
             <p
               className="font-display font-light leading-[0.95]"
-              style={{ fontSize: "clamp(2.6rem, 13vw, 5rem)", color: "#F5A200" }}
+              style={{ fontSize: "clamp(2.6rem, 13vw, 5rem)", color: "#E82400" }}
             >
               guaranteed.
             </p>
@@ -158,7 +158,7 @@ export function Stats() {
                 key={b}
                 className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-white/70"
               >
-                <span style={{ color: "#F5A200", fontSize: "8px" }}>✦</span>
+                <span style={{ color: "#E82400", fontSize: "8px" }}>✦</span>
                 {b}
               </span>
             ))}
@@ -183,7 +183,7 @@ export function Stats() {
               </p>
               <p
                 className="font-display font-light leading-[0.9]"
-                style={{ fontSize: "clamp(3.5rem, 8vw, 9rem)", color: "#F5A200" }}
+                style={{ fontSize: "clamp(3.5rem, 8vw, 9rem)", color: "#E82400" }}
               >
                 guaranteed.
               </p>
@@ -196,7 +196,7 @@ export function Stats() {
                   key={b}
                   className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-white/70"
                 >
-                  <span style={{ color: "#F5A200", fontSize: "9px" }}>✦</span>
+                  <span style={{ color: "#E82400", fontSize: "9px" }}>✦</span>
                   {b}
                 </span>
               ))}
