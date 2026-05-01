@@ -3,27 +3,9 @@ export function Work() {
   return (
     <section
       id="work"
-      className="relative scroll-mt-20 border-t border-void-border px-6 py-24 sm:px-10 sm:py-32 overflow-hidden"
+      className="scroll-mt-20 border-t border-void-border px-6 py-24 sm:px-10 sm:py-32"
     >
-      {/* Spinning 3D shape — right side, partially behind the last card */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src="/shape-3d.png"
-        alt=""
-        aria-hidden
-        className="pointer-events-none absolute animate-spin-shape"
-        style={{
-          width: "clamp(420px, 45vw, 680px)",
-          right: "clamp(-220px, -14vw, -120px)",
-          top: "50%",
-          transform: "translateY(-50%)",
-          mixBlendMode: "multiply",
-          opacity: 0.92,
-          zIndex: 0,
-        }}
-      />
-
-      <div className="relative mx-auto max-w-6xl">
+      <div className="mx-auto max-w-6xl">
         <p className="reveal font-mono text-[10px] uppercase tracking-[0.3em] text-gold">
           — Portfolio
         </p>
@@ -31,8 +13,8 @@ export function Work() {
           Selected work
         </h2>
 
-        {/* Project cards grid — cards sit above the shape via z-index */}
-        <div className="relative mt-14 grid gap-5 lg:gap-6 sm:grid-cols-2 lg:grid-cols-3" style={{ zIndex: 1 }}>
+        {/* Project cards grid */}
+        <div className="mt-14 grid gap-5 lg:gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {[0, 1, 2].map((i) => (
             <div
               key={i}

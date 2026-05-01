@@ -51,7 +51,6 @@ const config: Config = {
         "marquee-slow":  "marquee 55s linear infinite",
         "spin-slow":     "spin 18s linear infinite",
         "spin-reverse":  "spin-reverse 22s linear infinite",
-        "spin-shape":    "spin 18s linear infinite",
         "float":         "float 3s ease-in-out infinite alternate",
       },
       keyframes: {
