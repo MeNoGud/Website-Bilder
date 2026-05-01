@@ -51,7 +51,7 @@ function StatCounter({ value, label }: { value: string; label: string }) {
       >
         {active ? count : 0}{suffix}
       </span>
-      <span className="font-mono text-[12px] uppercase tracking-[0.22em] text-cream-dim">
+      <span className="font-mono text-[10px] sm:text-[12px] uppercase tracking-[0.12em] sm:tracking-[0.22em] text-cream-dim leading-tight">
         {label}
       </span>
     </div>
@@ -82,16 +82,16 @@ export function Stats() {
           <div className="hidden lg:block w-px self-stretch bg-void-border" aria-hidden />
 
           {/* Right column */}
-          <div className="flex-1 max-w-md flex flex-col gap-10">
+          <div className="flex-1 max-w-md flex flex-col gap-6 sm:gap-10">
             {/* Counters */}
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 gap-4 sm:gap-6">
               {site.stats.map((s) => (
                 <StatCounter key={s.label} value={s.value} label={s.label} />
               ))}
             </div>
 
             {/* Supporting points */}
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-2 sm:gap-3">
               {[
                 "Better design than the competition",
                 "Faster delivery, every time",
@@ -99,9 +99,9 @@ export function Stats() {
               ].map((point) => (
                 <span
                   key={point}
-                  className="flex items-center gap-3 font-mono text-[12px] uppercase tracking-[0.22em] text-cream-dim"
+                  className="flex items-center gap-2 sm:gap-3 font-mono text-[11px] sm:text-[12px] uppercase tracking-[0.12em] sm:tracking-[0.22em] text-cream-dim"
                 >
-                  <span className="text-gold text-base leading-none" aria-hidden>✦</span>
+                  <span className="text-gold text-sm sm:text-base leading-none flex-shrink-0" aria-hidden>✦</span>
                   {point}
                 </span>
               ))}
