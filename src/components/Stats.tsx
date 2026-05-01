@@ -11,7 +11,6 @@ function useCountUp(target: number, duration = 1600, active: boolean) {
     const step = (ts: number) => {
       if (!start) start = ts;
       const progress = Math.min((ts - start) / duration, 1);
-      // ease-out cubic
       const eased = 1 - Math.pow(1 - progress, 3);
       setValue(Math.floor(eased * target));
       if (progress < 1) requestAnimationFrame(step);
@@ -37,99 +36,156 @@ function StatCounter({ value, label }: { value: string; label: string }) {
     return () => obs.disconnect();
   }, []);
 
-  // Parse "15+" → { num: 15, suffix: "+" }
-  const match = value.match(/^(\d+)(.*)$/);
+  const match  = value.match(/^(\d+)(.*)$/);
   const num    = match ? parseInt(match[1]) : 0;
   const suffix = match ? match[2] : value;
   const count  = useCountUp(num, 1400, active);
 
   return (
-    <div ref={ref} className="flex flex-col gap-1 text-center lg:text-left">
+    <div ref={ref} className="flex flex-col items-center gap-1 text-center">
       <span
-        className="font-display font-light text-cream tabular-nums leading-none"
-        style={{ fontSize: "clamp(1.6rem, 5vw, 4.5rem)" }}
+        className="font-display font-light tabular-nums leading-none text-white"
+        style={{ fontSize: "clamp(2rem, 6vw, 3.75rem)" }}
       >
         {active ? count : 0}{suffix}
       </span>
-      <span className="font-mono text-[10px] sm:text-[12px] uppercase tracking-[0.12em] sm:tracking-[0.22em] text-cream-dim leading-tight">
+      <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/40 leading-tight">
         {label}
       </span>
     </div>
   );
 }
 
+const BADGES = [
+  "Better Design",
+  "Faster Delivery",
+  "Full Transparency",
+];
+
 export function Stats() {
   return (
-    <div className="border-b border-t border-void-border bg-void-surface flex flex-col lg:block min-h-screen lg:min-h-0">
-      <div className="mx-auto w-full max-w-6xl px-6 sm:px-10 flex-1 flex flex-col lg:block">
-        <div className="flex-1 flex flex-col justify-evenly py-12 text-center lg:flex-row lg:items-center lg:justify-between lg:py-28 lg:text-left lg:gap-16">
+    <div
+      className="relative border-b border-t border-void-border overflow-hidden flex flex-col lg:block min-h-screen lg:min-h-0"
+      style={{ background: "#1A110E" }}
+    >
+      {/* Dot-grid texture */}
+      <div
+        className="pointer-events-none absolute inset-0 bg-dot-grid bg-[length:24px_24px] opacity-[0.07]"
+        aria-hidden
+      />
 
-          {/* Main promise */}
-          <div className="flex-shrink-0 lg:flex-1">
+      {/* Red radial glow */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse 80% 60% at 50% 50%, rgba(232,36,0,0.13) 0%, transparent 70%)",
+        }}
+        aria-hidden
+      />
+
+      <div className="relative mx-auto w-full max-w-6xl px-6 sm:px-10 flex-1 flex flex-col lg:block">
+
+        {/* ── Mobile layout ─────────────────────────────── */}
+        <div className="flex-1 flex flex-col justify-evenly py-14 lg:hidden">
+
+          {/* Label + heading */}
+          <div>
             <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-gold mb-4">
               — The price promise
             </p>
-            <h2
-              className="reveal-clip font-display font-light text-cream leading-[1.05]"
-              style={{ fontSize: "clamp(1.75rem, 7vw, 6rem)" }}
+            <p
+              className="font-display font-light text-white/80 leading-[1.1]"
+              style={{ fontSize: "clamp(1.35rem, 5.5vw, 2rem)" }}
             >
-              I will beat any competitor&apos;s quote —{" "}
-              <em className="not-italic text-gold">guaranteed.</em>
-            </h2>
+              I will beat any competitor&apos;s quote —
+            </p>
+            <p
+              className="font-display font-light text-gold leading-[0.95]"
+              style={{ fontSize: "clamp(3.5rem, 18vw, 7rem)" }}
+            >
+              guaranteed.
+            </p>
           </div>
 
-          {/* Desktop-only vertical divider */}
-          <div className="hidden lg:block w-px self-stretch bg-void-border" aria-hidden />
-
-          {/* Stats grid — separate flex child on mobile so justify-evenly distributes 3 zones */}
-          <div className="flex-shrink-0 lg:hidden grid grid-cols-2 gap-4 max-w-xs mx-auto w-full">
-            {site.stats.map((s) => (
-              <StatCounter key={s.label} value={s.value} label={s.label} />
+          {/* Stats row */}
+          <div className="grid grid-cols-4 gap-0">
+            {site.stats.map((s, i) => (
+              <div key={s.label} className="flex">
+                <StatCounter value={s.value} label={s.label} />
+                {i < site.stats.length - 1 && (
+                  <div className="w-px self-stretch bg-white/10 mx-auto" />
+                )}
+              </div>
             ))}
           </div>
 
-          {/* Bullet points — separate flex child on mobile */}
-          <div className="flex-shrink-0 lg:hidden flex flex-col gap-2 max-w-xs mx-auto w-full">
-            {[
-              "Better design than the competition",
-              "Faster delivery, every time",
-              "Full transparency on pricing",
-            ].map((point) => (
+          {/* Badge row */}
+          <div className="flex flex-wrap justify-center gap-2">
+            {BADGES.map((b) => (
               <span
-                key={point}
-                className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.12em] text-cream-dim"
+                key={b}
+                className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-white/50"
               >
-                <span className="text-gold text-sm leading-none flex-shrink-0" aria-hidden>✦</span>
-                {point}
+                <span className="text-gold text-[8px]">✦</span>
+                {b}
               </span>
             ))}
           </div>
 
-          {/* Desktop-only right column (stats + bullets together) */}
-          <div className="hidden lg:flex flex-1 max-w-md flex-col gap-10">
-            <div className="grid grid-cols-2 gap-6">
-              {site.stats.map((s) => (
-                <StatCounter key={s.label} value={s.value} label={s.label} />
-              ))}
+        </div>
+
+        {/* ── Desktop layout ────────────────────────────── */}
+        <div className="hidden lg:flex flex-col justify-center py-28 gap-16">
+
+          {/* Top: label + split heading */}
+          <div className="flex items-end justify-between gap-16">
+            <div className="flex-1">
+              <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-gold mb-5">
+                — The price promise
+              </p>
+              <p
+                className="font-display font-light text-white/80 leading-[1.1]"
+                style={{ fontSize: "clamp(1.5rem, 2.5vw, 2.5rem)" }}
+              >
+                I will beat any competitor&apos;s quote —
+              </p>
+              <p
+                className="font-display font-light text-gold leading-[0.9]"
+                style={{ fontSize: "clamp(4rem, 9vw, 11rem)" }}
+              >
+                guaranteed.
+              </p>
             </div>
-            <div className="flex flex-col gap-3">
-              {[
-                "Better design than the competition",
-                "Faster delivery, every time",
-                "Full transparency on pricing",
-              ].map((point) => (
+
+            {/* Desktop badge column */}
+            <div className="flex flex-col gap-3 pb-3">
+              {BADGES.map((b) => (
                 <span
-                  key={point}
-                  className="flex items-center gap-3 font-mono text-[12px] uppercase tracking-[0.22em] text-cream-dim"
+                  key={b}
+                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-white/50"
                 >
-                  <span className="text-gold text-base leading-none flex-shrink-0" aria-hidden>✦</span>
-                  {point}
+                  <span className="text-gold text-[9px]">✦</span>
+                  {b}
                 </span>
               ))}
             </div>
           </div>
 
+          {/* Bottom: stats in horizontal row with dividers */}
+          <div className="flex items-center border-t border-white/10 pt-10 gap-0">
+            {site.stats.map((s, i) => (
+              <div key={s.label} className="flex flex-1 items-center">
+                <StatCounter value={s.value} label={s.label} />
+                {i < site.stats.length - 1 && (
+                  <div className="w-px h-12 bg-white/10 ml-auto" />
+                )}
+              </div>
+            ))}
+          </div>
+
         </div>
+
       </div>
     </div>
   );
