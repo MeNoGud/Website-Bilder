@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { site } from "@/lib/site";
 
 // ─── Clock constants ──────────────────────────────
-const CX = 150, CY = 150, R = 100, C = 2 * Math.PI * R, SIZE = 300;
+const CX = 200, CY = 200, R = 130, C = 2 * Math.PI * R, SIZE = 400;
 const CLOCK_STAGES = [
   { week: 4, label: "4", sub: "WEEKS TO GO", fill: 1    },
   { week: 3, label: "3", sub: "WEEKS TO GO", fill: 0.75 },
@@ -25,7 +25,7 @@ function LaunchClock({ stepIndex, small = false }: { stepIndex: number; small?: 
   const dotX       = CX + R * Math.cos(endAngle);
   const dotY       = CY + R * Math.sin(endAngle);
   const isLaunch   = stage.week === 0;
-  const displaySize = small ? 220 : SIZE;
+  const displaySize = small ? 220 : 400;
 
   const ticks = Array.from({ length: TICK_COUNT }, (_, i) => {
     const angle   = (i / TICK_COUNT) * 2 * Math.PI - Math.PI / 2;
@@ -178,7 +178,7 @@ export function Expertise() {
             <div className="flex items-end justify-between mb-6 sm:mb-10">
               <div>
                 <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-gold">— Services</p>
-                <h2 className="reveal-clip mt-3 font-display text-2xl font-light text-cream sm:text-4xl">
+                <h2 className="reveal-clip mt-3 font-display text-2xl font-light text-cream sm:text-5xl">
                   Everything you need to launch
                 </h2>
               </div>
@@ -189,7 +189,7 @@ export function Expertise() {
 
             {/* Clock + animated step — stacks on mobile, side-by-side on desktop */}
             <div className="flex flex-col items-center gap-6 lg:grid lg:items-center lg:gap-16"
-              style={{ gridTemplateColumns: "300px 1fr" }}>
+              style={{ gridTemplateColumns: "400px 1fr" }}>
 
               <LaunchClock stepIndex={activeStep} small={isMobile} />
 
@@ -212,13 +212,13 @@ export function Expertise() {
                     </div>
 
                     <h3 className="font-display font-light text-cream leading-[1.0]"
-                      style={{ fontSize: isMobile ? "clamp(1.8rem, 8vw, 2.5rem)" : "clamp(2.5rem, 5vw, 5rem)" }}>
+                      style={{ fontSize: isMobile ? "clamp(1.8rem, 8vw, 2.5rem)" : "clamp(2.5rem, 6vw, 6.5rem)" }}>
                       {site.expertise[activeStep].title}
                     </h3>
 
                     <div className="gold-rule my-4 sm:my-6 w-12" />
 
-                    <p className="font-sans text-sm leading-relaxed text-cream-muted max-w-md sm:text-base">
+                    <p className="font-sans text-sm leading-relaxed text-cream-muted max-w-md sm:text-lg">
                       {site.expertise[activeStep].description}
                     </p>
 
