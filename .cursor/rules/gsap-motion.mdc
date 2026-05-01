@@ -1,0 +1,114 @@
+---
+description: GSAP motion system standards for this project. Apply when writing or reviewing any animation, transition, scroll effect, or interaction code.
+globs: **/*.{ts,tsx}
+alwaysApply: false
+---
+
+# GSAP Motion System
+
+GSAP is the default advanced motion system for this project. Framer Motion remains only where already in use (Expertise.tsx AnimatePresence). Do not mix systems on the same element.
+
+## Setup rules
+
+- Import from `gsap` and `gsap/ScrollTrigger` — always register the plugin once at module level
+- Register in a `useEffect` or a shared `lib/gsap.ts` init file, never inline per-component
+- Always kill/revert in cleanup: `ctx.revert()` on `gsap.context()`, or `trigger.kill()` on individual ScrollTriggers
+
+```ts
+// ✅ correct lifecycle pattern
+useEffect(() => {
+  const ctx = gsap.context(() => {
+    gsap.from(ref.current, { opacity: 0, y: 24, duration: 0.7, ease: "power2.out" });
+  }, ref);
+  return () => ctx.revert();
+}, []);
+```
+
+## Sequences → timelines
+
+Use `gsap.timeline()` for any orchestrated sequence of 2+ steps. Never chain `.from()` calls with manual `delay:` offsets.
+
+```ts
+// ❌ scattered delays
+gsap.from(title, { opacity: 0, delay: 0 });
+gsap.from(rule,  { opacity: 0, delay: 0.3 });
+
+// ✅ timeline
+const tl = gsap.timeline();
+tl.from(title, { opacity: 0, y: 20, duration: 0.6, ease: "power2.out" })
+  .from(rule,   { scaleX: 0, duration: 0.4, ease: "power2.out" }, "-=0.2");
+```
+
+## Stagger
+
+Use `stagger` instead of per-element delays when animating a list or grid.
+
+```ts
+gsap.from(".card", { opacity: 0, y: 32, duration: 0.5, ease: "power2.out", stagger: 0.08 });
+```
+
+## ScrollTrigger
+
+Use only where scroll-driven choreography is genuinely justified (e.g. section reveals, pinned sequences). Not every element needs a ScrollTrigger — CSS scroll-driven `.reveal` and `.reveal-clip` already handle simple fade-ups.
+
+```ts
+ScrollTrigger.create({
+  trigger: sectionRef.current,
+  start: "top 80%",
+  onEnter: () => tl.play(),
+  once: true, // prefer once:true for entrance animations
+});
+```
+
+- Avoid `scrub` + `pin` on mobile — use `gsap.matchMedia()` to disable or simplify
+- Prefer `once: true` for entrance animations; reserve continuous scrub for intentional parallax
+
+## Responsive + reduced-motion
+
+Always use `gsap.matchMedia()` for breakpoint or motion-preference differences:
+
+```ts
+const mm = gsap.matchMedia();
+mm.add("(prefers-reduced-motion: no-preference)", () => {
+  // full animation
+});
+mm.add("(prefers-reduced-motion: reduce)", () => {
+  gsap.set(el, { opacity: 1, y: 0 }); // instant, no animation
+});
+mm.add("(max-width: 767px)", () => {
+  // simplified mobile version — no pin, no scrub
+});
+return () => mm.revert();
+```
+
+## Easing conventions
+
+| Use case | Easing |
+|---|---|
+| Entrance / reveal | `power2.out` |
+| Exit / dismiss | `power2.in` |
+| Elastic / playful | `back.out(1.4)` |
+| Smooth parallax | `none` (linear) |
+| Premium, slow reveal | `expo.out` |
+
+## Per-motion documentation
+
+For every non-trivial GSAP animation, add a brief inline comment:
+- trigger (scroll / load / hover / click)
+- purpose (what user problem it solves)
+- duration + easing
+- cleanup strategy
+
+```ts
+// Trigger: section enters viewport
+// Purpose: prevents layout pop — elements arrive smoothly rather than snapping in
+// Duration: 0.6s expo.out — premium, unhurried feel
+// Cleanup: ctx.revert() on unmount
+```
+
+## What NOT to do
+
+- Do not animate `width`, `height`, `top`, `left`, `margin`, `padding` — causes layout thrash; use `transform` and `opacity` only
+- Do not use GSAP for hover states that CSS `transition` already handles cleanly
+- Do not leave ScrollTrigger instances without cleanup — they accumulate across HMR cycles
+- Do not use `gsap.globalTimeline.pause()` — it freezes everything including UI
