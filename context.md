@@ -85,7 +85,7 @@ Update it whenever something changes; when working in Cursor, reference or paste
 
 ---
 
-## This site (`jashita`)
+## This site
 
 - **Goals** for the site (e.g. job leads, freelance, credibility):
 - **Must-have sections / pages:**

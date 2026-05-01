@@ -143,23 +143,22 @@ export function Process() {
           {cards.map((item, i) => (
             <div
               key={i}
-              className="group relative flex-shrink-0 border border-void-border bg-void-surface transition-colors duration-300 hover:bg-void-elevated"
-              style={{ width: "460px", padding: "3rem" }}
+              className="group relative flex-shrink-0 w-[460px] lg:w-[580px] p-12 lg:p-16 border border-void-border bg-void-surface transition-colors duration-300 hover:bg-void-elevated"
             >
               {/* Step badge */}
-              <div className="mb-6 inline-flex h-[52px] w-[52px] items-center justify-center rounded-full border border-gold/25 bg-gold-faint">
-                <span className="font-mono text-[13px] uppercase tracking-[0.15em] text-gold">
+              <div className="mb-6 inline-flex h-[52px] w-[52px] lg:h-[60px] lg:w-[60px] items-center justify-center rounded-full border border-gold/25 bg-gold-faint">
+                <span className="font-mono text-[13px] lg:text-[14px] uppercase tracking-[0.15em] text-gold">
                   {item.step}
                 </span>
               </div>
 
-              <h3 className="font-display text-2xl font-medium text-cream">
+              <h3 className="font-display text-2xl lg:text-3xl font-medium text-cream">
                 {item.title}
               </h3>
 
-              <div className="gold-rule my-4 w-8" />
+              <div className="gold-rule my-4 lg:my-5 w-8 lg:w-10" />
 
-              <p className="font-sans text-[15px] leading-[1.75] text-cream-muted">
+              <p className="font-sans text-[15px] lg:text-[16px] leading-[1.75] text-cream-muted">
                 {item.description}
               </p>
 
