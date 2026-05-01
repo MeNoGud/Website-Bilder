@@ -4,18 +4,12 @@ export function Work() {
     <section
       id="work"
       className="scroll-mt-20 border-t border-void-border px-6 py-24 sm:px-10 sm:py-32"
-      style={{
-        backgroundImage: "url('/wave-bg.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
     >
       <div className="mx-auto max-w-6xl">
-        <p className="reveal font-mono text-[10px] uppercase tracking-[0.3em] text-white/70">
+        <p className="reveal font-mono text-[10px] uppercase tracking-[0.3em] text-gold">
           — Portfolio
         </p>
-        <h2 className="reveal mt-4 font-display text-3xl font-light text-white sm:text-5xl">
+        <h2 className="reveal mt-4 font-display text-3xl font-light text-cream sm:text-5xl">
           Selected work
         </h2>
 

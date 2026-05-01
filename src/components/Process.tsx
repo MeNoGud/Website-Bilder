@@ -83,22 +83,23 @@ export function Process() {
       id="process"
       className="scroll-mt-20 border-t border-void-border py-24 sm:py-32"
       style={{
-        background:
-          "radial-gradient(ellipse at 50% 0%, rgba(232,36,0,0.04) 0%, transparent 60%), #F4EEE4",
+        backgroundImage: "url('/wave-bg.png')",
+        backgroundSize: "500px auto",
+        backgroundRepeat: "repeat",
       }}
     >
       {/* Header */}
       <div className="mx-auto max-w-6xl px-6 sm:px-10 mb-14">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <p className="reveal font-mono text-[10px] uppercase tracking-[0.3em] text-gold">
+            <p className="reveal font-mono text-[10px] uppercase tracking-[0.3em] text-white/70">
               — How it works
             </p>
-            <h2 className="reveal-clip mt-4 font-display text-3xl font-light text-cream sm:text-5xl">
+            <h2 className="reveal-clip mt-4 font-display text-3xl font-light text-white sm:text-5xl">
               From idea to live in four steps
             </h2>
           </div>
-          <p className="reveal max-w-sm font-sans text-base leading-relaxed text-cream-dim lg:text-right">
+          <p className="reveal max-w-sm font-sans text-base leading-relaxed text-white/70 lg:text-right">
             Scroll sideways to explore each step
           </p>
         </div>
@@ -137,13 +138,16 @@ export function Process() {
       >
         <div
           ref={trackRef}
-          className="flex gap-5 py-2"
+          className="flex gap-5 py-8"
           style={{ width: "max-content", willChange: "transform" }}
         >
           {cards.map((item, i) => (
             <div
               key={i}
-              className="group relative flex-shrink-0 w-[460px] lg:w-[580px] p-12 lg:p-16 border border-void-border bg-void-surface transition-colors duration-300 hover:bg-void-elevated"
+              className="group relative flex-shrink-0 w-[460px] lg:w-[580px] p-12 lg:p-16 rounded-2xl border border-void-border bg-void-surface transition-all duration-300 hover:bg-void-elevated hover:-translate-y-2"
+              style={{
+                boxShadow: "0 8px 32px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.10)",
+              }}
             >
               {/* Step badge */}
               <div className="mb-6 inline-flex h-[52px] w-[52px] lg:h-[60px] lg:w-[60px] items-center justify-center rounded-full border border-gold/25 bg-gold-faint">
