@@ -94,11 +94,11 @@ export function Process() {
             <p className="reveal font-mono text-[10px] uppercase tracking-[0.3em] text-gold">
               — How it works
             </p>
-            <h2 className="reveal-clip mt-4 font-display text-3xl font-light text-cream sm:text-4xl">
+            <h2 className="reveal-clip mt-4 font-display text-3xl font-light text-cream sm:text-5xl">
               From idea to live in four steps
             </h2>
           </div>
-          <p className="reveal max-w-sm font-sans text-sm leading-relaxed text-cream-dim lg:text-right">
+          <p className="reveal max-w-sm font-sans text-base leading-relaxed text-cream-dim lg:text-right">
             Scroll sideways to explore each step
           </p>
         </div>
@@ -144,22 +144,22 @@ export function Process() {
             <div
               key={i}
               className="group relative flex-shrink-0 border border-void-border bg-void-surface transition-colors duration-300 hover:bg-void-elevated"
-              style={{ width: "360px", padding: "2.5rem" }}
+              style={{ width: "460px", padding: "3rem" }}
             >
               {/* Step badge */}
-              <div className="mb-6 inline-flex h-[42px] w-[42px] items-center justify-center rounded-full border border-gold/25 bg-gold-faint">
-                <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-gold">
+              <div className="mb-6 inline-flex h-[52px] w-[52px] items-center justify-center rounded-full border border-gold/25 bg-gold-faint">
+                <span className="font-mono text-[13px] uppercase tracking-[0.15em] text-gold">
                   {item.step}
                 </span>
               </div>
 
-              <h3 className="font-display text-xl font-medium text-cream">
+              <h3 className="font-display text-2xl font-medium text-cream">
                 {item.title}
               </h3>
 
               <div className="gold-rule my-4 w-8" />
 
-              <p className="font-sans text-[13px] leading-[1.75] text-cream-muted">
+              <p className="font-sans text-[15px] leading-[1.75] text-cream-muted">
                 {item.description}
               </p>
 
