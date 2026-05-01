@@ -137,7 +137,7 @@ export function Stats() {
               I will beat any competitor&apos;s quote —
             </p>
             <p
-              className="font-display font-light leading-[0.95]"
+              className="font-tolken leading-[0.95] uppercase tracking-[0.06em]"
               style={{ fontSize: "clamp(2.6rem, 13vw, 5rem)", color: "#E82400" }}
             >
               guaranteed.
@@ -182,7 +182,7 @@ export function Stats() {
                 I will beat any competitor&apos;s quote —
               </p>
               <p
-                className="font-display font-light leading-[0.9]"
+                className="font-tolken leading-[0.9] uppercase tracking-[0.06em]"
                 style={{ fontSize: "clamp(3.5rem, 8vw, 9rem)", color: "#E82400" }}
               >
                 guaranteed.
