@@ -138,7 +138,7 @@ export function Stats() {
             </p>
             <p
               className="font-tolken leading-[0.95] uppercase tracking-[0.06em]"
-              style={{ fontSize: "clamp(2.6rem, 13vw, 5rem)", color: "#E82400" }}
+              style={{ fontSize: "clamp(1.8rem, 9vw, 3.5rem)", color: "#E82400" }}
             >
               guaranteed.
             </p>
@@ -183,7 +183,7 @@ export function Stats() {
               </p>
               <p
                 className="font-tolken leading-[0.9] uppercase tracking-[0.06em]"
-                style={{ fontSize: "clamp(3.5rem, 8vw, 9rem)", color: "#E82400" }}
+                style={{ fontSize: "clamp(2.5rem, 5vw, 6rem)", color: "#E82400" }}
               >
                 guaranteed.
               </p>

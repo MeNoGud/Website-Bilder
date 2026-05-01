@@ -115,7 +115,7 @@ export function RemarkableShine() {
   return (
     <span
       ref={spanRef}
-      className="not-italic cursor-default font-tolken uppercase tracking-[0.06em] inline-block"
+      className="not-italic cursor-default font-tolken inline-block"
       style={{
         backgroundImage:      BASE,
         backgroundColor:      "transparent",
