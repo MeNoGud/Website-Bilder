@@ -137,8 +137,8 @@ export function Stats() {
               I will beat any competitor&apos;s quote —
             </p>
             <p
-              className="font-light leading-[0.95]"
-              style={{ fontSize: "clamp(2.6rem, 13vw, 5rem)", color: "#E82400", fontFamily: "'AskeyPixel', sans-serif" }}
+              className="font-display font-light leading-[0.95]"
+              style={{ fontSize: "clamp(2.6rem, 13vw, 5rem)", color: "#E82400" }}
             >
               guaranteed.
             </p>
@@ -182,8 +182,8 @@ export function Stats() {
                 I will beat any competitor&apos;s quote —
               </p>
               <p
-                className="font-light leading-[0.9]"
-                style={{ fontSize: "clamp(3.5rem, 8vw, 9rem)", color: "#E82400", fontFamily: "'AskeyPixel', sans-serif" }}
+                className="font-display font-light leading-[0.9]"
+                style={{ fontSize: "clamp(3.5rem, 8vw, 9rem)", color: "#E82400" }}
               >
                 guaranteed.
               </p>

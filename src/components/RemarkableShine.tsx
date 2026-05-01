@@ -115,9 +115,8 @@ export function RemarkableShine() {
   return (
     <span
       ref={spanRef}
-      className="not-italic cursor-default inline-block"
+      className="not-italic cursor-default font-semibold inline-block"
       style={{
-        fontFamily:           "'AskeyPixel', sans-serif",
         backgroundImage:      BASE,
         backgroundColor:      "transparent",
         WebkitBackgroundClip: "text",
