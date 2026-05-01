@@ -62,7 +62,7 @@ export function Stats() {
   return (
     <div className="border-b border-t border-void-border bg-void-surface flex flex-col lg:block min-h-screen lg:min-h-0">
       <div className="mx-auto w-full max-w-6xl px-6 sm:px-10 flex-1 flex flex-col lg:block">
-        <div className="flex-1 flex flex-col justify-center gap-10 py-14 text-center lg:flex-row lg:items-center lg:justify-between lg:py-28 lg:text-left lg:gap-16">
+        <div className="flex-1 flex flex-col justify-evenly py-12 text-center lg:flex-row lg:items-center lg:justify-between lg:py-28 lg:text-left lg:gap-16">
 
           {/* Main promise */}
           <div className="flex-shrink-0 lg:flex-1">
@@ -76,25 +76,43 @@ export function Stats() {
               I will beat any competitor&apos;s quote —{" "}
               <em className="not-italic text-gold">guaranteed.</em>
             </h2>
-
-            {/* Mobile-only gold rule */}
-            <div className="gold-rule mx-auto mt-8 w-12 lg:hidden" />
           </div>
 
           {/* Desktop-only vertical divider */}
           <div className="hidden lg:block w-px self-stretch bg-void-border" aria-hidden />
 
-          {/* Right column */}
-          <div className="flex-shrink-0 lg:flex-1 max-w-md mx-auto lg:mx-0 flex flex-col gap-6 sm:gap-10">
-            {/* Counters */}
-            <div className="grid grid-cols-2 gap-4 sm:gap-6">
+          {/* Stats grid — separate flex child on mobile so justify-evenly distributes 3 zones */}
+          <div className="flex-shrink-0 lg:hidden grid grid-cols-2 gap-4 max-w-xs mx-auto w-full">
+            {site.stats.map((s) => (
+              <StatCounter key={s.label} value={s.value} label={s.label} />
+            ))}
+          </div>
+
+          {/* Bullet points — separate flex child on mobile */}
+          <div className="flex-shrink-0 lg:hidden flex flex-col gap-2 max-w-xs mx-auto w-full">
+            {[
+              "Better design than the competition",
+              "Faster delivery, every time",
+              "Full transparency on pricing",
+            ].map((point) => (
+              <span
+                key={point}
+                className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.12em] text-cream-dim"
+              >
+                <span className="text-gold text-sm leading-none flex-shrink-0" aria-hidden>✦</span>
+                {point}
+              </span>
+            ))}
+          </div>
+
+          {/* Desktop-only right column (stats + bullets together) */}
+          <div className="hidden lg:flex flex-1 max-w-md flex-col gap-10">
+            <div className="grid grid-cols-2 gap-6">
               {site.stats.map((s) => (
                 <StatCounter key={s.label} value={s.value} label={s.label} />
               ))}
             </div>
-
-            {/* Supporting points */}
-            <div className="flex flex-col gap-2 sm:gap-3">
+            <div className="flex flex-col gap-3">
               {[
                 "Better design than the competition",
                 "Faster delivery, every time",
@@ -102,9 +120,9 @@ export function Stats() {
               ].map((point) => (
                 <span
                   key={point}
-                  className="flex items-center gap-2 sm:gap-3 font-mono text-[11px] sm:text-[12px] uppercase tracking-[0.12em] sm:tracking-[0.22em] text-cream-dim"
+                  className="flex items-center gap-3 font-mono text-[12px] uppercase tracking-[0.22em] text-cream-dim"
                 >
-                  <span className="text-gold text-sm sm:text-base leading-none flex-shrink-0" aria-hidden>✦</span>
+                  <span className="text-gold text-base leading-none flex-shrink-0" aria-hidden>✦</span>
                   {point}
                 </span>
               ))}
