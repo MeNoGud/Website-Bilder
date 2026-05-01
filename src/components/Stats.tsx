@@ -203,14 +203,11 @@ export function Stats() {
             </div>
           </div>
 
-          {/* Bottom: stats in horizontal row with dividers */}
-          <div className="flex items-center border-t border-white/15 pt-10 gap-0">
-            {site.stats.map((s, i) => (
+          {/* Bottom: stats in horizontal row */}
+          <div className="flex items-center pt-10 gap-0">
+            {site.stats.map((s) => (
               <div key={s.label} className="flex flex-1 items-center">
                 <StatCounterDesktop value={s.value} label={s.label} />
-                {i < site.stats.length - 1 && (
-                  <div className="w-px h-12 bg-white/15 ml-auto" />
-                )}
               </div>
             ))}
           </div>
