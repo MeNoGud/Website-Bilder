@@ -92,15 +92,18 @@ export function Process() {
       {/* Header */}
       <div className="mx-auto max-w-6xl px-6 sm:px-10 mb-14">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-          <div>
-            <p className="reveal font-mono text-[10px] uppercase tracking-[0.3em] text-white/70">
+          <div style={{ filter: "drop-shadow(0 4px 18px rgba(0,0,0,0.30))" }}>
+            <p className="reveal font-mono text-[10px] uppercase tracking-[0.3em] text-white/90">
               — How it works
             </p>
             <h2 className="reveal-clip mt-4 font-display text-3xl font-light text-white sm:text-5xl">
               From idea to live in four steps
             </h2>
           </div>
-          <p className="reveal max-w-sm font-sans text-base leading-relaxed text-white/70 lg:text-right">
+          <p
+            className="reveal max-w-sm font-sans text-base leading-relaxed text-white/90 lg:text-right"
+            style={{ filter: "drop-shadow(0 4px 14px rgba(0,0,0,0.28))" }}
+          >
             Scroll sideways to explore each step
           </p>
         </div>
@@ -110,12 +113,6 @@ export function Process() {
       <div
         ref={containerRef}
         className="relative overflow-hidden cursor-grab active:cursor-grabbing select-none"
-        style={{
-          maskImage:
-            "linear-gradient(to right, transparent 0%, black 7%, black 93%, transparent 100%)",
-          WebkitMaskImage:
-            "linear-gradient(to right, transparent 0%, black 7%, black 93%, transparent 100%)",
-        }}
         onPointerDown={(e) => {
           dragRef.current = { active: true, startX: e.clientX, startPos: posRef.current };
           pausedRef.current = true;
@@ -147,7 +144,7 @@ export function Process() {
               key={i}
               className="group relative flex-shrink-0 w-[460px] lg:w-[580px] p-12 lg:p-16 rounded-2xl border border-void-border bg-void-surface transition-all duration-300 hover:bg-void-elevated hover:-translate-y-2"
               style={{
-                boxShadow: "0 8px 32px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.10)",
+                boxShadow: "0 20px 60px rgba(0,0,0,0.30), 0 6px 20px rgba(0,0,0,0.18)",
               }}
             >
               {/* Step badge */}
