@@ -102,7 +102,7 @@ export function Stats() {
   return (
     <div
       className="relative border-b border-t border-void-border overflow-hidden flex flex-col lg:block min-h-screen lg:min-h-0"
-      style={{ background: "#E82400" }}
+      style={{ background: "#F5A200" }}
     >
       {/* Subtle dot-grid texture */}
       <div
