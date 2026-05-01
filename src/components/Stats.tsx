@@ -102,7 +102,7 @@ export function Stats() {
   return (
     <div
       className="relative border-b border-t border-void-border overflow-hidden flex flex-col lg:block min-h-screen lg:min-h-0"
-      style={{ background: "#E82400" }}
+      style={{ background: "#4DB8D4" }}
     >
       {/* Subtle dot-grid texture */}
       <div
@@ -138,7 +138,7 @@ export function Stats() {
             </p>
             <p
               className="font-display font-light leading-[0.95]"
-              style={{ fontSize: "clamp(3.5rem, 18vw, 7rem)", color: "#F5A200" }}
+              style={{ fontSize: "clamp(2.6rem, 13vw, 5rem)", color: "#F5A200" }}
             >
               guaranteed.
             </p>
@@ -183,7 +183,7 @@ export function Stats() {
               </p>
               <p
                 className="font-display font-light leading-[0.9]"
-                style={{ fontSize: "clamp(4rem, 9vw, 11rem)", color: "#F5A200" }}
+                style={{ fontSize: "clamp(3.5rem, 8vw, 9rem)", color: "#F5A200" }}
               >
                 guaranteed.
               </p>
