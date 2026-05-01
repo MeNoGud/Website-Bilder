@@ -135,14 +135,6 @@ const STEPS = site.expertise.length; // 5
 export function Expertise() {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [activeStep, setActiveStep] = useState(0);
-  const [isMobile,   setIsMobile]   = useState(false);
-
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768);
-    check();
-    window.addEventListener("resize", check, { passive: true });
-    return () => window.removeEventListener("resize", check);
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -162,84 +154,129 @@ export function Expertise() {
   }, []);
 
   return (
-    <div
-      id="services"
-      ref={wrapperRef}
-      style={{ height: `${(STEPS + 1) * 100}vh` }}
-    >
+    <div id="services">
+
+      {/* ── Mobile: vertical card stack (< md) ──────────────── */}
+      <section className="border-t border-void-border bg-void px-6 py-16 md:hidden">
+        <div className="mx-auto max-w-lg">
+          <p className="section-label text-gold">— Services</p>
+          <h2 className="mt-3 font-display text-3xl font-light text-cream">
+            Everything you need to launch
+          </h2>
+
+          <div className="mt-10 flex flex-col divide-y divide-void-border">
+            {site.expertise.map((item, i) => (
+              <div key={i} className="py-8">
+                <div className="flex items-center gap-2 mb-4">
+                  <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-gold">
+                    {item.number}
+                  </span>
+                  <span className="font-mono text-[11px] text-cream-dim opacity-30">/</span>
+                  <span className="font-mono text-[11px] text-cream-dim opacity-30">0{STEPS}</span>
+                </div>
+                <h3
+                  className="font-display font-light text-cream leading-[1.0]"
+                  style={{ fontSize: "clamp(1.6rem, 7vw, 2.2rem)" }}
+                >
+                  {item.title}
+                </h3>
+                <div className="gold-rule my-4 w-10" />
+                <p className="font-sans text-sm leading-relaxed text-cream-muted">
+                  {item.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Desktop: sticky scroll (≥ md) ───────────────────── */}
       <div
-        className="border-t border-void-border bg-void"
-        style={{ position: "sticky", top: 0, height: "100vh", overflow: "hidden" }}
+        ref={wrapperRef}
+        className="hidden md:block"
+        style={{ height: `${(STEPS + 1) * 100}vh` }}
       >
-        <div className="flex flex-col justify-center h-full px-6 sm:px-10">
-          <div className="mx-auto w-full max-w-6xl">
+        <div
+          className="border-t border-void-border bg-void"
+          style={{ position: "sticky", top: 0, height: "100vh", overflow: "hidden" }}
+        >
+          <div className="flex flex-col justify-center h-full px-6 sm:px-10">
+            <div className="mx-auto w-full max-w-6xl">
 
-            {/* Header */}
-            <div className="flex items-end justify-between mb-6 sm:mb-10">
-              <div>
-                <p className="section-label text-gold">— Services</p>
-                <h2 className="reveal-clip mt-3 font-display text-2xl font-light text-cream sm:text-5xl">
-                  Everything you need to launch
-                </h2>
+              {/* Header */}
+              <div className="flex items-end justify-between mb-6 sm:mb-10">
+                <div>
+                  <p className="section-label text-gold">— Services</p>
+                  <h2 className="reveal-clip mt-3 font-display text-2xl font-light text-cream sm:text-5xl">
+                    Everything you need to launch
+                  </h2>
+                </div>
+                <p className="hidden lg:block font-sans text-sm text-cream-dim text-right max-w-xs">
+                  Scroll to explore each step
+                </p>
               </div>
-              <p className="hidden lg:block font-sans text-sm text-cream-dim text-right max-w-xs">
-                Scroll to explore each step
-              </p>
-            </div>
 
-            {/* Clock + animated step — stacks on mobile, side-by-side on desktop */}
-            <div className="flex flex-col items-center gap-6 lg:grid lg:items-center lg:gap-16"
-              style={{ gridTemplateColumns: "400px 1fr" }}>
+              {/* Clock + animated step */}
+              <div
+                className="grid items-center gap-16"
+                style={{ gridTemplateColumns: "400px 1fr" }}
+              >
+                <LaunchClock stepIndex={activeStep} small={false} />
 
-              <LaunchClock stepIndex={activeStep} small={isMobile} />
+                <div className="relative w-full" style={{ minHeight: "280px" }}>
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={activeStep}
+                      initial={{ opacity: 0, y: 24 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -24 }}
+                      transition={{ duration: 0.42, ease: [0.4, 0, 0.2, 1] }}
+                      className="absolute inset-0 flex flex-col justify-center"
+                    >
+                      <div className="flex items-center gap-2 mb-7">
+                        <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-gold">
+                          {site.expertise[activeStep].number}
+                        </span>
+                        <span className="font-mono text-[11px] text-cream-dim opacity-30">/</span>
+                        <span className="font-mono text-[11px] text-cream-dim opacity-30">0{STEPS}</span>
+                      </div>
 
-              <div className="relative w-full" style={{ minHeight: isMobile ? "200px" : "280px" }}>
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={activeStep}
-                    initial={{ opacity: 0, y: 24 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -24 }}
-                    transition={{ duration: 0.42, ease: [0.4, 0, 0.2, 1] }}
-                    className="absolute inset-0 flex flex-col justify-center"
-                  >
-                    <div className="flex items-center gap-2 mb-4 sm:mb-7">
-                      <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-gold">
-                        {site.expertise[activeStep].number}
-                      </span>
-                      <span className="font-mono text-[11px] text-cream-dim opacity-30">/</span>
-                      <span className="font-mono text-[11px] text-cream-dim opacity-30">0{STEPS}</span>
-                    </div>
+                      <h3
+                        className="font-display font-light text-cream leading-[1.0]"
+                        style={{ fontSize: "clamp(2.5rem, 6vw, 6.5rem)" }}
+                      >
+                        {site.expertise[activeStep].title}
+                      </h3>
 
-                    <h3 className="font-display font-light text-cream leading-[1.0]"
-                      style={{ fontSize: isMobile ? "clamp(1.8rem, 8vw, 2.5rem)" : "clamp(2.5rem, 6vw, 6.5rem)" }}>
-                      {site.expertise[activeStep].title}
-                    </h3>
+                      <div className="gold-rule my-6 w-12" />
 
-                    <div className="gold-rule my-4 sm:my-6 w-12" />
+                      <p className="font-sans text-sm leading-relaxed text-cream-muted max-w-md sm:text-lg">
+                        {site.expertise[activeStep].description}
+                      </p>
 
-                    <p className="font-sans text-sm leading-relaxed text-cream-muted max-w-md sm:text-lg">
-                      {site.expertise[activeStep].description}
-                    </p>
-
-                    <div className="flex items-center gap-2 mt-6 sm:mt-10">
-                      {site.expertise.map((_, i) => (
-                        <div key={i} className="rounded-full transition-all duration-500"
-                          style={{
-                            width:      i === activeStep ? "28px" : "6px",
-                            height:     "6px",
-                            background: i === activeStep ? "#E82400" : "rgba(26,17,14,0.15)",
-                          }} />
-                      ))}
-                    </div>
-                  </motion.div>
-                </AnimatePresence>
+                      <div className="flex items-center gap-2 mt-10">
+                        {site.expertise.map((_, i) => (
+                          <div
+                            key={i}
+                            className="rounded-full transition-all duration-500"
+                            style={{
+                              width:      i === activeStep ? "28px" : "6px",
+                              height:     "6px",
+                              background: i === activeStep ? "#E82400" : "rgba(26,17,14,0.15)",
+                            }}
+                          />
+                        ))}
+                      </div>
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
               </div>
-            </div>
 
+            </div>
           </div>
         </div>
       </div>
+
     </div>
   );
 }

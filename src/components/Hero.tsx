@@ -1,4 +1,5 @@
 import { site } from "@/lib/site";
+import { HeroAnimation } from "./HeroAnimation";
 import { HeroName } from "./HeroName";
 export function Hero() {
   return (
@@ -69,8 +70,8 @@ export function Hero() {
           {/* Parallax name */}
           <HeroName />
 
-          <div className="hero-tag text-center" style={{ marginTop: "14vw" }}>
-            <p className="font-tolken leading-relaxed text-cream uppercase tracking-[0.06em] max-w-2xl mx-auto" style={{ fontSize: "clamp(0.55rem,1vw,0.85rem)" }}>
+          <div className="hero-tag text-center" style={{ marginTop: "clamp(1.5rem, 14vw, 14vw)" }}>
+            <p className="font-tolken leading-relaxed text-cream uppercase tracking-[0.06em] max-w-2xl mx-auto" style={{ fontSize: "clamp(0.75rem, 1.5vw, 0.85rem)" }}>
               {site.positioning.replace(/\.$/, "")} — {site.hook}
             </p>
           </div>
@@ -88,6 +89,7 @@ export function Hero() {
         </div>
 
       </div>
+      <HeroAnimation />
     </section>
   );
 }

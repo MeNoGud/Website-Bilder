@@ -103,6 +103,13 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans">
+        {/* Skip link — visually hidden until focused, lets keyboard users jump past the fixed nav */}
+        <a
+          href="#top"
+          className="fixed left-4 top-4 z-[9999] -translate-y-20 rounded-full bg-gold px-5 py-2 font-sans text-[13px] font-medium text-void opacity-0 transition-all focus:translate-y-0 focus:opacity-100"
+        >
+          Skip to content
+        </a>
         <ScrollProgress />
         <Cursor />
         {children}

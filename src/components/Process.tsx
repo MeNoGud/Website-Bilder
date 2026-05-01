@@ -143,7 +143,7 @@ export function Process() {
           {cards.map((item, i) => (
             <div
               key={i}
-              className="group relative flex-shrink-0 w-[460px] lg:w-[580px] p-12 lg:p-16 border border-void-border bg-void-surface transition-colors duration-300 hover:bg-void-elevated"
+              className="group relative flex-shrink-0 w-[460px] lg:w-[580px] p-8 sm:p-12 lg:p-16 border border-void-border bg-void-surface transition-colors duration-300 hover:bg-void-elevated"
             >
               {/* Step badge */}
               <div className="mb-6 inline-flex h-[52px] w-[52px] lg:h-[60px] lg:w-[60px] items-center justify-center rounded-full border border-gold/25 bg-gold-faint">

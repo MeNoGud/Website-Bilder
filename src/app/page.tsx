@@ -7,6 +7,7 @@ import { Hero } from "@/components/Hero";
 import { LogoStrip } from "@/components/LogoStrip";
 import { Marquee } from "@/components/Marquee";
 import { Process } from "@/components/Process";
+import { ScrollReveal } from "@/components/ScrollReveal";
 import { Stats } from "@/components/Stats";
 import { Work } from "@/components/Work";
 
@@ -26,6 +27,7 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
+      <ScrollReveal />
     </div>
   );
 }

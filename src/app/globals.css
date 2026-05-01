@@ -99,10 +99,9 @@ body {
   50%       { box-shadow: 0 0 0 4px rgba(245, 162, 0, 0); }
 }
 
-.hero-meta   { animation: fadeIn  0.9s ease 0.05s both; }
-.hero-line-1 { animation: fadeUp  1.2s cubic-bezier(0.16,1,0.3,1) 0.08s both; }
-.hero-tag    { animation: fadeUp  0.9s cubic-bezier(0.16,1,0.3,1) 0.62s both; }
-.hero-cta    { animation: fadeUp  0.9s cubic-bezier(0.16,1,0.3,1) 0.74s both; }
+/* Initial states for GSAP-controlled hero elements — GSAP animates these to visible. */
+.hero-meta                          { opacity: 0; }
+.hero-line-1, .hero-tag, .hero-cta  { opacity: 0; transform: translateY(28px); }
 
 .ambient-blob  { animation: ambientPulse  9s ease-in-out infinite; }
 .ambient-blob-2{ animation: ambientPulse 11s ease-in-out 2s infinite; }
@@ -133,26 +132,15 @@ body {
 }
 
 /* ── Scroll-driven reveals ──────────────────────── */
+/* Initial states for GSAP ScrollTrigger — ScrollReveal.tsx animates these to visible. */
 .reveal {
   opacity: 0;
   transform: translateY(22px);
 }
 
-@supports (animation-timeline: view()) {
-  .reveal {
-    animation: fadeUp linear both;
-    animation-timeline: view();
-    animation-range: entry 0% entry 28%;
-  }
-}
-
-@supports not (animation-timeline: view()) {
-  .reveal { opacity: 1; transform: none; }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .reveal,
-  .hero-meta, .hero-line-1, .hero-tag, .hero-cta,
+  /* .reveal and .reveal-clip are handled by gsap.matchMedia() in ScrollReveal.tsx */
+  /* hero-meta / hero-line-1 / hero-tag / hero-cta are handled by HeroAnimation.tsx */
   .ambient-blob, .ambient-blob-2 {
     animation: none !important;
     opacity: 1 !important;
@@ -161,29 +149,9 @@ body {
 }
 
 /* ── Text wipe reveal ───────────────────────────── */
-@keyframes wipeIn {
-  from { clip-path: inset(0 100% 0 0); }
-  to   { clip-path: inset(0 0%   0 0); }
-}
-
+/* Initial state for GSAP ScrollTrigger — ScrollReveal.tsx animates clip-path to inset(0 0% 0 0). */
 .reveal-clip {
   clip-path: inset(0 100% 0 0);
-}
-
-@supports (animation-timeline: view()) {
-  .reveal-clip {
-    animation: wipeIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
-    animation-timeline: view();
-    animation-range: entry 0% entry 30%;
-  }
-}
-
-@supports not (animation-timeline: view()) {
-  .reveal-clip { clip-path: none; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .reveal-clip { animation: none !important; clip-path: none !important; }
 }
 
 /* ── Section eyebrow label ──────────────────────── */
