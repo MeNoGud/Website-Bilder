@@ -48,9 +48,10 @@ export function ScrollReveal() {
     });
 
     mm.add("(prefers-reduced-motion: reduce)", () => {
-      // Instant show — same pattern as HeroAnimation.tsx
-      gsap.set(".reveal",      { opacity: 1, y: 0,                    clearProps: "all" });
-      gsap.set(".reveal-clip", { clipPath: "inset(0 0% 0 0)",          clearProps: "clipPath" });
+      // Instant show — no clearProps so the inline opacity: 1 is not immediately removed,
+      // which would otherwise let the CSS opacity: 0 win and leave elements invisible.
+      gsap.set(".reveal",      { opacity: 1, y: 0 });
+      gsap.set(".reveal-clip", { clipPath: "inset(0 0% 0 0)" });
     });
 
     return () => mm.revert();

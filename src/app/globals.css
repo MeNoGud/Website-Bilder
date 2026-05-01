@@ -99,9 +99,9 @@ body {
   50%       { box-shadow: 0 0 0 4px rgba(245, 162, 0, 0); }
 }
 
-/* Initial states for GSAP-controlled hero elements — GSAP animates these to visible. */
-.hero-meta                          { opacity: 0; }
-.hero-line-1, .hero-tag, .hero-cta  { opacity: 0; transform: translateY(28px); }
+/* Initial opacity for GSAP-controlled hero elements — prevents FOIC before HeroAnimation.tsx mounts.
+   fromTo() in HeroAnimation.tsx sets the start transform explicitly, so no CSS transform needed here. */
+.hero-meta, .hero-line-1, .hero-tag, .hero-cta { opacity: 0; }
 
 .ambient-blob  { animation: ambientPulse  9s ease-in-out infinite; }
 .ambient-blob-2{ animation: ambientPulse 11s ease-in-out 2s infinite; }
