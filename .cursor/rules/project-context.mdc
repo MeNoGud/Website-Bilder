@@ -1,0 +1,41 @@
+---
+description: Core project context — Alberto's web design lead generation website
+alwaysApply: true
+---
+
+# Project: Alberto Marchiorello — Web Design Business Website
+
+This is a **lead generation and client acquisition website** for Alberto's web design & development freelance business. The goal is to attract customers and sell custom website builds. It is NOT a personal portfolio — it is a business/service website.
+
+## Purpose
+- Generate leads from businesses, brands, and founders who need a website
+- Showcase services, process, and past work to convert visitors into paying clients
+- Offer a consultation/intake flow powered by AI
+
+## Key facts
+- **Owner/Builder:** Alberto Marchiorello (goes by "Albi")
+- **Live URL:** https://marchio.design
+- **Vercel project:** `website-builder` under `menoguds-projects`
+- **GitHub repo:** https://github.com/MeNoGud/Website-Bilder
+- **Stack:** Next.js 15, React 19, TypeScript, Tailwind CSS v3, Framer Motion
+
+## Project structure
+- All site content (name, bio, services, process steps, etc.) lives in `src/lib/site.ts` — edit there first
+- Components are in `src/components/`
+- Pages are in `src/app/`
+- Design tokens and global styles are in `tailwind.config.ts` and `src/app/globals.css`
+
+## Sections (in page order)
+1. Hero
+2. Marquee strip
+3. Stats
+4. Expertise (Services) — sticky scroll, `id="services"`
+5. Process (How it works) — auto-scrolling carousel, `id="process"`
+6. Work (Portfolio) — project cards grid, `id="work"`
+7. LogoStrip
+8. CallToAction
+9. Contact
+
+## Deploy
+- Push to `main` on GitHub → Vercel auto-deploys to production
+- Manual deploy: `vercel --prod` from the project root

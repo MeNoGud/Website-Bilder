@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "AskeyPixel";
+  src: url("/fonts/AskeyPixel-Regular.otf") format("opentype"),
+       url("/fonts/AskeyPixel-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   color-scheme: light;
 }
