@@ -110,7 +110,7 @@ function LaunchClock({ stepIndex, small = false }: { stepIndex: number; small?: 
         {/* Center number */}
         <text x={CX} y={isLaunch ? CY + 8 : CY - 6} textAnchor="middle" dominantBaseline="middle"
           fontSize={isLaunch ? "36" : "64"} fontWeight="300" fill="#E82400"
-          style={{ fontFamily: "var(--font-cormorant, Georgia, serif)", transition: "all 0.5s ease" }}>
+          style={{ fontFamily: "var(--font-display)", transition: "all 0.5s ease" }}>
           {stage.label}
         </text>
 
@@ -177,7 +177,7 @@ export function Expertise() {
             {/* Header */}
             <div className="flex items-end justify-between mb-6 sm:mb-10">
               <div>
-                <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-gold">— Services</p>
+                <p className="section-label text-gold">— Services</p>
                 <h2 className="reveal-clip mt-3 font-display text-2xl font-light text-cream sm:text-5xl">
                   Everything you need to launch
                 </h2>

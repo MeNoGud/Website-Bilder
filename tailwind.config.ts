@@ -14,6 +14,14 @@ const config: Config = {
         sans:    ["var(--font-inter)", "system-ui", "sans-serif"],
         mono:    ["var(--font-geist-mono)", "ui-monospace", "monospace"],
       },
+      fontSize: {
+        // Display scale — replaces ad-hoc clamp() inline styles site-wide
+        "display-xl": ["clamp(3.5rem, 8.5vw, 8.5rem)", { lineHeight: "0.9" }],
+        "display-lg": ["clamp(2.5rem, 5vw, 5.5rem)",   { lineHeight: "1.0" }],
+        "display-md": ["clamp(1.8rem, 3.5vw, 3rem)",   { lineHeight: "1.1" }],
+        "display-sm": ["clamp(1.5rem, 2.5vw, 2.5rem)", { lineHeight: "1.2" }],
+        "body-lg":    ["1.125rem",                      { lineHeight: "1.75" }],
+      },
       colors: {
         void: {
           DEFAULT: "#F4EEE4",

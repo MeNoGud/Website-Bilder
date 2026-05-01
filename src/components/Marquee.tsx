@@ -1,18 +1,7 @@
+import { site } from "@/lib/site";
+
 const SYMBOL_A = "✦";
 const SYMBOL_B = "◆";
-
-// Row 2 — full-phrase style, display font (right, medium)
-const rowTwoItems = [
-  "Web Design",
-  "Strategy & Discovery",
-  "Development",
-  "Brand Identity",
-  "Launch & Growth",
-  "Premium Websites",
-  "Digital Presence",
-  "Conversion",
-];
-
 
 function MarqueeRow({
   items,
@@ -69,7 +58,7 @@ function MarqueeRow({
 export function Marquee() {
   return (
     <div className="border-y border-void-border bg-void-surface">
-      <MarqueeRow items={rowTwoItems} direction="right" speed="normal" size="small" symbol={SYMBOL_B} />
+      <MarqueeRow items={site.marquee} direction="right" speed="normal" size="small" symbol={SYMBOL_B} />
     </div>
   );
 }

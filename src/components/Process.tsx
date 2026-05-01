@@ -91,7 +91,7 @@ export function Process() {
       <div className="mx-auto max-w-6xl px-6 sm:px-10 mb-14">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <p className="reveal font-mono text-[10px] uppercase tracking-[0.3em] text-gold">
+            <p className="reveal section-label text-gold">
               — How it works
             </p>
             <h2 className="reveal-clip mt-4 font-display text-3xl font-light text-cream sm:text-5xl">

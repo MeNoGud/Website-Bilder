@@ -127,18 +127,18 @@ export function Stats() {
 
           {/* Label + heading */}
           <div>
-            <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-white/60 mb-4">
+            <p className="section-label text-white/60 mb-4">
               — The price promise
             </p>
             <p
-              className="font-display font-light text-white/90 leading-[1.1]"
+              className="font-display font-light text-white/80 leading-[1.1]"
               style={{ fontSize: "clamp(1.35rem, 5.5vw, 2rem)" }}
             >
               I will beat any competitor&apos;s quote —
             </p>
             <p
-              className="font-display font-light leading-[0.95]"
-              style={{ fontSize: "clamp(2.6rem, 13vw, 5rem)", color: "#E82400" }}
+              className="font-display font-semibold text-display-xl leading-[0.95]"
+              style={{ color: "#E82400" }}
             >
               guaranteed.
             </p>
@@ -172,18 +172,17 @@ export function Stats() {
           {/* Top: label + split heading + badges */}
           <div className="flex items-end justify-between gap-16">
             <div className="flex-1">
-              <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-white/60 mb-5">
+              <p className="section-label text-white/60 mb-5">
                 — The price promise
               </p>
               <p
-                className="font-display font-light text-white/90 leading-[1.1]"
-                style={{ fontSize: "clamp(1.5rem, 2.5vw, 2.5rem)" }}
+                className="font-display font-light text-white/80 text-display-sm leading-[1.1]"
               >
                 I will beat any competitor&apos;s quote —
               </p>
               <p
-                className="font-display font-light leading-[0.9]"
-                style={{ fontSize: "clamp(3.5rem, 8vw, 9rem)", color: "#E82400" }}
+                className="font-display font-semibold text-display-xl leading-[0.9]"
+                style={{ color: "#E82400" }}
               >
                 guaranteed.
               </p>

@@ -101,13 +101,8 @@ body {
 
 .hero-meta   { animation: fadeIn  0.9s ease 0.05s both; }
 .hero-line-1 { animation: fadeUp  1.2s cubic-bezier(0.16,1,0.3,1) 0.08s both; }
-.hero-line-2 { animation: fadeUp  1.2s cubic-bezier(0.16,1,0.3,1) 0.22s both; }
-.hero-rule   { animation: fadeIn  0.8s ease 0.48s both; }
-.hero-role   { animation: fadeUp  0.9s cubic-bezier(0.16,1,0.3,1) 0.50s both; }
 .hero-tag    { animation: fadeUp  0.9s cubic-bezier(0.16,1,0.3,1) 0.62s both; }
 .hero-cta    { animation: fadeUp  0.9s cubic-bezier(0.16,1,0.3,1) 0.74s both; }
-.hero-side   { animation: fadeIn  1.2s ease 0.6s  both; }
-.hero-scroll { animation: fadeIn  1.0s ease 1.1s  both; }
 
 .ambient-blob  { animation: ambientPulse  9s ease-in-out infinite; }
 .ambient-blob-2{ animation: ambientPulse 11s ease-in-out 2s infinite; }
@@ -115,17 +110,8 @@ body {
 .status-dot { animation: greenPulse 2s ease-in-out infinite; }
 
 /* ── Symbol animations ──────────────────────────── */
-@keyframes spin-reverse {
-  from { transform: rotate(360deg); }
-  to   { transform: rotate(0deg); }
-}
-
-@keyframes float {
-  from { transform: translateY(0px); }
-  to   { transform: translateY(-12px); }
-}
-
-/* Force alternate direction so there is no abrupt loop reset */
+/* float and spin-reverse keyframes are owned by Tailwind (tailwind.config.ts).
+   This override forces the float animation properties for decorative elements. */
 .animate-float {
   animation-duration: 3s !important;
   animation-timing-function: ease-in-out !important;
@@ -133,17 +119,12 @@ body {
   animation-direction: alternate !important;
 }
 
-/* ── Star wander – 5-turn smooth rounded pentagon path ── */
-/* Path is C1-continuous (Catmull-Rom control points through 5 pentagon   */
-/* vertices). offset-anchor: 50% 50% makes the star's CENTER trace the   */
-/* path, spanning from roughly -375px to +370px around the section center */
+/* ── Star wander – smooth rounded pentagon path ── */
 @keyframes wander {
   to { offset-distance: 100%; }
 }
 
 .star-wander {
-  /* Same smooth 5-turn pentagon, scaled to ±200 px so the star stays    */
-  /* fully inside the section on all common screen sizes.                */
   offset-path: path('M 80 -200 C 204 -206 300 -156 340 -60 C 374 36 342 126 236 188 C 132 250 20 244 -88 180 C -188 118 -220 28 -172 -68 C -134 -166 -44 -194 80 -200 Z');
   offset-distance: 0%;
   offset-rotate: 0deg;
@@ -171,9 +152,7 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .reveal,
-  .hero-meta, .hero-line-1, .hero-line-2,
-  .hero-rule, .hero-role, .hero-tag, .hero-cta,
-  .hero-side, .hero-scroll,
+  .hero-meta, .hero-line-1, .hero-tag, .hero-cta,
   .ambient-blob, .ambient-blob-2 {
     animation: none !important;
     opacity: 1 !important;
@@ -205,6 +184,13 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .reveal-clip { animation: none !important; clip-path: none !important; }
+}
+
+/* ── Section eyebrow label ──────────────────────── */
+@layer components {
+  .section-label {
+    @apply font-mono text-[10px] uppercase tracking-[0.3em];
+  }
 }
 
 /* ── Thin divider ───────────────────────────────── */
@@ -250,18 +236,7 @@ select.form-input {
   padding-right: 24px;
 }
 
-/* ── Service row hover line ──────────────────────── */
-@keyframes lineExpand {
-  from { transform: scaleX(0); transform-origin: left; }
-  to   { transform: scaleX(1); transform-origin: left; }
-}
-
 /* ── Logo strip – scrolling SVG logo tile ─────────── */
-/* Two SVG layers offset by half a tile produce the brick stagger.
-   JS in LogoStrip.tsx moves background-position on scroll to create
-   the parallax cut-out effect without background-attachment:fixed,
-   which rasterises at 1× on HiDPI/mobile causing blurriness.
-   SVG source = infinitely sharp at any tile size. */
 .logo-strip {
   background-image:
     url("/logo.svg"),

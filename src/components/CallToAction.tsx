@@ -52,13 +52,13 @@ export function CallToAction() {
       </span>
 
       <div className="relative mx-auto max-w-5xl text-center">
-        <p className="reveal font-mono text-[10px] uppercase tracking-[0.32em] text-gold mb-10">
+        <p className="reveal section-label text-gold mb-10">
           — Start a project
         </p>
 
         <h2
-          className="reveal-clip font-display font-light italic leading-[0.88]"
-          style={{ fontSize: "clamp(3.2rem, 9vw, 8.5rem)", color: "#F4EEE4" }}
+          className="reveal-clip font-display font-light italic text-display-xl leading-[0.88]"
+          style={{ color: "#F4EEE4" }}
         >
           Ready to build
           <br />

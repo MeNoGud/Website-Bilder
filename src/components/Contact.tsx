@@ -1,6 +1,7 @@
 import { site } from "@/lib/site";
 
-const email = "marchiorelloalberto20@gmail.com";
+const emailHref = site.social.find((s) => s.label === "Email")?.href ?? "";
+const email = emailHref.replace("mailto:", "");
 const linkedin = site.social.find((s) => s.label === "LinkedIn")?.href ?? "";
 
 export function Contact() {
@@ -18,7 +19,7 @@ export function Contact() {
               Email
             </span>
             <a
-              href={`mailto:${email}`}
+              href={emailHref}
               className="group mt-4 block font-sans text-sm text-cream transition-colors hover:text-gold break-all"
             >
               <span className="relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-gold after:transition-all after:duration-500 group-hover:after:w-full">
