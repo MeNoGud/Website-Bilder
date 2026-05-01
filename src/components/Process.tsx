@@ -83,9 +83,10 @@ export function Process() {
       id="process"
       className="scroll-mt-20 border-t border-void-border py-24 sm:py-32"
       style={{
-        backgroundImage: "url('/wave-bg.png')",
-        backgroundSize: "500px auto",
-        backgroundRepeat: "repeat",
+        backgroundImage: "url('/geo-bg.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
       }}
     >
       {/* Header */}
