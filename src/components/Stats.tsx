@@ -47,11 +47,11 @@ function StatCounter({ value, label }: { value: string; label: string }) {
     <div ref={ref} className="flex flex-col gap-1 text-center lg:text-left">
       <span
         className="font-display font-light text-cream tabular-nums leading-none"
-        style={{ fontSize: "clamp(2.2rem, 4vw, 3.2rem)" }}
+        style={{ fontSize: "clamp(2.2rem, 5vw, 4.5rem)" }}
       >
         {active ? count : 0}{suffix}
       </span>
-      <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-cream-dim">
+      <span className="font-mono text-[12px] uppercase tracking-[0.22em] text-cream-dim">
         {label}
       </span>
     </div>
@@ -66,12 +66,12 @@ export function Stats() {
 
           {/* Main promise */}
           <div className="flex-1">
-            <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-gold mb-5">
+            <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-gold mb-5">
               — The price promise
             </p>
             <h2
               className="reveal-clip font-display font-light text-cream leading-[1.0]"
-              style={{ fontSize: "clamp(2.4rem, 5.5vw, 4.5rem)" }}
+              style={{ fontSize: "clamp(2.4rem, 7vw, 6rem)" }}
             >
               I will beat any competitor&apos;s quote —{" "}
               <em className="not-italic text-gold">guaranteed.</em>
@@ -99,7 +99,7 @@ export function Stats() {
               ].map((point) => (
                 <span
                   key={point}
-                  className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.22em] text-cream-dim"
+                  className="flex items-center gap-3 font-mono text-[12px] uppercase tracking-[0.22em] text-cream-dim"
                 >
                   <span className="text-gold text-base leading-none" aria-hidden>✦</span>
                   {point}
