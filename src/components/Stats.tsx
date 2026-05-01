@@ -60,17 +60,17 @@ function StatCounter({ value, label }: { value: string; label: string }) {
 
 export function Stats() {
   return (
-    <div className="border-b border-t border-void-border bg-void-surface">
-      <div className="mx-auto max-w-6xl px-6 sm:px-10">
-        <div className="flex flex-col items-center justify-center gap-6 py-14 text-center sm:gap-8 sm:py-28 lg:flex-row lg:items-center lg:justify-between lg:text-left lg:gap-16">
+    <div className="border-b border-t border-void-border bg-void-surface flex flex-col lg:block min-h-screen lg:min-h-0">
+      <div className="mx-auto w-full max-w-6xl px-6 sm:px-10 flex-1 flex flex-col lg:block">
+        <div className="flex-1 flex flex-col justify-between py-14 text-center lg:flex-row lg:items-center lg:justify-between lg:py-28 lg:text-left lg:gap-16">
 
           {/* Main promise */}
-          <div className="flex-1">
-            <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-gold mb-5">
+          <div className="flex-shrink-0 lg:flex-1">
+            <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-gold mb-4">
               — The price promise
             </p>
             <h2
-              className="reveal-clip font-display font-light text-cream leading-[1.0]"
+              className="reveal-clip font-display font-light text-cream leading-[1.05]"
               style={{ fontSize: "clamp(1.75rem, 7vw, 6rem)" }}
             >
               I will beat any competitor&apos;s quote —{" "}
@@ -82,7 +82,7 @@ export function Stats() {
           <div className="hidden lg:block w-px self-stretch bg-void-border" aria-hidden />
 
           {/* Right column */}
-          <div className="flex-1 max-w-md flex flex-col gap-6 sm:gap-10">
+          <div className="flex-shrink-0 lg:flex-1 max-w-md mx-auto lg:mx-0 flex flex-col gap-6 sm:gap-10">
             {/* Counters */}
             <div className="grid grid-cols-2 gap-4 sm:gap-6">
               {site.stats.map((s) => (
