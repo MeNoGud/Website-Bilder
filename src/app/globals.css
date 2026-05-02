@@ -66,11 +66,6 @@ body {
   border-color: rgba(232, 36, 0, 0.85);
 }
 
-/* ── Dark-hero noise override — screen blend shows grain on black ── */
-#top.noise::after {
-  mix-blend-mode: screen;
-}
-
 /* ── Noise overlay — multiply works on light backgrounds ── */
 .noise::after {
   content: "";
@@ -135,10 +130,6 @@ body {
   offset-anchor: 50% 50%;
   animation: wander 75s linear infinite;
 }
-
-/* ── Work section reassemble — initial state (HeroScrollExit.tsx animates these) ── */
-/* Mobile + reduced motion: HeroScrollExit immediately sets opacity:1 via gsap.set() */
-.work-reassemble { opacity: 0; }
 
 /* ── Scroll-driven reveals ──────────────────────── */
 /* Initial states for GSAP ScrollTrigger — ScrollReveal.tsx animates these to visible. */

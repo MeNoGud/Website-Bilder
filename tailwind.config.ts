@@ -52,8 +52,6 @@ const config: Config = {
       backgroundImage: {
         "dot-grid":
           "radial-gradient(circle at 1px 1px, rgba(26,17,14,0.06) 1px, transparent 0)",
-        "dot-grid-light":
-          "radial-gradient(circle at 1px 1px, rgba(244,238,228,0.07) 1px, transparent 0)",
       },
       animation: {
         marquee:         "marquee 38s linear infinite",
