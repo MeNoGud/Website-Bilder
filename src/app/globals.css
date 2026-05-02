@@ -99,9 +99,18 @@ body {
   50%       { box-shadow: 0 0 0 4px rgba(245, 162, 0, 0); }
 }
 
-/* Initial opacity for GSAP-controlled hero elements — prevents FOIC before HeroAnimation.tsx mounts.
-   fromTo() in HeroAnimation.tsx sets the start transform explicitly, so no CSS transform needed here. */
-.hero-meta, .hero-line-1, .hero-tag, .hero-cta { opacity: 0; }
+/* ── Hero initial states — prevents FOIC before HeroAnimation.tsx mounts ──────
+   GSAP fromTo() provides explicit start values; CSS only needs to hide elements.
+   .hero-h1-line hidden by overflow:hidden parent + translateY, no opacity needed.
+   .hero-visual-img transform cleared by GSAP clearProps after animation so CSS hover works. */
+.hero-eyebrow,
+.hero-paragraph,
+.hero-cta-item,
+.hero-trust      { opacity: 0; }
+
+.hero-h1-line    { transform: translateY(110%); }
+.hero-visual-wrap { clip-path: inset(0 100% 0 0); }
+.hero-visual-img  { transform: scale(1.06); }
 
 .ambient-blob  { animation: ambientPulse  9s ease-in-out infinite; }
 .ambient-blob-2{ animation: ambientPulse 11s ease-in-out 2s infinite; }
@@ -140,7 +149,7 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   /* .reveal and .reveal-clip are handled by gsap.matchMedia() in ScrollReveal.tsx */
-  /* hero-meta / hero-line-1 / hero-tag / hero-cta are handled by HeroAnimation.tsx */
+  /* All .hero-* elements are handled by gsap.matchMedia() in HeroAnimation.tsx */
   .ambient-blob, .ambient-blob-2 {
     animation: none !important;
     opacity: 1 !important;
