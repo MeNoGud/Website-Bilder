@@ -33,7 +33,7 @@ export function HeroName() {
         style={{
           width: "min(42vw, 38rem)",
           height: "auto",
-          opacity: 0.07,
+          opacity: 1,
           filter: "invert(1)",
           mixBlendMode: "screen",
         }}

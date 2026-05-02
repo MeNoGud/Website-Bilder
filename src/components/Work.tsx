@@ -9,10 +9,10 @@ export function Work() {
       className="scroll-mt-20 border-t border-void-border px-6 py-24 sm:px-10 sm:py-32"
     >
       <div className="mx-auto max-w-6xl">
-        <p className="reveal section-label text-gold">
+        <p className="work-reassemble section-label text-gold">
           — Portfolio
         </p>
-        <h2 className="reveal mt-4 font-display text-3xl font-light text-cream sm:text-5xl">
+        <h2 className="work-reassemble mt-4 font-display text-3xl font-light text-cream sm:text-5xl">
           Selected work
         </h2>
 
@@ -27,7 +27,7 @@ export function Work() {
                 href={project.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="reveal group relative overflow-hidden rounded-2xl"
+                className="work-reassemble group relative overflow-hidden rounded-2xl"
                 style={{ minHeight: "clamp(320px, 45vw, 520px)" }}
                 aria-label={`View ${project.name}`}
               >

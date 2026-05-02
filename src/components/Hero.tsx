@@ -7,7 +7,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="noise relative flex flex-col overflow-hidden"
+      className="hero-section noise relative flex flex-col overflow-hidden"
       style={{
         background:
           "radial-gradient(ellipse at 20% 50%, rgba(232,36,0,0.13) 0%, transparent 50%), radial-gradient(ellipse at 85% 15%, rgba(180,80,0,0.08) 0%, transparent 50%), #080808",
