@@ -1,99 +1,99 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 
-// Trigger:  scroll from hero section
-// Purpose:  two-act transition —
-//   Act 1: hero elements liquefy (heavy blur + drift left + scale collapse)
-//           pinned so the next section reveals underneath as the liquid clears
-//   Act 2: Work section elements reform from the left (decreasing blur, sliding in)
-//           giving the impression the hero liquid reassembled into new content
-// Tools:    gsap.timeline(), gsap.fromTo(), gsap.matchMedia(), ScrollTrigger
-// Mobile:   pin + scrub disabled; work-reassemble elements shown instantly
+// Hero exit — requestAnimationFrame scroll listener (same pattern as HeroName parallax)
+// This is the most reliable approach in Next.js — no GSAP pin, no fixed-positioning edge cases.
+//
+// Act 1: hero elements liquefy and drift left as user scrolls away from the hero.
+//        Each element has different x / blur amounts for parallax depth.
+//        easeInQuad acceleration makes it feel like matter pulling away slowly then rushing off.
+//
+// Act 2: Work section elements reform from the left via GSAP ScrollTrigger (no pin).
+//        The liquid from Act 1 appears to have reassembled into the portfolio content.
 export function HeroScrollExit() {
+  const rafRef = useRef(0);
+
   useEffect(() => {
     const mm = gsap.matchMedia();
 
     // ── Desktop + full motion ─────────────────────────────────────────
     mm.add("(min-width: 768px) and (prefers-reduced-motion: no-preference)", () => {
-      // Act 1 — hero liquefies and exits to the left
-      // Trigger: .hero-section (unique class — avoids the duplicate #top on page.tsx)
-      // Each element has a different x / blur amount for parallax depth
-      const heroTl = gsap.timeline({
-        scrollTrigger: {
-          id: "hero-exit",
-          trigger: ".hero-section",
-          start: "top top",
-          end: "+=90%",
-          pin: true,
-          scrub: 2,
-          anticipatePin: 1,
-        },
-      });
+      const heroEl = document.querySelector<HTMLElement>(".hero-section");
+      if (!heroEl) return;
 
-      heroTl
-        // Status bar — small, first to dissolve
-        .fromTo(".hero-meta",
-          { x: 0, y: 0, scale: 1, opacity: 1, filter: "blur(0px)" },
-          { x: -80,  y: -14, scale: 0.88, opacity: 0, filter: "blur(28px)", ease: "power1.in", duration: 0.8 },
-          0
-        )
-        // Decorative symbols — lightest, fastest
-        .fromTo(".hero-deco",
-          { x: 0, y: 0, scale: 1, opacity: 1, filter: "blur(0px)" },
-          { x: -55,  y: -22, scale: 0.70, opacity: 0, filter: "blur(18px)", ease: "power1.in", duration: 0.65 },
-          0.02
-        )
-        // Tagline copy
-        .fromTo(".hero-tag",
-          { x: 0, y: 0, scale: 1, opacity: 1, filter: "blur(0px)" },
-          { x: -70,  y: -18, scale: 0.84, opacity: 0, filter: "blur(32px)", ease: "power1.in", duration: 0.85 },
-          0.06
-        )
-        // CTA button
-        .fromTo(".hero-cta",
-          { x: 0, y: 0, scale: 1, opacity: 1, filter: "blur(0px)" },
-          { x: -60,  y: -12, scale: 0.80, opacity: 0, filter: "blur(24px)", ease: "power1.in", duration: 0.75 },
-          0.09
-        )
-        // MARCHIO headline — heaviest, most blur, last to leave (anchor of the scene)
-        .fromTo(".hero-line-1",
-          { x: 0, y: 0, scale: 1, opacity: 1, filter: "blur(0px)" },
-          { x: -110, y: -28, scale: 0.90, opacity: 0, filter: "blur(52px)", ease: "power1.in", duration: 1.0 },
-          0.14
-        );
+      // Animation completes over 85% of the hero's natural height
+      const scrollDist = (heroEl.offsetHeight || window.innerHeight) * 0.85;
 
-      // Act 2 — Work section reforms from the left (liquid reassembly)
+      // Each entry: selector, target x (px), y (px), blur (px), scale, stagger delay (0–1)
+      const elements = [
+        { sel: ".hero-meta",   x: -80,  dy: -14, blur: 28, scale: 0.88, d: 0.00 },
+        { sel: ".hero-deco",   x: -55,  dy: -22, blur: 18, scale: 0.70, d: 0.03 },
+        { sel: ".hero-tag",    x: -70,  dy: -18, blur: 32, scale: 0.84, d: 0.07 },
+        { sel: ".hero-cta",    x: -60,  dy: -12, blur: 24, scale: 0.80, d: 0.10 },
+        // MARCHIO — heaviest blur, last to dissolve, most dramatic
+        { sel: ".hero-line-1", x: -110, dy: -28, blur: 52, scale: 0.90, d: 0.16 },
+      ];
+
+      const update = () => {
+        const y = window.scrollY;
+        elements.forEach(({ sel, x, dy, blur, scale, d }) => {
+          // Normalise progress per-element with stagger offset
+          const raw = Math.min(Math.max((y / scrollDist - d) / (1 - d), 0), 1);
+          const e   = raw * raw; // easeInQuad — slow start, then rushes off
+          document.querySelectorAll<HTMLElement>(sel).forEach((el) => {
+            el.style.transform = `translateX(${x * e}px) translateY(${dy * e}px) scale(${1 + (scale - 1) * e})`;
+            el.style.opacity   = `${Math.max(1 - e * 1.4, 0)}`;
+            el.style.filter    = `blur(${blur * e}px)`;
+          });
+        });
+      };
+
+      const onScroll = () => {
+        cancelAnimationFrame(rafRef.current);
+        rafRef.current = requestAnimationFrame(update);
+      };
+
+      window.addEventListener("scroll", onScroll, { passive: true });
+      update(); // set correct state if page loads mid-scroll
+
+      // Act 2 — Work section reforms from the left (GSAP ScrollTrigger, no pin)
       const workTl = gsap.timeline({
         scrollTrigger: {
-          id: "work-reassemble",
+          id: "work-in",
           trigger: "#work",
-          start: "top 82%",
-          end: "top 18%",
-          scrub: 1.5,
+          start: "top 85%",
+          end: "top 28%",
+          scrub: 1.2,
         },
       });
-
       workTl.fromTo(
         ".work-reassemble",
         { x: -65, opacity: 0, filter: "blur(20px)" },
-        { x: 0, opacity: 1, filter: "blur(0px)", ease: "power3.out", stagger: 0.14, duration: 1 }
+        { x: 0, opacity: 1, filter: "blur(0px)", ease: "power3.out", stagger: 0.14 }
       );
 
       return () => {
-        heroTl.scrollTrigger?.kill();
-        heroTl.kill();
-        workTl.scrollTrigger?.kill();
+        window.removeEventListener("scroll", onScroll);
+        cancelAnimationFrame(rafRef.current);
+        // Reset inline styles so nothing is stuck if component re-mounts
+        elements.forEach(({ sel }) =>
+          document.querySelectorAll<HTMLElement>(sel).forEach((el) => {
+            el.style.transform = "";
+            el.style.opacity   = "";
+            el.style.filter    = "";
+          })
+        );
+        ScrollTrigger.getById("work-in")?.kill();
         workTl.kill();
       };
     });
 
-    // ── Mobile + reduced motion — show work-reassemble elements immediately ─
+    // ── Mobile + reduced motion — show work section immediately ──────
     mm.add("(max-width: 767px)", () => {
       gsap.set(".work-reassemble", { opacity: 1, x: 0, filter: "blur(0px)" });
     });
-
     mm.add("(prefers-reduced-motion: reduce)", () => {
       gsap.set(".work-reassemble", { opacity: 1, x: 0, filter: "blur(0px)" });
     });
