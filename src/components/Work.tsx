@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { site } from "@/lib/site";
 
 const IN_PROGRESS_COUNT = Math.max(0, 3 - site.projects.length);
@@ -32,23 +31,17 @@ export function Work() {
                 style={{ minHeight: "clamp(320px, 45vw, 520px)" }}
                 aria-label={`View ${project.name}`}
               >
-                {/* Cover image */}
-                <Image
-                  src="/jashita-cover.jpg"
-                  alt={project.name}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1152px"
-                  className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                  priority
-                />
-
-                {/* Gradient overlay — legible bottom text on any image */}
+                {/* Dark background with subtle texture */}
                 <div
                   className="absolute inset-0"
                   style={{
                     background:
-                      "linear-gradient(to top, rgba(26,17,14,0.92) 0%, rgba(26,17,14,0.45) 45%, rgba(26,17,14,0.12) 100%)",
+                      "radial-gradient(ellipse at 70% 30%, rgba(232,36,0,0.09) 0%, transparent 60%), radial-gradient(ellipse at 20% 80%, rgba(100,60,40,0.08) 0%, transparent 55%), #1A110E",
                   }}
+                  aria-hidden
+                />
+                <div
+                  className="pointer-events-none absolute inset-0 bg-dot-grid bg-[length:28px_28px] opacity-25"
                   aria-hidden
                 />
 
