@@ -66,6 +66,11 @@ body {
   border-color: rgba(232, 36, 0, 0.85);
 }
 
+/* ── Dark-hero noise override — screen blend shows grain on black ── */
+#top.noise::after {
+  mix-blend-mode: screen;
+}
+
 /* ── Noise overlay — multiply works on light backgrounds ── */
 .noise::after {
   content: "";

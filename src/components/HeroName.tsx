@@ -33,13 +33,14 @@ export function HeroName() {
         style={{
           width: "min(42vw, 38rem)",
           height: "auto",
-          opacity: 0.5,
-          mixBlendMode: "multiply",
+          opacity: 0.07,
+          filter: "invert(1)",
+          mixBlendMode: "screen",
         }}
       />
 
       <h1
-        className="font-tolken w-full text-center text-cream uppercase leading-none tracking-[0.06em]"
+        className="font-tolken w-full text-center text-[#F4EEE4] uppercase leading-none tracking-[0.06em]"
         style={{ fontSize: "clamp(2.5rem, 11vw, 11rem)" }}
       >
         <span className="hero-line-1 block">Marchio</span>
