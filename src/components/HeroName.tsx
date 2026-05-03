@@ -11,10 +11,8 @@ export function HeroName() {
 
     const onScroll = () => {
       const y = window.scrollY;
-      const translateY = Math.min(y * 0.08, 55);
-      const opacity = Math.max(1 - (y / 400) * 0.4, 0.6);
-      el.style.transform = `translateY(-${translateY}px)`;
-      el.style.opacity = String(opacity);
+      // Gentle upward drift only — logo stays at full opacity (words fade, logo follows)
+      el.style.transform = `translateY(-${Math.min(y * 0.08, 55)}px)`;
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });

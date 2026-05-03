@@ -1,11 +1,12 @@
 import { site } from "@/lib/site";
 import { HeroAnimation } from "./HeroAnimation";
+import { HeroEffect } from "./HeroEffect";
 import { HeroName } from "./HeroName";
 export function Hero() {
   return (
     <section
       id="top"
-      className="noise relative flex flex-col overflow-hidden"
+      className="noise relative flex min-h-screen flex-col overflow-hidden"
       style={{ background: "#080808" }}
     >
 
@@ -56,20 +57,11 @@ export function Hero() {
             </p>
           </div>
 
-          {/* CTA */}
-          <div className="hero-cta mt-10 flex flex-wrap items-center justify-center gap-4">
-            <a
-              href="#work"
-              className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-transparent px-8 py-3.5 font-sans text-[13px] text-white/60 transition-all duration-300 hover:border-white/40 hover:text-white"
-            >
-              View work
-              <span aria-hidden className="text-gold">↓</span>
-            </a>
-          </div>
         </div>
 
       </div>
       <HeroAnimation />
+      <HeroEffect />
     </section>
   );
 }
