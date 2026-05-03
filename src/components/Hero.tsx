@@ -8,13 +8,13 @@ export function Hero() {
       className="noise relative flex flex-col overflow-hidden"
       style={{
         background:
-          "radial-gradient(ellipse at 20% 50%, rgba(232,36,0,0.08) 0%, transparent 50%), radial-gradient(ellipse at 85% 15%, rgba(245,162,0,0.06) 0%, transparent 50%), #F4EEE4",
+          "radial-gradient(ellipse at 20% 50%, rgba(232,36,0,0.14) 0%, transparent 50%), radial-gradient(ellipse at 85% 15%, rgba(180,80,0,0.08) 0%, transparent 50%), #080808",
       }}
     >
       {/* Ambient blobs — radial-gradient avoids expensive GPU blur filter */}
       <div
         className="ambient-blob pointer-events-none absolute left-[2%] top-[30%] h-[700px] w-[700px]"
-        style={{ background: "radial-gradient(circle, rgba(232,36,0,0.10) 0%, transparent 65%)" }}
+        style={{ background: "radial-gradient(circle, rgba(232,36,0,0.18) 0%, transparent 65%)" }}
         aria-hidden
       />
       <div
@@ -25,7 +25,7 @@ export function Hero() {
 
       {/* Dot grid */}
       <div
-        className="pointer-events-none absolute inset-0 bg-dot-grid bg-[length:32px_32px] opacity-60"
+        className="pointer-events-none absolute inset-0 bg-dot-grid-light bg-[length:32px_32px] opacity-100"
         aria-hidden
       />
 
@@ -61,7 +61,7 @@ export function Hero() {
                   Taking projects
                 </span>
               )}
-              <span className="hidden sm:block font-mono text-[10px] text-neutral-500">
+              <span className="hidden sm:block font-mono text-[10px] text-white/35">
                 {site.location}
               </span>
             </div>
@@ -71,7 +71,7 @@ export function Hero() {
           <HeroName />
 
           <div className="hero-tag text-center" style={{ marginTop: "clamp(1.5rem, 14vw, 14vw)" }}>
-            <p className="font-tolken leading-relaxed text-cream uppercase tracking-[0.06em] max-w-2xl mx-auto" style={{ fontSize: "clamp(0.75rem, 1.5vw, 0.85rem)" }}>
+            <p className="font-tolken leading-relaxed text-white/70 uppercase tracking-[0.06em] max-w-2xl mx-auto" style={{ fontSize: "clamp(0.75rem, 1.5vw, 0.85rem)" }}>
               {site.positioning.replace(/\.$/, "")} — {site.hook}
             </p>
           </div>
@@ -80,7 +80,7 @@ export function Hero() {
           <div className="hero-cta mt-10 flex flex-wrap items-center justify-center gap-4">
             <a
               href="#work"
-              className="inline-flex items-center gap-2 rounded-full border border-void-hover bg-transparent px-8 py-3.5 font-sans text-[13px] text-cream-muted transition-all duration-300 hover:bg-void-surface hover:text-cream"
+              className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-transparent px-8 py-3.5 font-sans text-[13px] text-white/60 transition-all duration-300 hover:border-white/40 hover:text-white"
             >
               View work
               <span aria-hidden className="text-gold">↓</span>
