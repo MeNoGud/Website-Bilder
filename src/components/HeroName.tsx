@@ -34,8 +34,7 @@ export function HeroName() {
           width: "min(42vw, 38rem)",
           height: "auto",
           opacity: 1,
-          filter: "brightness(0) invert(1)",
-          mixBlendMode: "screen",
+          mixBlendMode: "normal",
         }}
       />
 
