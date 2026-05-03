@@ -14,7 +14,7 @@ export function HeroAnimation() {
     const mm = gsap.matchMedia();
 
     mm.add("(prefers-reduced-motion: no-preference)", () => {
-      // Sequence: status bar → brand name → tagline → CTA
+// Sequence: status bar → brand name → tagline → decorative symbols
       // Each step overlaps the previous by ~0.3s, creating one continuous motion.
       // fromTo() gives GSAP explicit start AND end values — no CSS-reading ambiguity.
       const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
@@ -22,13 +22,18 @@ export function HeroAnimation() {
       tl.fromTo(".hero-meta",   { opacity: 0 },        { opacity: 1, duration: 0.6 })
         .fromTo(".hero-line-1", { opacity: 0, y: 30 },  { opacity: 1, y: 0, duration: 1.0 }, "-=0.4")
         .fromTo(".hero-tag",    { opacity: 0, y: 20 },  { opacity: 1, y: 0, duration: 0.7 }, "-=0.35")
-        .fromTo(".hero-cta",    { opacity: 0, y: 16 },  { opacity: 1, y: 0, duration: 0.6 }, "-=0.3");
+        .fromTo(
+          ".hero-float-decor",
+          { opacity: 0 },
+          { opacity: 1, duration: 0.55 },
+          "-=0.5",
+        );
     });
 
     mm.add("(prefers-reduced-motion: reduce)", () => {
       // Instant show — gsap.set with explicit opacity: 1 (no clearProps, which would
       // remove the inline style and let the CSS opacity: 0 win).
-      gsap.set([".hero-meta", ".hero-line-1", ".hero-tag", ".hero-cta"],
+      gsap.set([".hero-meta", ".hero-line-1", ".hero-tag", ".hero-float-decor"],
         { opacity: 1, y: 0 });
     });
 

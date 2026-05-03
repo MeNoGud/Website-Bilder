@@ -2,30 +2,42 @@
 
 import { useEffect, useRef } from "react";
 
-// Trigger:  scroll
-// Purpose:  as the user scrolls away from the hero, text elements (status bar,
-//           tagline) fade out — leaving only the watermark logo visible.
-//           The logo itself has no opacity fade (see HeroName.tsx).
+// Scroll-synced fade inside #hero. Watermark is not in SELECTORS.
+// Skips DOM changes at scrollY === 0 until the user has scrolled (so GSAP intro is not overridden).
 export function HeroEffect() {
   const rafRef = useRef(0);
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const root = document.getElementById("hero");
+    if (!root) return;
 
-    // Fade these to 0 over the first 45% of viewport height of scrolling
-    const TARGETS = [".hero-meta", ".hero-tag"];
-    const fadeDist = window.innerHeight * 0.45;
+    const SELECTORS = [".hero-meta", ".hero-tag", ".hero-line-1", ".hero-float-decor"];
+    const fadeOver = () => window.innerHeight * 0.42;
+    const hasLeftTop = { current: false };
 
     const update = () => {
-      const y    = window.scrollY;
-      const t    = Math.min(y / fadeDist, 1);
-      const opac = Math.max(1 - t * 2, 0); // fully gone at t = 0.5
+      const y = window.scrollY;
+      if (y > 0) hasLeftTop.current = true;
+      if (y <= 0 && !hasLeftTop.current) return;
 
-      TARGETS.forEach((sel) =>
-        document.querySelectorAll<HTMLElement>(sel).forEach((el) => {
+      const end = fadeOver();
+      if (y <= 0) {
+        SELECTORS.forEach((sel) => {
+          root.querySelectorAll<HTMLElement>(sel).forEach((el) => {
+            el.style.opacity = "1";
+          });
+        });
+        return;
+      }
+
+      const t = end <= 0 ? 1 : Math.min(y / end, 1);
+      const opac = Math.max(1 - t * 1.15, 0);
+
+      SELECTORS.forEach((sel) => {
+        root.querySelectorAll<HTMLElement>(sel).forEach((el) => {
           el.style.opacity = String(opac);
-        })
-      );
+        });
+      });
     };
 
     const onScroll = () => {
@@ -34,15 +46,22 @@ export function HeroEffect() {
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+
+    // If the browser restores a non-zero scroll (bfcache / reload), sync once after layout.
+    requestAnimationFrame(() => {
+      requestAnimationFrame(update);
+    });
 
     return () => {
       window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
       cancelAnimationFrame(rafRef.current);
-      TARGETS.forEach((sel) =>
-        document.querySelectorAll<HTMLElement>(sel).forEach((el) => {
+      SELECTORS.forEach((sel) => {
+        root.querySelectorAll<HTMLElement>(sel).forEach((el) => {
           el.style.opacity = "";
-        })
-      );
+        });
+      });
     };
   }, []);
 
