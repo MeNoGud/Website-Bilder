@@ -19,7 +19,15 @@ export function HeroFixedWatermark() {
       el.style.visibility = gone ? "hidden" : "visible";
     };
 
-    const onScroll = () => requestAnimationFrame(sync);
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        sync();
+        ticking = false;
+      });
+    };
     sync();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll, { passive: true });
@@ -37,7 +45,13 @@ export function HeroFixedWatermark() {
       aria-hidden
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/logo.svg" alt="" className="hero-watermark-led__logo block w-full" />
+      <img
+        src="/logo.svg"
+        alt=""
+        className="hero-watermark-led__logo block w-full"
+        decoding="async"
+        fetchPriority="low"
+      />
     </div>
   );
 }

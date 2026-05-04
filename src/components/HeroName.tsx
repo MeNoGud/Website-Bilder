@@ -18,7 +18,7 @@ export function HeroName() {
         {/* hero-line-1: scoped for timelines / layout; chars animated individually */}
         <span className="hero-line-1 inline-flex flex-wrap justify-center" aria-hidden>
           {letters.map((ch, i) => (
-            <span key={`${BRAND}-${i}`} className="hero-char inline-block will-change-transform">
+            <span key={`${BRAND}-${i}`} className="hero-char inline-block">
               {ch}
             </span>
           ))}

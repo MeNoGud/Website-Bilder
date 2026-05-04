@@ -45,10 +45,10 @@ export function Hero() {
                 className="font-tolken mx-auto max-w-2xl uppercase leading-relaxed tracking-[0.06em] text-white/70"
                 style={{ fontSize: "clamp(0.75rem, 1.5vw, 0.85rem)" }}
               >
-                <span className="hero-tag-line block will-change-transform">
+                <span className="hero-tag-line block">
                   {site.positioning.replace(/\.$/, "")}
                 </span>
-                <span className="hero-tag-line mt-[0.65em] block will-change-transform">{`— ${site.hook}`}</span>
+                <span className="hero-tag-line mt-[0.65em] block">{`— ${site.hook}`}</span>
               </p>
             </div>
 

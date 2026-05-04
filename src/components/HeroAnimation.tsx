@@ -48,6 +48,10 @@ export function HeroAnimation() {
             { opacity: 1, duration: 0.5 },
             "-=0.45",
           );
+
+        tl.eventCallback("onComplete", () => {
+          gsap.set(".hero-char, .hero-tag-line", { clearProps: "transform" });
+        });
       }, hero);
 
       return () => ctx.revert();

@@ -44,7 +44,7 @@ export function HeroScrollSlew({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <div ref={ref} className="relative min-h-0 w-full will-change-transform">
+    <div ref={ref} className="relative min-h-0 w-full">
       {children}
     </div>
   );
