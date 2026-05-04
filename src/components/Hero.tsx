@@ -5,6 +5,8 @@ import { HeroName } from "./HeroName";
 import { HeroScrollSlew } from "./HeroScrollSlew";
 
 export function Hero() {
+  const heroPositioning = site.positioning.replace(/\.$/, "");
+
   return (
     <div
       id="hero"
@@ -39,16 +41,15 @@ export function Hero() {
             </div>
 
             <div
-              className="hero-tag col-span-full row-start-3 mx-auto flex w-full max-w-6xl flex-col items-center px-6 pb-[clamp(3rem,6vw,8rem)] pt-[clamp(2.25rem,8vw,3.75rem)] text-center sm:px-10"
+              className="hero-tag col-span-full row-start-3 mx-auto flex w-full max-w-6xl flex-col items-center px-6 pb-[clamp(3rem,6vw,8rem)] pt-[clamp(3.25rem,11vw,5.75rem)] text-center sm:px-10"
             >
               <p
-                className="font-tolken mx-auto max-w-2xl uppercase leading-relaxed tracking-[0.06em] text-white/70"
-                style={{ fontSize: "clamp(0.75rem, 1.5vw, 0.85rem)" }}
+                className="hero-tag-lines font-tolken mx-auto max-w-[min(94vw,32rem)] text-balance uppercase leading-snug tracking-[0.06em] text-white/70 sm:max-w-[36rem]"
+                style={{ fontSize: "clamp(0.72rem, 1.45vw, 0.82rem)" }}
               >
-                <span className="hero-tag-line block">
-                  {site.positioning.replace(/\.$/, "")}
-                </span>
-                <span className="hero-tag-line mt-[0.65em] block">{`— ${site.hook}`}</span>
+                <span className="hero-tag-line block">{`${heroPositioning} —`}</span>
+                <br aria-hidden />
+                <span className="hero-tag-line block mt-[0.28em] sm:mt-[0.32em]">{site.hook}</span>
               </p>
             </div>
 

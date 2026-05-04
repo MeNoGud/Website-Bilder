@@ -18,18 +18,22 @@ export function HeroAnimation() {
           defaults: { ease: "expo.out" },
         });
 
-        tl.fromTo(".hero-meta", { opacity: 0 }, { opacity: 1, duration: 0.55 })
-          .fromTo(
-            ".hero-char",
-            { opacity: 0, y: 28 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.4,
-              stagger: { each: 0.042 },
-            },
-            "-=0.32",
-          )
+        tl.fromTo(".hero-meta", { opacity: 0 }, { opacity: 1, duration: 0.55 }).fromTo(
+          ".hero-char",
+          {
+            rotationX: -96,
+            opacity: 0,
+            transformPerspective: 520,
+          },
+          {
+            rotationX: 0,
+            opacity: 1,
+            duration: 0.58,
+            stagger: { each: 0.095 },
+            ease: "back.out(2.15)",
+          },
+          "-=0.28",
+        )
           .fromTo(
             ".hero-tag-line",
             { opacity: 0, y: 18 },
@@ -50,7 +54,9 @@ export function HeroAnimation() {
           );
 
         tl.eventCallback("onComplete", () => {
-          gsap.set(".hero-char, .hero-tag-line", { clearProps: "transform" });
+          gsap.set(".hero-char, .hero-tag-line", {
+            clearProps: "transform,transformPerspective",
+          });
         });
       }, hero);
 
@@ -62,6 +68,7 @@ export function HeroAnimation() {
         gsap.set(".hero-meta, .hero-char, .hero-tag-line, .hero-float-decor", {
           opacity: 1,
           y: 0,
+          rotationX: 0,
         });
       }, hero);
     });
