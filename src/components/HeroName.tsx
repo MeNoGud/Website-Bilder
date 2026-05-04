@@ -14,8 +14,8 @@ const INTRO_PLAY_SLOT_INDEXES = INTRO_PLAY_ORDER_ONE_BASED.map((n) => n - 1);
 const INTRO_SCRAM_DURATION = 1.55;
 const INTRO_STAGGER = 0.22;
 
-/** Glyphs + gaps + per-slot minWidth (“W” wider than goal letter) — div needs headroom vs raw 7 glyphs */
-const HERO_TITLE_FIT_SLOTS = 8.35;
+/** Row budget: 7 equal-width tumblers + em gaps — slightly higher than per-slot-only sum */
+const HERO_TITLE_FIT_SLOTS = 8.95;
 
 /**
  * Mirrors hero column width (max-w-6xl). Extra horizontal slack so locked tumbler columns never exceed it.
@@ -87,6 +87,7 @@ function lockTumblerColumnWidths(
       throw new Error(`Hero tumbler missing parent for slot ${i}`);
     return p as HTMLSpanElement;
   });
+  const perSlotMax: number[] = [];
   charSlots.forEach((slotEl, i) => {
     const chars = new Set<string>();
     openingForSlot[i].forEach((c) => chars.add(c));
@@ -96,7 +97,12 @@ function lockTumblerColumnWidths(
       slotEl.textContent = glyph;
       maxW = Math.max(maxW, slotEl.getBoundingClientRect().width);
     });
-    tumblers[i].style.minWidth = `${Math.ceil(maxW + 1)}px`;
+    perSlotMax[i] = maxW;
+  });
+  const unified = Math.max(...perSlotMax);
+  const cellPx = Math.ceil(unified + 1);
+  tumblers.forEach((t) => {
+    t.style.minWidth = `${cellPx}px`;
   });
   return tumblers;
 }
@@ -232,7 +238,7 @@ export function HeroName() {
           <div className="mx-auto flex min-w-[100%] w-max justify-center">
             <span
               ref={lineRef}
-              className="hero-line-1 inline-flex shrink-0 flex-nowrap items-center justify-center gap-[0.032em] whitespace-nowrap [transform-style:preserve-3d]"
+              className="hero-line-1 inline-flex shrink-0 flex-nowrap items-center justify-center gap-[0.055em] whitespace-nowrap [transform-style:preserve-3d]"
             >
               {initialLetters.map((ch, i) => (
                 <span
