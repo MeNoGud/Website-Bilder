@@ -6,6 +6,14 @@ import { gsap, ScrollTrigger } from "@/lib/gsap";
 const INITIAL = "Marchio";
 const FINAL = "Alberto";
 
+/** 1-based column index play order — "251643" + slot 7 (O last). Maps to slots MARCHIO */
+const INTRO_PLAY_ORDER_ONE_BASED = [2, 5, 1, 6, 4, 3, 7] as const;
+
+const INTRO_PLAY_SLOT_INDEXES = INTRO_PLAY_ORDER_ONE_BASED.map((n) => n - 1);
+
+const INTRO_SCRAM_DURATION = 1.55;
+const INTRO_STAGGER = 0.22;
+
 function mulberry32(seed: number) {
   return function () {
     let t = (seed += 0x6d2b79f5);
@@ -43,6 +51,15 @@ function computeStripIndex(strip: string[], t: number): number {
   return Math.min(strip.length - 1, Math.floor(capped * (strip.length - 1)));
 }
 
+function assertValidIntroPermutation(slots: readonly number[], letterCount: number) {
+  if (slots.length !== letterCount)
+    throw new Error("Intro play order length must match brand length.");
+  const sorted = [...slots].sort((a, b) => a - b);
+  sorted.forEach((v, i) => {
+    if (v !== i) throw new Error("Intro play order must be a permutation of all slot indices.");
+  });
+}
+
 export function HeroName() {
   const lineRef = useRef<HTMLSpanElement>(null);
   const srRef = useRef<HTMLSpanElement>(null);
@@ -66,6 +83,8 @@ export function HeroName() {
   const initialLetters = [...INITIAL];
 
   useLayoutEffect(() => {
+    assertValidIntroPermutation(INTRO_PLAY_SLOT_INDEXES, INITIAL.length);
+
     const hero = document.getElementById("hero");
     const sr = srRef.current;
     if (!hero || !lineRef.current) return;
@@ -125,19 +144,20 @@ export function HeroName() {
       onComplete: attachScrollTrigger,
     });
 
-    proxies.forEach((proxy, i) => {
+    INTRO_PLAY_SLOT_INDEXES.forEach((slotIdx, ord) => {
+      const proxy = proxies[slotIdx]!;
       tl.to(
         proxy,
         {
           p: 1,
-          duration: 0.92,
+          duration: INTRO_SCRAM_DURATION,
           ease: "power3.out",
           onUpdate: () => {
-            slots[i].textContent =
-              openingStrips[i][computeStripIndex(openingStrips[i], proxy.p)]!;
+            slots[slotIdx].textContent =
+              openingStrips[slotIdx]![computeStripIndex(openingStrips[slotIdx]!, proxy.p)]!;
           },
         },
-        i * 0.07,
+        ord * INTRO_STAGGER,
       );
     });
 
@@ -161,15 +181,15 @@ export function HeroName() {
         </span>
         <span
           ref={lineRef}
-          className="hero-line-1 inline-flex flex-wrap justify-center [transform-style:preserve-3d]"
+          className="hero-line-1 inline-flex flex-nowrap items-center justify-center [transform-style:preserve-3d]"
           aria-hidden
         >
           {initialLetters.map((ch, i) => (
             <span
               key={`brand-slot-${INITIAL}-${i}`}
-              className="hero-char-tumbler inline-block overflow-visible [transform-style:preserve-3d]"
+              className="hero-char-tumbler inline-flex h-[1.06em] w-[0.78em] min-w-[0.78em] shrink-0 items-center justify-center overflow-visible leading-none [transform-style:preserve-3d]"
             >
-              <span className="hero-char inline-block origin-center">{ch}</span>
+              <span className="hero-char inline-flex items-center justify-center leading-none">{ch}</span>
             </span>
           ))}
         </span>
