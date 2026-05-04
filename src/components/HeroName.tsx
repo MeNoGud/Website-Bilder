@@ -22,6 +22,14 @@ const HERO_TITLE_FIT_SLOTS = 8.35;
  */
 const TITLE_FIT_CSS = `calc((min(100vw, 72rem) - 5.5rem) / ${HERO_TITLE_FIT_SLOTS})`;
 
+/**
+ * Mid-scramble picks only — actual “Marchio/Alberto” letters still come from strip ends.
+ * Drops caps/digits that are usually wide so `lockTumblerColumnWidths` does not reserve
+ * W/M‑class width in columns that settle on narrow glyphs (fewer clipped M/O at the ends).
+ */
+const SCRAMBLE_POOL_MID =
+  "ABCDEFGHJKLNPRSTUVYZ134579";
+
 function mulberry32(seed: number) {
   return function () {
     let t = (seed += 0x6d2b79f5);
@@ -33,7 +41,7 @@ function mulberry32(seed: number) {
 
 /** Random glyphs ending on `goal` — used for load intro */
 function buildOpeningStrip(goal: string, seed: number): string[] {
-  const pool = "ABCDEFGHJKLMNPQRSTUVWXYZ023456789";
+  const pool = SCRAMBLE_POOL_MID;
   const rand = mulberry32(seed ^ 0xc071);
   const spins = 16 + Math.floor(rand() * 18);
   const seq: string[] = [];
@@ -44,7 +52,7 @@ function buildOpeningStrip(goal: string, seed: number): string[] {
 
 /** Strip for scroll scrub: starts at marchio glyph, rattles to alberto glyph */
 function buildScrollStrip(initial: string, final: string, seed: number): string[] {
-  const pool = "ABCDEFGHJKLMNPQRSTUVWXYZ023456789";
+  const pool = SCRAMBLE_POOL_MID;
   const rand = mulberry32(seed ^ 0xbee5);
   const spins = 18 + Math.floor(rand() * 16);
   const seq: string[] = [initial.toUpperCase()];
@@ -88,7 +96,7 @@ function lockTumblerColumnWidths(
       slotEl.textContent = glyph;
       maxW = Math.max(maxW, slotEl.getBoundingClientRect().width);
     });
-    tumblers[i].style.minWidth = `${Math.ceil(maxW + 2)}px`;
+    tumblers[i].style.minWidth = `${Math.ceil(maxW + 1)}px`;
   });
   return tumblers;
 }
@@ -216,16 +224,15 @@ export function HeroName() {
         <span ref={srRef} className="sr-only">
           {INITIAL}
         </span>
-        {/* Overflow-x-clip: wide row must be mx-auto-centered or LTR aligns left and clips the trailing “O”.
-            Inner row: max(intrinsic, 100%) + justify-center centers the word when there is slack */}
+        {/* Narrow scramble pool keeps row width truthful; overflow visible avoids shaving M/O on subpixel jitter */}
         <div
-          className="relative mx-auto mt-px min-h-0 w-full max-w-full overflow-x-clip overflow-y-visible py-px"
+          className="relative mx-auto mt-px min-h-0 w-full max-w-full overflow-visible py-px"
           aria-hidden
         >
           <div className="mx-auto flex min-w-[100%] w-max justify-center">
             <span
               ref={lineRef}
-              className="hero-line-1 inline-flex shrink-0 flex-nowrap items-center justify-center gap-[0.06em] whitespace-nowrap [transform-style:preserve-3d]"
+              className="hero-line-1 inline-flex shrink-0 flex-nowrap items-center justify-center gap-[0.032em] whitespace-nowrap [transform-style:preserve-3d]"
             >
               {initialLetters.map((ch, i) => (
                 <span
