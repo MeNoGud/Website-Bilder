@@ -14,14 +14,13 @@ const INTRO_PLAY_SLOT_INDEXES = INTRO_PLAY_ORDER_ONE_BASED.map((n) => n - 1);
 const INTRO_SCRAM_DURATION = 1.55;
 const INTRO_STAGGER = 0.22;
 
-/** ~7 glyphs + gaps + scramble min-width slack — caps font-size so “Marchio” fits the hero column without horizontal scroll */
-const HERO_TITLE_FIT_SLOTS = 7.5;
+/** Glyphs + gaps + per-slot minWidth (“W” wider than goal letter) — div needs headroom vs raw 7 glyphs */
+const HERO_TITLE_FIT_SLOTS = 8.35;
 
 /**
- * Mirrors hero column width: Tailwind max-w-6xl + conservative horizontal padding budget (covers sm:px-10).
- * Used inside min() so the title never exceeds the boxed content width on ultra-wide screens.
+ * Mirrors hero column width (max-w-6xl). Extra horizontal slack so locked tumbler columns never exceed it.
  */
-const TITLE_FIT_CSS = `calc((min(100vw, 72rem) - 5rem) / ${HERO_TITLE_FIT_SLOTS})`;
+const TITLE_FIT_CSS = `calc((min(100vw, 72rem) - 5.5rem) / ${HERO_TITLE_FIT_SLOTS})`;
 
 function mulberry32(seed: number) {
   return function () {
@@ -217,13 +216,13 @@ export function HeroName() {
         <span ref={srRef} className="sr-only">
           {INITIAL}
         </span>
-        {/* Scrollport must not be a flex-centered overflow box — that clips the wrong side (looks like "archi").
-            Inner row: max(intrinsic, 100%) + justify-center centers when it fits; overflow scrolls from the start */}
+        {/* Overflow-x-clip: wide row must be mx-auto-centered or LTR aligns left and clips the trailing “O”.
+            Inner row: max(intrinsic, 100%) + justify-center centers the word when there is slack */}
         <div
           className="relative mx-auto mt-px min-h-0 w-full max-w-full overflow-x-clip overflow-y-visible py-px"
           aria-hidden
         >
-          <div className="flex min-w-[100%] w-max justify-center">
+          <div className="mx-auto flex min-w-[100%] w-max justify-center">
             <span
               ref={lineRef}
               className="hero-line-1 inline-flex shrink-0 flex-nowrap items-center justify-center gap-[0.06em] whitespace-nowrap [transform-style:preserve-3d]"
