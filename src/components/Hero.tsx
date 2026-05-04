@@ -39,13 +39,16 @@ export function Hero() {
             </div>
 
             <div
-              className="hero-tag col-span-full row-start-3 mx-auto flex w-full max-w-6xl flex-col items-center px-6 pb-[clamp(3rem,6vw,8rem)] pt-[clamp(1.25rem,5vw,2.5rem)] text-center sm:px-10"
+              className="hero-tag col-span-full row-start-3 mx-auto flex w-full max-w-6xl flex-col items-center px-6 pb-[clamp(3rem,6vw,8rem)] pt-[clamp(2.25rem,8vw,3.75rem)] text-center sm:px-10"
             >
               <p
                 className="font-tolken mx-auto max-w-2xl uppercase leading-relaxed tracking-[0.06em] text-white/70"
                 style={{ fontSize: "clamp(0.75rem, 1.5vw, 0.85rem)" }}
               >
-                {site.positioning.replace(/\.$/, "")} — {site.hook}
+                <span className="hero-tag-line block will-change-transform">
+                  {site.positioning.replace(/\.$/, "")}
+                </span>
+                <span className="hero-tag-line mt-[0.65em] block will-change-transform">{`— ${site.hook}`}</span>
               </p>
             </div>
 
