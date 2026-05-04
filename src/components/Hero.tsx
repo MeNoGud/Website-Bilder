@@ -39,7 +39,7 @@ export function Hero() {
             </div>
 
             <div
-              className="hero-tag col-span-full row-start-3 mx-auto flex w-full max-w-6xl flex-col items-center px-6 pb-[clamp(3rem,6vw,8rem)] pt-[clamp(3.25rem,11vw,5.75rem)] text-center sm:px-10"
+              className="hero-tag col-span-full row-start-3 mx-auto flex w-full max-w-6xl flex-col items-center px-6 pb-[clamp(3rem,6vw,8rem)] pt-[clamp(4.25rem,13vw,6.75rem)] text-center sm:px-10"
             >
               <p
                 className="hero-tag-lines font-tolken mx-auto max-w-[min(94vw,32rem)] text-balance uppercase leading-snug tracking-[0.06em] text-white/70 sm:max-w-[36rem]"
