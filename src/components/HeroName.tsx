@@ -14,6 +14,15 @@ const INTRO_PLAY_SLOT_INDEXES = INTRO_PLAY_ORDER_ONE_BASED.map((n) => n - 1);
 const INTRO_SCRAM_DURATION = 1.55;
 const INTRO_STAGGER = 0.22;
 
+/** ~7 glyphs + gaps + scramble min-width slack — caps font-size so “Marchio” fits the hero column without horizontal scroll */
+const HERO_TITLE_FIT_SLOTS = 7.5;
+
+/**
+ * Mirrors hero column width: Tailwind max-w-6xl + conservative horizontal padding budget (covers sm:px-10).
+ * Used inside min() so the title never exceeds the boxed content width on ultra-wide screens.
+ */
+const TITLE_FIT_CSS = `calc((min(100vw, 72rem) - 5rem) / ${HERO_TITLE_FIT_SLOTS})`;
+
 function mulberry32(seed: number) {
   return function () {
     let t = (seed += 0x6d2b79f5);
@@ -202,7 +211,7 @@ export function HeroName() {
       <h1
         className="font-tolken relative z-[1] w-full perspective-[760px] text-center uppercase leading-none text-[#F4EEE4]"
         style={{
-          fontSize: "clamp(2.5rem, 11vw, 11rem)",
+          fontSize: `min(clamp(2.25rem, 10vw, 11rem), ${TITLE_FIT_CSS})`,
         }}
       >
         <span ref={srRef} className="sr-only">
@@ -211,7 +220,7 @@ export function HeroName() {
         {/* Scrollport must not be a flex-centered overflow box — that clips the wrong side (looks like "archi").
             Inner row: max(intrinsic, 100%) + justify-center centers when it fits; overflow scrolls from the start */}
         <div
-          className="relative mx-auto mt-px min-h-0 w-full max-w-full overflow-x-auto overflow-y-visible py-px [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          className="relative mx-auto mt-px min-h-0 w-full max-w-full overflow-x-clip overflow-y-visible py-px"
           aria-hidden
         >
           <div className="flex min-w-[100%] w-max justify-center">
