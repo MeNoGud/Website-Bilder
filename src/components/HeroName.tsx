@@ -60,6 +60,31 @@ function assertValidIntroPermutation(slots: readonly number[], letterCount: numb
   });
 }
 
+function lockTumblerColumnWidths(
+  charSlots: HTMLSpanElement[],
+  openingForSlot: string[][],
+  scrollForSlot: string[][],
+): HTMLSpanElement[] {
+  const tumblers = charSlots.map((el, i) => {
+    const p = el.parentElement;
+    if (!p)
+      throw new Error(`Hero tumbler missing parent for slot ${i}`);
+    return p as HTMLSpanElement;
+  });
+  charSlots.forEach((slotEl, i) => {
+    const chars = new Set<string>();
+    openingForSlot[i].forEach((c) => chars.add(c));
+    scrollForSlot[i].forEach((c) => chars.add(c));
+    let maxW = 0;
+    chars.forEach((glyph) => {
+      slotEl.textContent = glyph;
+      maxW = Math.max(maxW, slotEl.getBoundingClientRect().width);
+    });
+    tumblers[i].style.minWidth = `${Math.ceil(maxW + 2)}px`;
+  });
+  return tumblers;
+}
+
 export function HeroName() {
   const lineRef = useRef<HTMLSpanElement>(null);
   const srRef = useRef<HTMLSpanElement>(null);
@@ -100,6 +125,8 @@ export function HeroName() {
       if (sr) sr.textContent = FINAL;
       return;
     }
+
+    const tumblers = lockTumblerColumnWidths(slots, openingStrips, scrollStrips);
 
     let scrollSt: ScrollTrigger | undefined;
 
@@ -164,6 +191,9 @@ export function HeroName() {
     return () => {
       tl.kill();
       scrollSt?.kill();
+      tumblers.forEach((t) => {
+        t.style.minWidth = "";
+      });
     };
   }, [openingStrips, scrollStrips]);
 
@@ -180,15 +210,15 @@ export function HeroName() {
         </span>
         <span
           ref={lineRef}
-          className="hero-line-1 inline-flex flex-wrap items-end justify-center gap-[0.06em] [transform-style:preserve-3d]"
+          className="hero-line-1 inline-flex flex-wrap items-center justify-center gap-[0.06em] [transform-style:preserve-3d]"
           aria-hidden
         >
           {initialLetters.map((ch, i) => (
             <span
               key={`brand-slot-${INITIAL}-${i}`}
-              className="hero-char-tumbler inline-flex shrink-0 items-end justify-center overflow-visible leading-none [transform-style:preserve-3d]"
+              className="hero-char-tumbler inline-flex shrink-0 items-center justify-center overflow-visible leading-none [transform-style:preserve-3d]"
             >
-              <span className="hero-char inline-block leading-none">{ch}</span>
+              <span className="hero-char inline-block text-center leading-none">{ch}</span>
             </span>
           ))}
         </span>
