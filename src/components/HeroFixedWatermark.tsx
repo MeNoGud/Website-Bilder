@@ -32,12 +32,12 @@ export function HeroFixedWatermark() {
   return (
     <div
       ref={wrapRef}
-      className="pointer-events-none fixed left-1/2 top-1/2 z-[6] max-w-[min(90vw,38rem)] -translate-x-1/2 -translate-y-1/2 select-none transition-opacity duration-500 ease-out"
+      className="hero-watermark-led pointer-events-none fixed left-1/2 top-1/2 z-[6] max-w-[min(90vw,38rem)] -translate-x-1/2 -translate-y-1/2 select-none transition-opacity duration-500 ease-out"
       style={{ width: "min(42vw, 38rem)" }}
       aria-hidden
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/logo.svg" alt="" className="block w-full" style={{ mixBlendMode: "normal" }} />
+      <img src="/logo.svg" alt="" className="hero-watermark-led__logo block w-full" />
     </div>
   );
 }

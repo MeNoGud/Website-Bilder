@@ -69,6 +69,55 @@ body {
 /* ── Dark hero — screen blend makes grain visible on black ── */
 #top.noise::after { mix-blend-mode: screen; }
 
+/* ── Hero fixed watermark — amber + coral halo (lit / LED emission) ── */
+.hero-watermark-led img.hero-watermark-led__logo {
+  filter:
+    brightness(1.06) saturate(1.14) contrast(1.02)
+    drop-shadow(0 0 1px rgba(255, 246, 220, 0.95))
+    drop-shadow(0 0 6px rgba(245, 165, 0, 0.75))
+    drop-shadow(0 0 16px rgba(245, 165, 0, 0.48))
+    drop-shadow(0 0 40px rgba(245, 165, 0, 0.26))
+    drop-shadow(0 0 72px rgba(245, 165, 0, 0.14))
+    drop-shadow(0 0 4px rgba(255, 94, 64, 0.65))
+    drop-shadow(0 0 20px rgba(232, 36, 0, 0.32))
+    drop-shadow(0 0 44px rgba(232, 36, 0, 0.14));
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes heroWatermarkLedBreath {
+    0%,
+    100% {
+      filter:
+        brightness(1.06) saturate(1.14) contrast(1.02)
+        drop-shadow(0 0 1px rgba(255, 246, 220, 0.95))
+        drop-shadow(0 0 6px rgba(245, 165, 0, 0.75))
+        drop-shadow(0 0 16px rgba(245, 165, 0, 0.48))
+        drop-shadow(0 0 40px rgba(245, 165, 0, 0.26))
+        drop-shadow(0 0 72px rgba(245, 165, 0, 0.14))
+        drop-shadow(0 0 4px rgba(255, 94, 64, 0.65))
+        drop-shadow(0 0 20px rgba(232, 36, 0, 0.32))
+        drop-shadow(0 0 44px rgba(232, 36, 0, 0.14));
+    }
+
+    50% {
+      filter:
+        brightness(1.09) saturate(1.18) contrast(1.02)
+        drop-shadow(0 0 1px rgba(255, 246, 220, 1))
+        drop-shadow(0 0 8px rgba(245, 165, 0, 0.88))
+        drop-shadow(0 0 20px rgba(245, 165, 0, 0.56))
+        drop-shadow(0 0 48px rgba(245, 165, 0, 0.34))
+        drop-shadow(0 0 86px rgba(245, 165, 0, 0.2))
+        drop-shadow(0 0 5px rgba(255, 94, 64, 0.78))
+        drop-shadow(0 0 24px rgba(232, 36, 0, 0.42))
+        drop-shadow(0 0 52px rgba(232, 36, 0, 0.2));
+    }
+  }
+
+  .hero-watermark-led img.hero-watermark-led__logo {
+    animation: heroWatermarkLedBreath 6.5s ease-in-out infinite;
+  }
+}
+
 /* ── Noise overlay — multiply works on light backgrounds ── */
 .noise::after {
   content: "";
@@ -144,6 +193,9 @@ body {
 @media (prefers-reduced-motion: reduce) {
   /* .reveal and .reveal-clip are handled by gsap.matchMedia() in ScrollReveal.tsx */
   /* hero-meta / hero-line-1 / hero-tag / hero-float-decor are handled by HeroAnimation.tsx */
+  .hero-watermark-led img.hero-watermark-led__logo {
+    animation: none !important;
+  }
   .ambient-blob, .ambient-blob-2 {
     animation: none !important;
     opacity: 1 !important;

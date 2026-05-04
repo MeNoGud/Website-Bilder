@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="2400" height="2400" viewBox="0 0 2400 2400">
+  <!-- Centered logo from logo.svg  low opacity for image/video overlays -->
+  <!-- Save as PNG: open in Chrome/Edge, print to PDF, or use Inkscape/File ’ Export -->
+  <image
+    xlink:href="logo.svg"
+    href="logo.svg"
+    x="600"
+    y="600"
+    width="1200"
+    height="1200"
+    opacity="0.10"
+    preserveAspectRatio="xMidYMid meet"
+  />
+</svg>
