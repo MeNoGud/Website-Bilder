@@ -173,7 +173,6 @@ export function HeroName() {
         className="font-tolken relative z-[1] w-full perspective-[760px] text-center uppercase leading-none text-[#F4EEE4]"
         style={{
           fontSize: "clamp(2.5rem, 11vw, 11rem)",
-          letterSpacing: "0.06em",
         }}
       >
         <span ref={srRef} className="sr-only">
@@ -181,15 +180,15 @@ export function HeroName() {
         </span>
         <span
           ref={lineRef}
-          className="hero-line-1 inline-flex flex-nowrap items-center justify-center [transform-style:preserve-3d]"
+          className="hero-line-1 inline-flex flex-wrap items-end justify-center gap-[0.06em] [transform-style:preserve-3d]"
           aria-hidden
         >
           {initialLetters.map((ch, i) => (
             <span
               key={`brand-slot-${INITIAL}-${i}`}
-              className="hero-char-tumbler inline-flex h-[1.06em] w-[0.78em] min-w-[0.78em] shrink-0 items-center justify-center overflow-visible leading-none [transform-style:preserve-3d]"
+              className="hero-char-tumbler inline-flex shrink-0 items-end justify-center overflow-visible leading-none [transform-style:preserve-3d]"
             >
-              <span className="hero-char inline-flex items-center justify-center leading-none">{ch}</span>
+              <span className="hero-char inline-block leading-none">{ch}</span>
             </span>
           ))}
         </span>
