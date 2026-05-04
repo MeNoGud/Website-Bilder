@@ -208,20 +208,27 @@ export function HeroName() {
         <span ref={srRef} className="sr-only">
           {INITIAL}
         </span>
-        <span
-          ref={lineRef}
-          className="hero-line-1 inline-flex flex-wrap items-center justify-center gap-[0.06em] [transform-style:preserve-3d]"
+        {/* nowrap + skinny scrollbar when min-width columns overflow narrow viewports */}
+        <div
+          className="relative mx-auto mt-px flex min-w-0 max-w-full justify-center overflow-x-auto overflow-y-visible py-px [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
           aria-hidden
         >
-          {initialLetters.map((ch, i) => (
-            <span
-              key={`brand-slot-${INITIAL}-${i}`}
-              className="hero-char-tumbler inline-flex shrink-0 items-center justify-center overflow-visible leading-none [transform-style:preserve-3d]"
-            >
-              <span className="hero-char inline-block text-center leading-none">{ch}</span>
-            </span>
-          ))}
-        </span>
+          <span
+            ref={lineRef}
+            className="hero-line-1 inline-flex flex-nowrap items-center justify-center gap-[0.06em] whitespace-nowrap [transform-style:preserve-3d]"
+          >
+            {initialLetters.map((ch, i) => (
+              <span
+                key={`brand-slot-${INITIAL}-${i}`}
+                className="hero-char-tumbler inline-flex shrink-0 items-center justify-center overflow-visible leading-none [transform-style:preserve-3d]"
+              >
+                <span className="hero-char inline-block whitespace-nowrap text-center leading-none">
+                  {ch}
+                </span>
+              </span>
+            ))}
+          </span>
+        </div>
       </h1>
     </div>
   );
