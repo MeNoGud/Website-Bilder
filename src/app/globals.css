@@ -112,7 +112,7 @@ body {
 
 /* Initial opacity for GSAP-controlled hero elements — prevents FOIC before HeroAnimation.tsx mounts.
    fromTo() in HeroAnimation.tsx sets the start transform explicitly, so no CSS transform needed here. */
-.hero-meta, .hero-char, .hero-tag-line, .hero-float-decor { opacity: 0; }
+.hero-meta, .hero-tag-line, .hero-float-decor { opacity: 0; }
 
 .ambient-blob  { animation: ambientPulse  9s ease-in-out infinite; }
 .ambient-blob-2{ animation: ambientPulse 11s ease-in-out 2s infinite; }
@@ -151,7 +151,7 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   /* .reveal and .reveal-clip are handled by gsap.matchMedia() in ScrollReveal.tsx */
-  /* hero-meta / hero-char / hero-tag-line / hero-float-decor are handled by HeroAnimation.tsx */
+  /* hero-meta / hero-tag-line / hero-float-decor are handled by HeroAnimation.tsx */
   .hero-watermark-led img.hero-watermark-led__logo {
     animation: none !important;
   }

@@ -3,8 +3,7 @@
 import { useLayoutEffect } from "react";
 import { gsap } from "@/lib/gsap";
 
-// Hero intro scoped to #hero so selectors never miss; gsap.context + matchMedia cleanup
-// pairs with React Strict Mode (dev) so timelines are not orphaned or reverted too early.
+// Hero intro: meta bar → tag lines → décor. Brand tumblers scroll with ScrollTrigger in HeroName.
 export function HeroAnimation() {
   useLayoutEffect(() => {
     const hero = document.getElementById("hero");
@@ -18,22 +17,7 @@ export function HeroAnimation() {
           defaults: { ease: "expo.out" },
         });
 
-        tl.fromTo(".hero-meta", { opacity: 0 }, { opacity: 1, duration: 0.55 }).fromTo(
-          ".hero-char",
-          {
-            rotationX: -96,
-            opacity: 0,
-            transformPerspective: 520,
-          },
-          {
-            rotationX: 0,
-            opacity: 1,
-            duration: 0.58,
-            stagger: { each: 0.095 },
-            ease: "back.out(2.15)",
-          },
-          "-=0.28",
-        )
+        tl.fromTo(".hero-meta", { opacity: 0 }, { opacity: 1, duration: 0.55 })
           .fromTo(
             ".hero-tag-line",
             { opacity: 0, y: 18 },
@@ -44,7 +28,7 @@ export function HeroAnimation() {
               stagger: 0.14,
               ease: "expo.out",
             },
-            "-=0.3",
+            "-=0.15",
           )
           .fromTo(
             ".hero-float-decor",
@@ -54,9 +38,7 @@ export function HeroAnimation() {
           );
 
         tl.eventCallback("onComplete", () => {
-          gsap.set(".hero-char, .hero-tag-line", {
-            clearProps: "transform,transformPerspective",
-          });
+          gsap.set(".hero-tag-line", { clearProps: "transform" });
         });
       }, hero);
 
@@ -65,10 +47,9 @@ export function HeroAnimation() {
 
     mm.add("(prefers-reduced-motion: reduce)", () => {
       gsap.context(() => {
-        gsap.set(".hero-meta, .hero-char, .hero-tag-line, .hero-float-decor", {
+        gsap.set(".hero-meta, .hero-tag-line, .hero-float-decor", {
           opacity: 1,
           y: 0,
-          rotationX: 0,
         });
       }, hero);
     });
