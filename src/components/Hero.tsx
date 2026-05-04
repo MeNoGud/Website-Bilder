@@ -30,15 +30,30 @@ export function Hero() {
             ✦
           </span>
 
-          <div
-            className="relative flex min-h-screen flex-col"
-            style={{ paddingTop: "clamp(4rem,8vw,7rem)", paddingBottom: "clamp(3rem,6vw,8rem)" }}
-          >
-            <div className="mx-auto w-full max-w-6xl flex-1 px-6 sm:px-10">
-              <div
-                className="hero-meta flex items-center justify-between"
-                style={{ marginBottom: "clamp(4rem,8vw,7rem)" }}
+          <div className="relative grid min-h-screen w-full grid-rows-[1fr_auto_1fr]">
+            {/* Top flex row so “Marchio” sits on the viewport midpoint (same Y as fixed watermark) */}
+            <div className="col-span-full row-start-1 min-h-0 select-none" aria-hidden />
+
+            <div className="col-span-full row-start-2 mx-auto flex w-full max-w-6xl flex-col px-6 sm:px-10">
+              <HeroName />
+            </div>
+
+            <div
+              className="hero-tag col-span-full row-start-3 mx-auto flex w-full max-w-6xl flex-col items-center px-6 pb-[clamp(3rem,6vw,8rem)] pt-[clamp(1.25rem,5vw,2.5rem)] text-center sm:px-10"
+            >
+              <p
+                className="font-tolken mx-auto max-w-2xl uppercase leading-relaxed tracking-[0.06em] text-white/70"
+                style={{ fontSize: "clamp(0.75rem, 1.5vw, 0.85rem)" }}
               >
+                {site.positioning.replace(/\.$/, "")} — {site.hook}
+              </p>
+            </div>
+
+            <div
+              className="pointer-events-none absolute left-0 right-0 top-0 z-[11] px-6 sm:px-10"
+              style={{ paddingTop: "clamp(4rem,8vw,7rem)" }}
+            >
+              <div className="pointer-events-auto mx-auto flex w-full max-w-6xl items-center justify-between hero-meta">
                 <span className="font-mono text-[10px] uppercase tracking-[0.32em] text-gold">
                   Web Design Studio · {new Date().getFullYear()}
                 </span>
@@ -53,20 +68,6 @@ export function Hero() {
                     {site.location}
                   </span>
                 </div>
-              </div>
-
-              <HeroName />
-
-              <div
-                className="hero-tag text-center"
-                style={{ marginTop: "clamp(1.5rem, 14vw, 14vw)" }}
-              >
-                <p
-                  className="font-tolken mx-auto max-w-2xl uppercase leading-relaxed tracking-[0.06em] text-white/70"
-                  style={{ fontSize: "clamp(0.75rem, 1.5vw, 0.85rem)" }}
-                >
-                  {site.positioning.replace(/\.$/, "")} — {site.hook}
-                </p>
               </div>
             </div>
           </div>
