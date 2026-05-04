@@ -208,26 +208,29 @@ export function HeroName() {
         <span ref={srRef} className="sr-only">
           {INITIAL}
         </span>
-        {/* nowrap + skinny scrollbar when min-width columns overflow narrow viewports */}
+        {/* Scrollport must not be a flex-centered overflow box — that clips the wrong side (looks like "archi").
+            Inner row: max(intrinsic, 100%) + justify-center centers when it fits; overflow scrolls from the start */}
         <div
-          className="relative mx-auto mt-px flex min-w-0 max-w-full justify-center overflow-x-auto overflow-y-visible py-px [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          className="relative mx-auto mt-px min-h-0 w-full max-w-full overflow-x-auto overflow-y-visible py-px [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
           aria-hidden
         >
-          <span
-            ref={lineRef}
-            className="hero-line-1 inline-flex flex-nowrap items-center justify-center gap-[0.06em] whitespace-nowrap [transform-style:preserve-3d]"
-          >
-            {initialLetters.map((ch, i) => (
-              <span
-                key={`brand-slot-${INITIAL}-${i}`}
-                className="hero-char-tumbler inline-flex shrink-0 items-center justify-center overflow-visible leading-none [transform-style:preserve-3d]"
-              >
-                <span className="hero-char inline-block whitespace-nowrap text-center leading-none">
-                  {ch}
+          <div className="flex min-w-[100%] w-max justify-center">
+            <span
+              ref={lineRef}
+              className="hero-line-1 inline-flex shrink-0 flex-nowrap items-center justify-center gap-[0.06em] whitespace-nowrap [transform-style:preserve-3d]"
+            >
+              {initialLetters.map((ch, i) => (
+                <span
+                  key={`brand-slot-${INITIAL}-${i}`}
+                  className="hero-char-tumbler inline-flex shrink-0 items-center justify-center overflow-visible leading-none [transform-style:preserve-3d]"
+                >
+                  <span className="hero-char inline-block whitespace-nowrap text-center leading-none">
+                    {ch}
+                  </span>
                 </span>
-              </span>
-            ))}
-          </span>
+              ))}
+            </span>
+          </div>
         </div>
       </h1>
     </div>
